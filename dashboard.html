@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CiberShield — Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+     SIDEBAR
+═══════════════════════════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
+      <div class="logo-icon">🛡</div>
+      <span class="logo-text">Ciber<span>Shield</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <div class="nav-group-label">Principal</div>
+
+      <a class="nav-item active" onclick="navigate('dashboard', this)">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Dashboard</span>
+        <span class="tooltip">Dashboard</span>
+      </a>
+      <a class="nav-item" onclick="navigate('scan', this)">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">Escanear</span>
+        <span class="tooltip">Escanear</span>
+      </a>
+      <a class="nav-item" onclick="navigate('history', this)">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Historial</span>
+        <span class="tooltip">Historial</span>
+      </a>
+      <a class="nav-item" onclick="navigate('notifications', this)">
+        <span class="nav-icon">🔔</span>
+        <span class="nav-label">Alertas</span>
+        <span class="nav-badge">3</span>
+        <span class="tooltip">Alertas</span>
+      </a>
+
+      <div class="nav-group-label" style="margin-top:16px">Herramientas</div>
+
+      <a class="nav-item" onclick="navigate('scan', this); setTab('url')">
+        <span class="nav-icon">🔗</span>
+        <span class="nav-label">Analizar URL</span>
+        <span class="tooltip">Analizar URL</span>
+      </a>
+      <a class="nav-item" onclick="navigate('scan', this); setTab('file')">
+        <span class="nav-icon">📁</span>
+        <span class="nav-label">Analizar Archivo</span>
+        <span class="tooltip">Analizar Archivo</span>
+      </a>
+      <a class="nav-item" onclick="navigate('scan', this); setTab('ip')">
+        <span class="nav-icon">🌐</span>
+        <span class="nav-label">Reputación IP</span>
+        <span class="tooltip">Reputación IP</span>
+      </a>
+      <a class="nav-item" onclick="navigate('scan', this); setTab('hash')">
+        <span class="nav-icon">🧬</span>
+        <span class="nav-label">Análisis Hash</span>
+        <span class="tooltip">Análisis Hash</span>
+      </a>
+
+      <div class="nav-group-label" style="margin-top:16px">Cuenta</div>
+
+      <a class="nav-item" href="perfil.html">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Mi Perfil</span>
+        <span class="tooltip">Mi Perfil</span>
+      </a>
+      <a class="nav-item" href="perfil.html#settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Configuración</span>
+        <span class="tooltip">Configuración</span>
+      </a>
+      <a class="nav-item" href="#" onclick="logout()" style="color: rgba(248,113,113,0.7)">
+        <span class="nav-icon">🚪</span>
+        <span class="nav-label">Cerrar sesión</span>
+        <span class="tooltip">Cerrar sesión</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-avatar">LM</div>
+      <div class="user-info">
+        <div class="user-name">Luis Matías</div>
+        <div class="user-plan">✦ Plan Básico</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════════════════════ -->
+  <div class="main-wrap">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="toggle-btn" onclick="toggleSidebar()" title="Colapsar menú">☰</button>
+      <div class="topbar-breadcrumb" id="topbar-title">
+        Dashboard <span>/ Resumen</span>
+      </div>
+      <div class="topbar-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Buscar análisis, URL, archivo…" />
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="navigate('notifications', null)" title="Notificaciones">
+          🔔
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-btn" title="Configuración">⚙️</button>
+        <div class="user-avatar" style="cursor:pointer" title="Mi perfil" onclick="window.location.href='perfil.html'">
+          LM</div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- ═══ VIEW: DASHBOARD ════════════════════════════════════ -->
+      <div class="view active" id="view-dashboard">
+
+        <!-- Stats row -->
+        <div class="stat-row fade-in">
+          <div class="stat-card">
+            <div class="stat-info">
+              <div class="stat-label">Análisis hoy</div>
+              <div class="stat-value">47</div>
+              <div class="stat-sub"><span class="up">↑ 12%</span> vs ayer</div>
+            </div>
+            <div class="stat-icon-wrap icon-blue">📊</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-info">
+              <div class="stat-label">Amenazas detectadas</div>
+              <div class="stat-value" style="color:var(--red-600)">3</div>
+              <div class="stat-sub"><span class="down">↑ 1</span> esta semana</div>
+            </div>
+            <div class="stat-icon-wrap icon-red">⚠️</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-info">
+              <div class="stat-label">Archivos limpios</div>
+              <div class="stat-value" style="color:var(--green-600)">44</div>
+              <div class="stat-sub"><span class="up">93.6%</span> tasa de seguridad</div>
+            </div>
+            <div class="stat-icon-wrap icon-green">✅</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-info">
+              <div class="stat-label">Plan activo</div>
+              <div class="stat-value" style="font-size:1.3rem; color:var(--green-600)">Básico</div>
+              <div class="stat-sub" style="color:var(--green-600); cursor:pointer"
+                onclick="window.location.href='precios.html'">Actualizar →</div>
+            </div>
+            <div class="stat-icon-wrap icon-green">🛡</div>
+          </div>
+        </div>
+
+        <!-- Scan quick + Activity -->
+        <div class="grid-3-1 fade-in">
+
+          <!-- Recent activity -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Análisis recientes</div>
+                <div class="card-sub">Últimas 24 horas</div>
+              </div>
+              <a class="card-action" onclick="navigate('history', null)">Ver todo →</a>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <table class="activity-table">
+                <thead>
+                  <tr>
+                    <th>Tipo</th>
+                    <th>Objetivo</th>
+                    <th>Motor</th>
+                    <th>Estado</th>
+                    <th>Hora</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="type-icon type-file">📁</span></td>
+                    <td><span class="target-text">factura_octubre.pdf</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 5 min</td>
+                  </tr>
+                  <tr>
+                    <td><span class="type-icon type-url">🔗</span></td>
+                    <td><span class="target-text">login-banco-rd.xyz</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">URLScan</td>
+                    <td><span class="status-pill pill-threat"><span class="status-dot"></span>Phishing</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 18 min</td>
+                  </tr>
+                  <tr>
+                    <td><span class="type-icon type-ip">🌐</span></td>
+                    <td><span class="target-text">190.85.42.17</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">AbuseIPDB</td>
+                    <td><span class="status-pill pill-warning"><span class="status-dot"></span>Sospechoso</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 1h</td>
+                  </tr>
+                  <tr>
+                    <td><span class="type-icon type-file">📁</span></td>
+                    <td><span class="target-text">setup_update.exe</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                    <td><span class="status-pill pill-threat"><span class="status-dot"></span>Malware</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 2h</td>
+                  </tr>
+                  <tr>
+                    <td><span class="type-icon type-hash">🧬</span></td>
+                    <td><span class="target-text">a1b2c3d4e5f6…</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 3h</td>
+                  </tr>
+                  <tr>
+                    <td><span class="type-icon type-url">🔗</span></td>
+                    <td><span class="target-text">google.com</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">Safe Browsing</td>
+                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 4h</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div style="display:flex;flex-direction:column;gap:16px">
+
+            <!-- Quick scan -->
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Escaneo rápido</div>
+              </div>
+              <div class="card-body">
+                <div class="quick-tools">
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('url')">
+                    <span class="qt-icon">🔗</span>
+                    <span class="qt-label">URL</span>
+                  </a>
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('file')">
+                    <span class="qt-icon">📁</span>
+                    <span class="qt-label">Archivo</span>
+                  </a>
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('ip')">
+                    <span class="qt-icon">🌐</span>
+                    <span class="qt-label">IP</span>
+                  </a>
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('hash')">
+                    <span class="qt-icon">🧬</span>
+                    <span class="qt-label">Hash</span>
+                  </a>
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('pass')">
+                    <span class="qt-icon">🔑</span>
+                    <span class="qt-label">Contraseña</span>
+                  </a>
+                  <a class="quick-tool" onclick="navigate('scan',null);setTab('domain')">
+                    <span class="qt-icon">📡</span>
+                    <span class="qt-label">Dominio</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Weekly chart -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Esta semana</div>
+                  <div class="card-sub">Análisis diarios</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="mini-chart">
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:30px"></div>
+                    <div class="bar-label">L</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:45px"></div>
+                    <div class="bar-label">M</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:22px"></div>
+                    <div class="bar-label">X</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:50px"></div>
+                    <div class="bar-label">J</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar threat" style="height:18px"></div>
+                    <div class="bar-label">V</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:35px"></div>
+                    <div class="bar-label">S</div>
+                  </div>
+                  <div class="bar-wrap">
+                    <div class="bar" style="height:55px"></div>
+                    <div class="bar-label">D</div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:16px;margin-top:10px">
+                  <span style="font-size:0.72rem;color:var(--slate-400);display:flex;align-items:center;gap:5px">
+                    <span
+                      style="width:10px;height:10px;border-radius:3px;background:var(--green-400);display:inline-block"></span>Limpios
+                  </span>
+                  <span style="font-size:0.72rem;color:var(--slate-400);display:flex;align-items:center;gap:5px">
+                    <span
+                      style="width:10px;height:10px;border-radius:3px;background:var(--red-400);display:inline-block"></span>Amenazas
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Alerts preview -->
+        <div class="card fade-in">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Alertas recientes</div>
+              <div class="card-sub">Requieren tu atención</div>
+            </div>
+            <a class="card-action" onclick="navigate('notifications', null)">Ver todas →</a>
+          </div>
+          <div class="card-body">
+            <div class="alerts-list">
+              <div class="alert-item critical">
+                <span class="alert-icon">🚨</span>
+                <div class="alert-content">
+                  <div class="alert-title">Phishing detectado — login-banco-rd.xyz</div>
+                  <div class="alert-desc">El enlace analizado fue identificado como sitio de suplantación bancaria por
+                    14 de 15 motores.</div>
+                  <div class="alert-time">Hace 18 minutos</div>
+                </div>
+                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
+              </div>
+              <div class="alert-item warning">
+                <span class="alert-icon">⚠️</span>
+                <div class="alert-content">
+                  <div class="alert-title">IP sospechosa — 190.85.42.17</div>
+                  <div class="alert-desc">Esta dirección IP tiene reportes de actividad maliciosa en los últimos 30
+                    días.</div>
+                  <div class="alert-time">Hace 1 hora</div>
+                </div>
+                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
+              </div>
+              <div class="alert-item info">
+                <span class="alert-icon">ℹ️</span>
+                <div class="alert-content">
+                  <div class="alert-title">Tu plan Básico tiene 47 análisis restantes hoy</div>
+                  <div class="alert-desc">Considera actualizar al plan Premium para análisis ilimitados y herramientas
+                    avanzadas.</div>
+                  <div class="alert-time">Hoy, 9:00 AM</div>
+                </div>
+                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /view-dashboard -->
+
+
+      <!-- ═══ VIEW: SCAN ════════════════════════════════════════ -->
+      <div class="view" id="view-scan">
+        <div class="card fade-in">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Motor de análisis</div>
+              <div class="card-sub">Selecciona el tipo de análisis y pega tu objetivo</div>
+            </div>
+            <span class="plan-chip"><span class="chip-dot"></span>Plan Básico</span>
+          </div>
+          <div class="card-body">
+            <div class="scan-tabs" id="scan-tabs">
+              <button class="scan-tab active" onclick="setTab('url', this)">🔗 URL</button>
+              <button class="scan-tab" onclick="setTab('file', this)">📁 Archivo</button>
+              <button class="scan-tab" onclick="setTab('ip', this)">🌐 Dirección IP</button>
+              <button class="scan-tab" onclick="setTab('hash', this)">🧬 Hash de archivo</button>
+              <button class="scan-tab" onclick="setTab('pass', this)">🔑 Contraseña</button>
+              <button class="scan-tab" onclick="setTab('domain', this)">📡 Dominio/Email</button>
+            </div>
+
+            <!-- Text input row (URL, IP, Hash, Pass, Domain) -->
+            <div id="scan-text-input">
+              <div class="scan-input-row">
+                <div class="scan-field">
+                  <span class="scan-icon" id="scan-input-icon">🔗</span>
+                  <input type="text" id="scan-input" placeholder="Pega una URL, ej: https://ejemplo.com" />
+                </div>
+                <button class="btn-scan" onclick="runScan()">Analizar</button>
+              </div>
+            </div>
+
+            <!-- File upload area -->
+            <div class="file-upload-area" id="file-upload-area" onclick="document.getElementById('file-input').click()"
+              ondragover="event.preventDefault();this.classList.add('dragover')"
+              ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
+              <div class="upload-icon">📂</div>
+              <p>Arrastra un archivo aquí o <span>haz clic para seleccionar</span></p>
+              <p style="margin-top:6px;font-size:0.75rem;color:var(--slate-400)">Soportado: .exe, .pdf, .docx, .zip,
+                .apk — Máx 32MB</p>
+              <input type="file" id="file-input" style="display:none" onchange="handleFileSelect(event)" />
+            </div>
+
+            <!-- Result box -->
+            <div class="scan-result" id="scan-result">
+              <div class="spinner" id="result-spinner"></div>
+              <div class="result-icon" id="result-icon" style="display:none"></div>
+              <div class="result-info">
+                <div class="result-title" id="result-title">Analizando…</div>
+                <div class="result-detail" id="result-detail">Consultando motores de análisis</div>
+              </div>
+              <div class="result-engines" id="result-engines" style="display:none">
+                <div class="result-engines"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tool info cards -->
+        <div class="grid-2 fade-in">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Herramientas disponibles</div>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:10px" id="tool-list">
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
+                  <span style="font-size:1.1rem">🦠</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">VirusTotal</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">70+ motores antivirus</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
+                </div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
+                  <span style="font-size:1.1rem">🔗</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">URLScan.io</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Análisis forense de URLs</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
+                </div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
+                  <span style="font-size:1.1rem">🔑</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Have I Been Pwned</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Brechas de credenciales</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
+                </div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
+                  <span style="font-size:1.1rem">🛡</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Google Safe Browsing</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Detección phishing/malware</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0">
+                  <span style="font-size:1.1rem">💪</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">zxcvbn</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Fortaleza de contraseñas</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Herramientas bloqueadas</div>
+              <a class="card-action" href="precios.html">Actualizar plan →</a>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.55">
+                  <span style="font-size:1.1rem">🌐</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Shodan</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">OSINT / puertos abiertos</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#fef3c7;color:#92400e;font-weight:600">🔒
+                    Premium</span>
+                </div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.55">
+                  <span style="font-size:1.1rem">📧</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">MXToolbox</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Reputación de dominio</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#fef3c7;color:#92400e;font-weight:600">🔒
+                    Premium</span>
+                </div>
+                <div
+                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.45">
+                  <span style="font-size:1.1rem">🕸</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Censys</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Exposición de activos</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#ede9fe;color:#5b21b6;font-weight:600">🔒
+                    Institucional</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:8px 0;opacity:0.45">
+                  <span style="font-size:1.1rem">🧬</span>
+                  <div style="flex:1">
+                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">AlienVault OTX</div>
+                    <div style="font-size:0.72rem;color:var(--slate-400)">Threat Intelligence global</div>
+                  </div>
+                  <span
+                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#ede9fe;color:#5b21b6;font-weight:600">🔒
+                    Institucional</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /view-scan -->
+
+
+      <!-- ═══ VIEW: HISTORY ═════════════════════════════════════ -->
+      <div class="view" id="view-history">
+        <div class="card fade-in">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Historial de análisis</div>
+              <div class="card-sub">Todos tus escaneos de los últimos 7 días</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="filter-row" style="margin-bottom:18px">
+              <select class="filter-select">
+                <option>Todos los tipos</option>
+                <option>URL</option>
+                <option>Archivo</option>
+                <option>Dirección IP</option>
+                <option>Hash</option>
+              </select>
+              <select class="filter-select">
+                <option>Todos los estados</option>
+                <option>Limpio</option>
+                <option>Amenaza</option>
+                <option>Sospechoso</option>
+              </select>
+              <select class="filter-select">
+                <option>Últimos 7 días</option>
+                <option>Hoy</option>
+                <option>Ayer</option>
+                <option>Este mes</option>
+              </select>
+            </div>
+            <table class="activity-table">
+              <thead>
+                <tr>
+                  <th>Tipo</th>
+                  <th>Objetivo analizado</th>
+                  <th>Herramienta</th>
+                  <th>Estado</th>
+                  <th>Motores</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="type-icon type-file">📁</span></td>
+                  <td><span class="target-text">factura_octubre.pdf</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                  <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                  <td style="font-size:0.78rem">0 / 70</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 14:32</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-url">🔗</span></td>
+                  <td><span class="target-text">login-banco-rd.xyz</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">URLScan + Google</td>
+                  <td><span class="status-pill pill-threat"><span class="status-dot"></span>Phishing</span></td>
+                  <td style="font-size:0.78rem">14 / 15</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 14:14</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-ip">🌐</span></td>
+                  <td><span class="target-text">190.85.42.17</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">AbuseIPDB</td>
+                  <td><span class="status-pill pill-warning"><span class="status-dot"></span>Sospechoso</span></td>
+                  <td style="font-size:0.78rem">3 / 15</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 13:21</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-file">📁</span></td>
+                  <td><span class="target-text">setup_update.exe</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                  <td><span class="status-pill pill-threat"><span class="status-dot"></span>Malware</span></td>
+                  <td style="font-size:0.78rem">52 / 70</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 12:05</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-hash">🧬</span></td>
+                  <td><span class="target-text">a1b2c3d4e5f67890…</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                  <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                  <td style="font-size:0.78rem">0 / 70</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 09:47</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-url">🔗</span></td>
+                  <td><span class="target-text">google.com</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Safe Browsing</td>
+                  <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                  <td style="font-size:0.78rem">0 / 5</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 18:30</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-file">📁</span></td>
+                  <td><span class="target-text">contrato_2025.docx</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
+                  <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
+                  <td style="font-size:0.78rem">0 / 70</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 16:10</td>
+                </tr>
+                <tr>
+                  <td><span class="type-icon type-url">🔗</span></td>
+                  <td><span class="target-text">ofertas-amazon-rd.site</span></td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">URLScan + Google</td>
+                  <td><span class="status-pill pill-threat"><span class="status-dot"></span>Phishing</span></td>
+                  <td style="font-size:0.78rem">11 / 15</td>
+                  <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 11:55</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div><!-- /view-history -->
+
+
+      <!-- ═══ VIEW: NOTIFICATIONS ════════════════════════════════ -->
+      <div class="view" id="view-notifications">
+        <div class="card fade-in">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Alertas y notificaciones</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span class="notif-count">3 nuevas</span>
+              <button class="mark-all" onclick="markAllRead()">Marcar todo como leído</button>
+            </div>
+          </div>
+          <div style="padding: 0" id="notif-list">
+            <div class="notif-item unread">
+              <div class="notif-avatar na-red">🚨</div>
+              <div class="notif-body">
+                <div class="notif-title">Phishing detectado</div>
+                <div class="notif-desc">El enlace <strong>login-banco-rd.xyz</strong> fue identificado como sitio de
+                  phishing bancario. 14 de 15 motores confirman la amenaza. Evita compartir este enlace.</div>
+                <div class="notif-time">Hace 18 minutos</div>
+              </div>
+              <div class="unread-dot"></div>
+            </div>
+            <div class="notif-item unread">
+              <div class="notif-avatar na-red">⚠️</div>
+              <div class="notif-body">
+                <div class="notif-title">Malware identificado — setup_update.exe</div>
+                <div class="notif-desc">El archivo analizado contiene código malicioso. 52 de 70 motores de VirusTotal
+                  lo clasifican como troyano. No ejecutes este archivo.</div>
+                <div class="notif-time">Hace 2 horas</div>
+              </div>
+              <div class="unread-dot"></div>
+            </div>
+            <div class="notif-item unread">
+              <div class="notif-avatar na-amber">📡</div>
+              <div class="notif-body">
+                <div class="notif-title">IP sospechosa — 190.85.42.17</div>
+                <div class="notif-desc">Esta dirección IP tiene 47 reportes de actividad maliciosa en los últimos 30
+                  días según AbuseIPDB. Se recomienda bloquearla en tu firewall.</div>
+                <div class="notif-time">Hace 1 hora</div>
+              </div>
+              <div class="unread-dot"></div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-avatar na-blue">ℹ️</div>
+              <div class="notif-body">
+                <div class="notif-title">Resumen semanal disponible</div>
+                <div class="notif-desc">Esta semana realizaste 47 análisis. Se detectaron 3 amenazas. Tu tasa de
+                  seguridad fue del 93.6%.</div>
+                <div class="notif-time">Ayer, 8:00 AM</div>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-avatar na-green">✅</div>
+              <div class="notif-body">
+                <div class="notif-title">Cuenta verificada correctamente</div>
+                <div class="notif-desc">Tu cuenta fue verificada y el plan Básico está activo. Tienes acceso a 5
+                  herramientas de análisis.</div>
+                <div class="notif-time">Hace 3 días</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /view-notifications -->
+
+    </main>
+  </div><!-- /main-wrap -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="dashboard.js"></script>
+</body>
+
+</html>

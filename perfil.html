@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CiberShield — Mi Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ══════════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-icon">🛡</div>
+    <span class="logo-text">Ciber<span>Shield</span></span>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-group-label">Principal</div>
+    <a class="nav-item" href="dashboard.html">
+      <span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span>
+      <span class="tooltip">Dashboard</span>
+    </a>
+    <a class="nav-item" href="dashboard.html">
+      <span class="nav-icon">🔍</span><span class="nav-label">Escanear</span>
+      <span class="tooltip">Escanear</span>
+    </a>
+    <a class="nav-item" href="dashboard.html">
+      <span class="nav-icon">📋</span><span class="nav-label">Historial</span>
+      <span class="tooltip">Historial</span>
+    </a>
+    <a class="nav-item" href="dashboard.html">
+      <span class="nav-icon">🔔</span><span class="nav-label">Alertas</span>
+      <span class="nav-badge">3</span><span class="tooltip">Alertas</span>
+    </a>
+    <div class="nav-group-label" style="margin-top:16px">Cuenta</div>
+    <a class="nav-item active" href="perfil.html">
+      <span class="nav-icon">👤</span><span class="nav-label">Mi Perfil</span>
+      <span class="tooltip">Mi Perfil</span>
+    </a>
+    <a class="nav-item" href="perfil.html#seguridad" onclick="switchTab('seguridad')">
+      <span class="nav-icon">🔐</span><span class="nav-label">Seguridad</span>
+      <span class="tooltip">Seguridad</span>
+    </a>
+    <a class="nav-item" href="perfil.html#suscripcion" onclick="switchTab('suscripcion')">
+      <span class="nav-icon">💳</span><span class="nav-label">Suscripción</span>
+      <span class="tooltip">Suscripción</span>
+    </a>
+    <a class="nav-item" href="login.html" style="color:rgba(248,113,113,0.7)">
+      <span class="nav-icon">🚪</span><span class="nav-label">Cerrar sesión</span>
+      <span class="tooltip">Cerrar sesión</span>
+    </a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="user-avatar">LM</div>
+    <div class="user-info">
+      <div class="user-name">Luis Matías</div>
+      <div class="user-plan">✦ Plan Básico</div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MAIN ══════════════════════════════════════════════════════ -->
+<div class="main-wrap">
+
+  <header class="topbar">
+    <button class="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('mini')">☰</button>
+    <div class="topbar-title">Mi Perfil <span>/ Cuenta y suscripción</span></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="icon-btn">🔔</button>
+      <button class="icon-btn">⚙️</button>
+      <div class="user-avatar" style="cursor:pointer">LM</div>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <!-- Profile hero -->
+    <div class="profile-hero">
+      <div class="profile-cover">
+        <button class="profile-cover-edit">✏ Cambiar portada</button>
+      </div>
+      <div class="profile-info-row">
+        <div class="profile-left">
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar">LM</div>
+            <div class="avatar-edit-btn">✏</div>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-name">Luis Diego Matías Núñez</div>
+            <div class="profile-role">Ingeniero en Sistemas · UCATECI, La Vega</div>
+            <div class="profile-tags">
+              <span class="tag tag-green">✦ Plan Básico</span>
+              <span class="tag tag-blue">🛡 Verificado</span>
+              <span class="tag tag-amber">🎓 Estudiante</span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn-primary" onclick="showToast('✅','Perfil actualizado correctamente')">Guardar cambios</button>
+          <button class="btn-outline">Exportar datos</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="profile-stats-row">
+      <div class="pstat">
+        <div class="pstat-value">247</div>
+        <div class="pstat-label">Análisis totales</div>
+      </div>
+      <div class="pstat">
+        <div class="pstat-value red">12</div>
+        <div class="pstat-label">Amenazas detectadas</div>
+      </div>
+      <div class="pstat">
+        <div class="pstat-value green">95%</div>
+        <div class="pstat-label">Tasa de seguridad</div>
+      </div>
+      <div class="pstat">
+        <div class="pstat-value">38</div>
+        <div class="pstat-label">Días en la plataforma</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="page-tabs">
+      <button class="page-tab active" id="tab-btn-perfil" onclick="switchTab('perfil', this)">👤 Perfil</button>
+      <button class="page-tab" id="tab-btn-suscripcion" onclick="switchTab('suscripcion', this)">💳 Suscripción</button>
+      <button class="page-tab" id="tab-btn-seguridad" onclick="switchTab('seguridad', this)">🔐 Seguridad</button>
+      <button class="page-tab" id="tab-btn-actividad" onclick="switchTab('actividad', this)">📋 Actividad</button>
+    </div>
+
+    <!-- ─── TAB: PERFIL ────────────────────────────────────────── -->
+    <div class="tab-panel active" id="tab-perfil">
+      <div class="grid-2">
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Información personal</div>
+              <div class="card-sub">Tus datos básicos de cuenta</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nombre</label>
+                <input class="form-input" type="text" value="Luis Diego"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Apellido</label>
+                <input class="form-input" type="text" value="Matías Núñez"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo electrónico</label>
+              <input class="form-input" type="email" value="luis.matias@ucateci.edu.do"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input class="form-input" type="tel" value="+1 (809) 555-0123"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Empresa / Institución</label>
+              <input class="form-input" type="text" value="UCATECI"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Rol</label>
+              <select class="form-input">
+                <option>Estudiante</option>
+                <option>Profesional TI</option>
+                <option>Gerente de Pyme</option>
+                <option>Investigador</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <button class="btn-outline">Cancelar</button>
+              <button class="btn-primary" onclick="showToast('✅','Información actualizada')">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Notificaciones</div>
+            </div>
+            <div class="card-body">
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Alertas de amenazas</div>
+                  <div class="toggle-desc">Notificar cuando se detecte malware o phishing</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Resumen semanal</div>
+                  <div class="toggle-desc">Reporte de actividad cada lunes</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Correos promocionales</div>
+                  <div class="toggle-desc">Novedades y actualizaciones del producto</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Recordatorio de análisis</div>
+                  <div class="toggle-desc">Recordar verificar activos digitales nuevos</div>
+                </div>
+                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Preferencias</div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Idioma</label>
+                <select class="form-input">
+                  <option>Español</option>
+                  <option>English</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Zona horaria</label>
+                <select class="form-input">
+                  <option>America/Santo_Domingo (AST, UTC-4)</option>
+                  <option>America/New_York</option>
+                </select>
+              </div>
+              <div class="toggle-row" style="padding-top:0">
+                <div class="toggle-info">
+                  <div class="toggle-name">Modo oscuro</div>
+                  <div class="toggle-desc">Cambiar la apariencia de la interfaz</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── TAB: SUSCRIPCIÓN ─────────────────────────────────── -->
+    <div class="tab-panel" id="tab-suscripcion">
+      <div class="grid-3-1">
+
+        <!-- Plan comparison -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Comparar planes</div>
+              <div class="card-sub">Selecciona el plan que mejor se adapte</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="plan-cards">
+
+              <div class="plan-mini current">
+                <div class="plan-mini-badge">✦ Plan actual</div>
+                <div class="plan-mini-name">Básico</div>
+                <div class="plan-mini-price">$0 <span>/mes</span></div>
+                <ul>
+                  <li><span class="ck">✓</span> 5 herramientas</li>
+                  <li><span class="ck">✓</span> VirusTotal, URLScan</li>
+                  <li><span class="ck">✓</span> HIBP, Safe Browsing</li>
+                  <li><span class="ck">✓</span> Historial 7 días</li>
+                  <li><span class="ck">✓</span> 50 análisis/día</li>
+                </ul>
+                <button class="btn-plan active-plan">Plan actual</button>
+              </div>
+
+              <div class="plan-mini">
+                <div class="plan-mini-name">Premium</div>
+                <div class="plan-mini-price">$12 <span>/mes</span></div>
+                <ul>
+                  <li><span class="ck">✓</span> 10 herramientas</li>
+                  <li><span class="ck">✓</span> +Shodan, PhishTank</li>
+                  <li><span class="ck">✓</span> +SSL Labs, AbuseIPDB</li>
+                  <li><span class="ck">✓</span> Historial 90 días</li>
+                  <li><span class="ck">✓</span> Reportes PDF</li>
+                </ul>
+                <button class="btn-plan" onclick="showToast('💳','Redirigiendo al pago…')">Actualizar</button>
+              </div>
+
+              <div class="plan-mini">
+                <div class="plan-mini-name">Institucional</div>
+                <div class="plan-mini-price">$49 <span>/mes</span></div>
+                <ul>
+                  <li><span class="ck">✓</span> 15 herramientas</li>
+                  <li><span class="ck">✓</span> +Censys, GreyNoise</li>
+                  <li><span class="ck">✓</span> +AlienVault OTX</li>
+                  <li><span class="ck">✓</span> Historial ilimitado</li>
+                  <li><span class="ck">✓</span> Módulo personalizable</li>
+                </ul>
+                <button class="btn-plan" onclick="showToast('📞','Un asesor te contactará pronto')">Contactar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Current subscription -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="sub-card">
+            <div class="sub-plan-badge"><span class="dot"></span>Plan Activo</div>
+            <div class="sub-name">Plan Básico</div>
+            <div class="sub-desc">Gratuito para siempre · Sin tarjeta de crédito</div>
+            <div class="sub-usage">
+              <div class="usage-label">
+                <span>Análisis hoy</span>
+                <span>47 / 50</span>
+              </div>
+              <div class="usage-bar">
+                <div class="usage-fill" style="width:94%"></div>
+              </div>
+            </div>
+            <div class="sub-features">
+              <div class="sub-feat"><span class="check">✓</span> 5 herramientas activas</div>
+              <div class="sub-feat"><span class="check">✓</span> 50 análisis por día</div>
+              <div class="sub-feat"><span class="check">✓</span> Historial de 7 días</div>
+            </div>
+            <div class="upgrade-banner">
+              <div class="upgrade-text">
+                <div class="upgrade-title">¿Necesitas más?</div>
+                <div class="upgrade-sub">Premium por solo $12/mes</div>
+              </div>
+              <button class="btn-white-sm" onclick="showToast('💳','Redirigiendo al pago…')">Actualizar →</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Facturación</div>
+            </div>
+            <div class="card-body">
+              <div style="text-align:center;padding:20px 0;color:var(--slate-400)">
+                <div style="font-size:2rem;margin-bottom:8px">💳</div>
+                <div style="font-size:0.85rem">Sin método de pago</div>
+                <div style="font-size:0.75rem;margin-top:4px">Actualmente en el plan gratuito</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─── TAB: SEGURIDAD ────────────────────────────────────── -->
+    <div class="tab-panel" id="tab-seguridad">
+      <div class="grid-2">
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Cambiar contraseña</div>
+              <div class="card-sub">Usa una contraseña fuerte y única</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Contraseña actual</label>
+              <input class="form-input" type="password" placeholder="••••••••"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nueva contraseña</label>
+              <input class="form-input" type="password" placeholder="••••••••" id="new-pass" oninput="checkStrength(this.value)"/>
+              <div id="strength-bar" style="height:4px;border-radius:2px;margin-top:8px;background:var(--slate-100);overflow:hidden">
+                <div id="strength-fill" style="height:100%;width:0%;border-radius:2px;transition:width 0.3s,background 0.3s"></div>
+              </div>
+              <div class="form-hint" id="strength-label">Escribe una contraseña para ver su fortaleza</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirmar nueva contraseña</label>
+              <input class="form-input" type="password" placeholder="••••••••"/>
+            </div>
+            <div class="form-actions">
+              <button class="btn-primary" onclick="showToast('🔐','Contraseña actualizada correctamente')">Actualizar contraseña</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Autenticación en dos pasos</div>
+            </div>
+            <div class="card-body">
+              <div class="toggle-row" style="padding-top:0">
+                <div class="toggle-info">
+                  <div class="toggle-name">Activar 2FA</div>
+                  <div class="toggle-desc">Protege tu cuenta con un código adicional</div>
+                </div>
+                <label class="switch"><input type="checkbox" onchange="showToast('🔒','2FA actualizado')"><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">Aplicación autenticadora</div>
+                  <div class="toggle-desc">Google Authenticator, Authy, etc.</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+              </div>
+              <div class="toggle-row">
+                <div class="toggle-info">
+                  <div class="toggle-name">SMS como respaldo</div>
+                  <div class="toggle-desc">Código de verificación por mensaje de texto</div>
+                </div>
+                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Sesiones activas</div>
+            </div>
+            <div class="card-body">
+              <div class="log-item">
+                <div class="log-icon-wrap li-green">💻</div>
+                <div class="log-content">
+                  <div class="log-title">Chrome · Windows 11</div>
+                  <div class="log-detail">La Vega, RD · Sesión actual</div>
+                </div>
+                <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600;white-space:nowrap">Activa</span>
+              </div>
+              <div class="log-item">
+                <div class="log-icon-wrap li-blue">📱</div>
+                <div class="log-content">
+                  <div class="log-title">Safari · iPhone</div>
+                  <div class="log-detail">Santo Domingo, RD · hace 2 días</div>
+                </div>
+                <button style="font-size:0.72rem;color:var(--red-600);background:none;border:none;cursor:pointer;font-weight:600" onclick="showToast('🔒','Sesión cerrada')">Cerrar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="danger-zone">
+        <div class="danger-header">
+          <div class="danger-title">⚠ Zona de peligro</div>
+        </div>
+        <div class="danger-body">
+          <div class="danger-row">
+            <div>
+              <div class="danger-info-title">Eliminar historial de análisis</div>
+              <div class="danger-info-desc">Borra permanentemente todos tus análisis y reportes guardados.</div>
+            </div>
+            <button class="btn-danger" onclick="openModal('history')">Eliminar historial</button>
+          </div>
+          <div class="danger-row">
+            <div>
+              <div class="danger-info-title">Desactivar cuenta</div>
+              <div class="danger-info-desc">Tu cuenta quedará inactiva. Podrás reactivarla en cualquier momento.</div>
+            </div>
+            <button class="btn-danger" onclick="openModal('deactivate')">Desactivar cuenta</button>
+          </div>
+          <div class="danger-row">
+            <div>
+              <div class="danger-info-title">Eliminar cuenta permanentemente</div>
+              <div class="danger-info-desc">Esta acción es irreversible. Se eliminarán todos tus datos.</div>
+            </div>
+            <button class="btn-danger" onclick="openModal('delete')">Eliminar cuenta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── TAB: ACTIVIDAD ─────────────────────────────────────── -->
+    <div class="tab-panel" id="tab-actividad">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Registro de actividad</div>
+            <div class="card-sub">Últimas acciones en tu cuenta</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="log-item">
+            <div class="log-icon-wrap li-red">🚨</div>
+            <div class="log-content">
+              <div class="log-title">Phishing detectado — login-banco-rd.xyz</div>
+              <div class="log-detail">Análisis de URL · VirusTotal + URLScan</div>
+            </div>
+            <div class="log-time">Hoy 14:14</div>
+          </div>
+          <div class="log-item">
+            <div class="log-icon-wrap li-green">✅</div>
+            <div class="log-content">
+              <div class="log-title">Archivo limpio — factura_octubre.pdf</div>
+              <div class="log-detail">Análisis de archivo · VirusTotal (0/70)</div>
+            </div>
+            <div class="log-time">Hoy 14:32</div>
+          </div>
+          <div class="log-item">
+            <div class="log-icon-wrap li-amber">⚠️</div>
+            <div class="log-content">
+              <div class="log-title">IP sospechosa — 190.85.42.17</div>
+              <div class="log-detail">Reputación de IP · AbuseIPDB</div>
+            </div>
+            <div class="log-time">Hoy 13:21</div>
+          </div>
+          <div class="log-item">
+            <div class="log-icon-wrap li-blue">🔑</div>
+            <div class="log-content">
+              <div class="log-title">Contraseña verificada</div>
+              <div class="log-detail">Verificación HIBP · sin brechas encontradas</div>
+            </div>
+            <div class="log-time">Ayer 17:05</div>
+          </div>
+          <div class="log-item">
+            <div class="log-icon-wrap li-green">🔐</div>
+            <div class="log-content">
+              <div class="log-title">Inicio de sesión exitoso</div>
+              <div class="log-detail">Chrome · Windows 11 · La Vega, RD</div>
+            </div>
+            <div class="log-time">Ayer 09:00</div>
+          </div>
+          <div class="log-item">
+            <div class="log-icon-wrap li-green">✅</div>
+            <div class="log-content">
+              <div class="log-title">Cuenta creada</div>
+              <div class="log-detail">Registro exitoso · Plan Básico activado</div>
+            </div>
+            <div class="log-time">Hace 38 días</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══ MODAL ═════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-icon" id="modal-icon">⚠️</div>
+    <div class="modal-title" id="modal-title">¿Estás seguro?</div>
+    <div class="modal-desc" id="modal-desc">Esta acción no se puede deshacer.</div>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="modal-confirm" id="modal-confirm" onclick="confirmModal()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═════════════════════════════════════════════════════ -->
+<div class="toast" id="toast">
+  <span class="toast-icon" id="toast-icon">✅</span>
+  <span id="toast-msg">Acción completada</span>
+</div>
+
+<script src="perfil.js"></script>
+</body>
+</html>
