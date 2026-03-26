@@ -24,52 +24,92 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
 
-// Billing toggle
-let isAnnual = false;
+// Billing toggle 3-state
+let currentBilling = 'monthly'; // monthly, quarterly, annual
 const prices = {
-  basic:   { monthly: 0,  annual: 0  },
-  premium: { monthly: 12, annual: 10 },
-  inst:    { monthly: 49, annual: 39 },
+  basic:   { monthly: 0,  quarterly: 0,  annual: 0  },
+  premium: { monthly: 12, quarterly: 11, annual: 10 },
+  inst:    { monthly: null, quarterly: 44, annual: 39 }, 
 };
 
-function toggleBilling() {
-  isAnnual = !isAnnual;
-  const btn = document.getElementById('billing-toggle');
-  if (btn) btn.classList.toggle('annual', isAnnual);
-
-  const labelMonthly = document.getElementById('label-monthly');
-  const labelAnnual = document.getElementById('label-annual');
+function setBilling(mode) {
+  currentBilling = mode;
+  
+  // UI Switcher
+  const options = document.querySelectorAll('.switch-opt');
+  const indicator = document.querySelector('.switch-indicator');
   const saveChip = document.getElementById('save-chip');
+  
+  let activeIndex = 0;
+  options.forEach((opt, i) => {
+    if (opt.dataset.billing === mode) {
+      opt.classList.add('active');
+      activeIndex = i;
+    } else {
+      opt.classList.remove('active');
+    }
+  });
 
-  if (labelMonthly) labelMonthly.classList.toggle('active', !isAnnual);
-  if (labelAnnual) labelAnnual.classList.toggle('active', isAnnual);
-  if (saveChip) saveChip.style.opacity = isAnnual ? '1' : '0.4';
+  // Animate indicator
+  const activeBtn = options[activeIndex];
+  indicator.style.width = `${activeBtn.offsetWidth}px`;
+  indicator.style.transform = `translateX(${activeBtn.offsetLeft - 4}px)`;
 
-  // Update prices
+  // Update save chip
+  if (saveChip) {
+    if (mode === 'quarterly') {
+      saveChip.textContent = 'Ahorra 8%';
+      saveChip.style.opacity = '1';
+    } else if (mode === 'annual') {
+      saveChip.textContent = 'Ahorra 20%';
+      saveChip.style.opacity = '1';
+    } else {
+      saveChip.style.opacity = '0';
+    }
+  }
+
+  // Update DOM elements
   const priceBasic = document.getElementById('price-basic');
   const pricePremium = document.getElementById('price-premium');
   const priceInst = document.getElementById('price-inst');
 
-  if (priceBasic) priceBasic.textContent = prices.basic[isAnnual ? 'annual' : 'monthly'];
-  if (pricePremium) pricePremium.textContent = prices.premium[isAnnual ? 'annual' : 'monthly'];
-  if (priceInst) priceInst.textContent = prices.inst[isAnnual ? 'annual' : 'monthly'];
+  if (priceBasic) priceBasic.textContent = prices.basic[mode];
+  if (pricePremium) pricePremium.textContent = prices.premium[mode];
+  
+  // Handle Institutional null (no monthly)
+  if (priceInst) {
+    const val = prices.inst[mode];
+    if (val === null) {
+      priceInst.textContent = '---';
+      priceInst.parentElement.classList.add('no-price');
+    } else {
+      priceInst.textContent = val;
+      priceInst.parentElement.classList.remove('no-price');
+    }
+  }
 
-  const noteBasic = document.getElementById('note-basic');
+  // Update notes
   const notePremium = document.getElementById('note-premium');
   const noteInst = document.getElementById('note-inst');
 
-  if (noteBasic) noteBasic.textContent = 'Gratis para siempre';
   if (notePremium) {
-    notePremium.innerHTML = isAnnual
-      ? '<span class="strike">$12</span> → <span class="save">$10/mes · Ahorras $24/año</span>'
-      : 'Facturación mensual';
+    if (mode === 'monthly') notePremium.textContent = 'Facturación mensual';
+    else if (mode === 'quarterly') notePremium.innerHTML = '<span class="strike">$12</span> → <span class="save">$11/mes · $33 cada 3 meses</span>';
+    else notePremium.innerHTML = '<span class="strike">$12</span> → <span class="save">$10/mes · Ahorras $24/año</span>';
   }
+
   if (noteInst) {
-    noteInst.innerHTML = isAnnual
-      ? '<span class="strike">$49</span> → <span class="save">$39/mes · Ahorras $120/año</span>'
-      : 'Facturación mensual';
+    if (mode === 'monthly') noteInst.innerHTML = '<span style="color:var(--red-500);font-weight:600">Solo disponible en pago trimestral o anual</span>';
+    else if (mode === 'quarterly') noteInst.innerHTML = '<span class="strike">$49</span> → <span class="save">$44/mes · $132 cada 3 meses</span>';
+    else noteInst.innerHTML = '<span class="strike">$49</span> → <span class="save">$39/mes · Ahorras $120/año</span>';
   }
 }
+
+// Iniciar posición del switch
+document.addEventListener('DOMContentLoaded', () => {
+  setBilling('monthly');
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+});
 
 // FAQ
 function toggleFaq(item) {

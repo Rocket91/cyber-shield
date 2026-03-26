@@ -35,11 +35,14 @@
     <p class="hero-sub">Empieza gratis y escala cuando lo necesites. Sin sorpresas en la factura, sin letra pequeña.</p>
 
     <!-- Billing toggle -->
-    <div class="billing-toggle">
-      <span class="billing-label active" id="label-monthly">Mensual</span>
-      <button class="toggle-pill" id="billing-toggle" onclick="toggleBilling()"></button>
-      <span class="billing-label" id="label-annual">Anual</span>
-      <span class="save-chip" id="save-chip" style="opacity:0.4">Ahorra 20%</span>
+    <div class="billing-switcher-container">
+      <div class="billing-switcher" id="billing-switcher">
+        <button class="switch-opt active" data-billing="monthly" onclick="setBilling('monthly')">Mensual</button>
+        <button class="switch-opt" data-billing="quarterly" onclick="setBilling('quarterly')">Trimestral</button>
+        <button class="switch-opt" data-billing="annual" onclick="setBilling('annual')">Anual</button>
+        <div class="switch-indicator"></div>
+      </div>
+      <span class="save-chip" id="save-chip" style="opacity:0">Ahorra 20%</span>
     </div>
   </div>
 </section>
