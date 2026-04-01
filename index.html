@@ -1,444 +1,457 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CiberShield — Plataforma Unificada de Ciberseguridad</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 
-<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">
-    <div class="logo-icon">🛡</div>
-    Ciber<span>Shield</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html#features">Características</a></li>
-    <li><a href="index.html#tools">Herramientas</a></li>
-    <li><a href="precios.html">Planes</a></li>
-    <li><a href="#contact">Contacto</a></li>
-  </ul>
-  <div class="nav-cta">
-    <a href="login.html" class="btn-ghost">Iniciar sesión</a>
-    <a href="login.html" class="btn-primary">Comenzar gratis</a>
-  </div>
-</nav>
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🛡</div>
+      Ciber<span>Shield</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Características</a></li>
+      <li><a href="index.html#tools">Herramientas</a></li>
+      <li><a href="precios.html">Planes</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="login.html" class="btn-ghost">Iniciar sesión</a>
+      <a href="login.html" class="btn-primary">Comenzar gratis</a>
+    </div>
+  </nav>
 
-<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      Plataforma SaaS · República Dominicana
+  <!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Plataforma SaaS · República Dominicana
+      </div>
+
+      <h1 class="hero-title">
+        Toda la ciberseguridad<br>
+        en <span class="underline-green">un solo lugar</span>
+      </h1>
+
+      <p class="hero-sub">
+        Centraliza 15 herramientas profesionales de análisis de malware, phishing y vulnerabilidades.
+        Accesible para Pymes dominicanas, sin necesidad de un equipo técnico dedicado.
+      </p>
+
+      <div class="hero-actions">
+        <a href="login.html" class="btn-primary-lg">Empezar gratis →</a>
+        <a href="#tools" class="btn-outline-lg">Ver herramientas</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">15<span>+</span></div>
+          <div class="stat-label">Herramientas integradas</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Planes disponibles</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-number">70<span>+</span></div>
+          <div class="stat-label">Motores antivirus</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="stat-number">100<span>%</span></div>
+          <div class="stat-label">Basado en la nube</div>
+        </div>
+      </div>
     </div>
 
-    <h1 class="hero-title">
-      Toda la ciberseguridad<br>
-      en <span class="underline-green">un solo lugar</span>
-    </h1>
-
-    <p class="hero-sub">
-      Centraliza 15 herramientas profesionales de análisis de malware, phishing y vulnerabilidades.
-      Accesible para Pymes dominicanas, sin necesidad de un equipo técnico dedicado.
-    </p>
-
-    <div class="hero-actions">
-      <a href="login.html" class="btn-primary-lg">Empezar gratis →</a>
-      <a href="#tools" class="btn-outline-lg">Ver herramientas</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-number">15<span>+</span></div>
-        <div class="stat-label">Herramientas integradas</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Planes disponibles</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-number">70<span>+</span></div>
-        <div class="stat-label">Motores antivirus</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <div class="stat-number">100<span>%</span></div>
-        <div class="stat-label">Basado en la nube</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dashboard preview mockup -->
-  <div class="hero-visual">
-    <div class="dashboard-preview">
-      <div class="preview-bar">
-        <span class="preview-dot red"></span>
-        <span class="preview-dot yellow"></span>
-        <span class="preview-dot green"></span>
-        <div class="preview-url">app.cibershield.do/dashboard</div>
-      </div>
-      <div class="preview-body">
-        <div class="preview-grid">
-          <div class="preview-sidebar">
-            <div class="preview-menu-item active">
-              <div class="preview-menu-icon">🛡</div> Dashboard
-            </div>
-            <div class="preview-menu-item">
-              <div class="preview-menu-icon">🔍</div> Escanear URL
-            </div>
-            <div class="preview-menu-item">
-              <div class="preview-menu-icon">📁</div> Analizar Archivo
-            </div>
-            <div class="preview-menu-item">
-              <div class="preview-menu-icon">🌐</div> Reputación IP
-            </div>
-            <div class="preview-menu-item">
-              <div class="preview-menu-icon">🔑</div> Credenciales
-            </div>
-            <div class="preview-menu-item">
-              <div class="preview-menu-icon">📊</div> Reportes
-            </div>
-          </div>
-          <div class="preview-main">
-            <div class="preview-cards">
-              <div class="preview-card">
-                <div class="preview-card-label">Análisis hoy</div>
-                <div class="preview-card-value">47</div>
+    <!-- Dashboard preview mockup -->
+    <div class="hero-visual">
+      <div class="dashboard-preview">
+        <div class="preview-bar">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <div class="preview-url">app.cibershield.do/dashboard</div>
+        </div>
+        <div class="preview-body">
+          <div class="preview-grid">
+            <div class="preview-sidebar">
+              <div class="preview-menu-item active">
+                <div class="preview-menu-icon">🛡</div> Dashboard
               </div>
-              <div class="preview-card">
-                <div class="preview-card-label">Amenazas bloqueadas</div>
-                <div class="preview-card-value amber">3</div>
+              <div class="preview-menu-item">
+                <div class="preview-menu-icon">🔍</div> Escanear URL
               </div>
-              <div class="preview-card">
-                <div class="preview-card-label">Estado general</div>
-                <div class="preview-card-value green">Seguro</div>
+              <div class="preview-menu-item">
+                <div class="preview-menu-icon">📁</div> Analizar Archivo
+              </div>
+              <div class="preview-menu-item">
+                <div class="preview-menu-icon">🌐</div> Reputación IP
+              </div>
+              <div class="preview-menu-item">
+                <div class="preview-menu-icon">🔑</div> Credenciales
+              </div>
+              <div class="preview-menu-item">
+                <div class="preview-menu-icon">📊</div> Reportes
               </div>
             </div>
-            <div class="preview-scan-box">
-              <div class="preview-scan-title">Últimos análisis</div>
-              <div class="preview-scan-row">
-                <span class="scan-name">factura_octubre.pdf</span>
-                <span class="scan-pill pill-safe">Limpio</span>
+            <div class="preview-main">
+              <div class="preview-cards">
+                <div class="preview-card">
+                  <div class="preview-card-label">Análisis hoy</div>
+                  <div class="preview-card-value">47</div>
+                </div>
+                <div class="preview-card">
+                  <div class="preview-card-label">Amenazas bloqueadas</div>
+                  <div class="preview-card-value amber">3</div>
+                </div>
+                <div class="preview-card">
+                  <div class="preview-card-label">Estado general</div>
+                  <div class="preview-card-value green">Seguro</div>
+                </div>
               </div>
-              <div class="preview-scan-row">
-                <span class="scan-name">http://login-banco-rd.xyz</span>
-                <span class="scan-pill pill-risk">Phishing</span>
-              </div>
-              <div class="preview-scan-row">
-                <span class="scan-name">190.85.42.17</span>
-                <span class="scan-pill pill-info">Revisando</span>
-              </div>
-              <div class="preview-scan-row">
-                <span class="scan-name">setup_update.exe</span>
-                <span class="scan-pill pill-risk">Malware</span>
+              <div class="preview-scan-box">
+                <div class="preview-scan-title">Últimos análisis</div>
+                <div class="preview-scan-row">
+                  <span class="scan-name">factura_octubre.pdf</span>
+                  <span class="scan-pill pill-safe">Limpio</span>
+                </div>
+                <div class="preview-scan-row">
+                  <span class="scan-name">http://login-banco-rd.xyz</span>
+                  <span class="scan-pill pill-risk">Phishing</span>
+                </div>
+                <div class="preview-scan-row">
+                  <span class="scan-name">190.85.42.17</span>
+                  <span class="scan-pill pill-info">Revisando</span>
+                </div>
+                <div class="preview-scan-row">
+                  <span class="scan-name">setup_update.exe</span>
+                  <span class="scan-pill pill-risk">Malware</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ═══ FEATURES ══════════════════════════════════════════════════ -->
+  <section class="features" id="features">
+    <div class="features-header reveal">
+      <span class="section-label">¿Por qué CiberShield?</span>
+      <h2 class="section-title">Seguridad profesional,<br>sin la complejidad</h2>
+      <p class="section-sub">Diseñado para que cualquier persona o empresa pueda protegerse, sin necesitar un experto en
+        TI.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-name">Todo centralizado</div>
+        <p class="feature-desc">No más abrir 6 pestañas distintas. Analiza URLs, archivos, IPs y credenciales desde un
+          único panel.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-name">Resultados en segundos</div>
+        <p class="feature-desc">Nuestra arquitectura de orquestación consulta múltiples motores en paralelo y entrega un
+          veredicto unificado al instante.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📊</div>
+        <div class="feature-name">Reportes comprensibles</div>
+        <p class="feature-desc">Transformamos datos técnicos complejos en reportes visuales claros. Un semáforo verde o
+          rojo basta para tomar decisiones.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔐</div>
+        <div class="feature-name">Privacidad garantizada</div>
+        <p class="feature-desc">Verificamos contraseñas comprometidas usando k-Anonymity: nunca enviamos tu contraseña
+          real a ningún servidor externo.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📈</div>
+        <div class="feature-name">Escalable para tu empresa</div>
+        <p class="feature-desc">Desde el plan gratuito individual hasta el plan institucional con auditorías
+          corporativas y reportes personalizados.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🇩🇴</div>
+        <div class="feature-name">Hecho para el Cibao</div>
+        <p class="feature-desc">Primera plataforma SaaS de ciberseguridad desarrollada localmente, alineada con la Ley
+          53-07 y la Estrategia Nacional 2030.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TOOLS ═════════════════════════════════════════════════════ -->
+  <section class="tools" id="tools">
+    <div class="tools-header reveal">
+      <span class="section-label">Las 15 herramientas</span>
+      <h2 class="section-title">Inteligencia de amenazas<br>de clase mundial</h2>
+      <p class="section-sub">Integramos las mejores APIs de ciberseguridad del mercado global, accesibles desde un solo
+        lugar.</p>
+    </div>
+
+    <div class="tools-tabs reveal">
+      <button class="tool-tab active" onclick="filterTools('all', this)">Todas</button>
+      <button class="tool-tab" onclick="filterTools('basic', this)">Plan Básico</button>
+      <button class="tool-tab" onclick="filterTools('premium', this)">Plan Premium</button>
+      <button class="tool-tab" onclick="filterTools('institutional', this)">Plan Institucional</button>
+    </div>
+
+    <div class="tools-grid reveal" id="tools-grid">
+      <div class="tool-item" data-plan="basic">
+        <span class="tool-emoji">🦠</span>
+        <div class="tool-info">
+          <div class="tool-name">VirusTotal</div>
+          <div class="tool-category">Análisis de archivos</div>
+        </div>
+        <span class="tool-badge badge-free">Básico</span>
+      </div>
+      <div class="tool-item" data-plan="basic">
+        <span class="tool-emoji">🔗</span>
+        <div class="tool-info">
+          <div class="tool-name">URLScan.io</div>
+          <div class="tool-category">Análisis de URLs</div>
+        </div>
+        <span class="tool-badge badge-free">Básico</span>
+      </div>
+      <div class="tool-item" data-plan="basic">
+        <span class="tool-emoji">🔑</span>
+        <div class="tool-info">
+          <div class="tool-name">Have I Been Pwned</div>
+          <div class="tool-category">Brechas de datos</div>
+        </div>
+        <span class="tool-badge badge-free">Básico</span>
+      </div>
+      <div class="tool-item" data-plan="basic">
+        <span class="tool-emoji">🛡</span>
+        <div class="tool-info">
+          <div class="tool-name">Google Safe Browsing</div>
+          <div class="tool-category">Phishing / malware</div>
+        </div>
+        <span class="tool-badge badge-free">Básico</span>
+      </div>
+      <div class="tool-item" data-plan="basic">
+        <span class="tool-emoji">💪</span>
+        <div class="tool-info">
+          <div class="tool-name">zxcvbn</div>
+          <div class="tool-category">Fortaleza de contraseña</div>
+        </div>
+        <span class="tool-badge badge-free">Básico</span>
+      </div>
+      <div class="tool-item" data-plan="premium">
+        <span class="tool-emoji">🌐</span>
+        <div class="tool-info">
+          <div class="tool-name">Shodan</div>
+          <div class="tool-category">OSINT / puertos abiertos</div>
+        </div>
+        <span class="tool-badge badge-pro">Premium</span>
+      </div>
+      <div class="tool-item" data-plan="premium">
+        <span class="tool-emoji">📧</span>
+        <div class="tool-info">
+          <div class="tool-name">MXToolbox</div>
+          <div class="tool-category">Reputación de dominio</div>
+        </div>
+        <span class="tool-badge badge-pro">Premium</span>
+      </div>
+      <div class="tool-item" data-plan="premium">
+        <span class="tool-emoji">🎣</span>
+        <div class="tool-info">
+          <div class="tool-name">PhishTank</div>
+          <div class="tool-category">Base de datos phishing</div>
+        </div>
+        <span class="tool-badge badge-pro">Premium</span>
+      </div>
+      <div class="tool-item" data-plan="premium">
+        <span class="tool-emoji">🔒</span>
+        <div class="tool-info">
+          <div class="tool-name">SSL Labs</div>
+          <div class="tool-category">Auditoría SSL/TLS</div>
+        </div>
+        <span class="tool-badge badge-pro">Premium</span>
+      </div>
+      <div class="tool-item" data-plan="premium">
+        <span class="tool-emoji">📍</span>
+        <div class="tool-info">
+          <div class="tool-name">AbuseIPDB</div>
+          <div class="tool-category">Reputación de IP</div>
+        </div>
+        <span class="tool-badge badge-pro">Premium</span>
+      </div>
+      <div class="tool-item" data-plan="institutional">
+        <span class="tool-emoji">🕸</span>
+        <div class="tool-info">
+          <div class="tool-name">Censys</div>
+          <div class="tool-category">Exposición de activos</div>
+        </div>
+        <span class="tool-badge badge-inst">Institucional</span>
+      </div>
+      <div class="tool-item" data-plan="institutional">
+        <span class="tool-emoji">🔬</span>
+        <div class="tool-info">
+          <div class="tool-name">GreyNoise</div>
+          <div class="tool-category">Inteligencia de ruido</div>
+        </div>
+        <span class="tool-badge badge-inst">Institucional</span>
+      </div>
+      <div class="tool-item" data-plan="institutional">
+        <span class="tool-emoji">📡</span>
+        <div class="tool-info">
+          <div class="tool-name">SecurityTrails</div>
+          <div class="tool-category">Historial DNS</div>
+        </div>
+        <span class="tool-badge badge-inst">Institucional</span>
+      </div>
+      <div class="tool-item" data-plan="institutional">
+        <span class="tool-emoji">🧬</span>
+        <div class="tool-info">
+          <div class="tool-name">AlienVault OTX</div>
+          <div class="tool-category">Threat Intelligence</div>
+        </div>
+        <span class="tool-badge badge-inst">Institucional</span>
+      </div>
+      <div class="tool-item" data-plan="institutional">
+        <span class="tool-emoji">⚙️</span>
+        <div class="tool-info">
+          <div class="tool-name">Módulo Personalizado</div>
+          <div class="tool-category">Adaptación empresarial</div>
+        </div>
+        <span class="tool-badge badge-inst">Institucional</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PLANS ══════════════════════════════════════════════════════ -->
+  <section class="plans" id="plans">
+    <div class="plans-header reveal">
+      <span class="section-label">Planes y precios</span>
+      <h2 class="section-title">Seguridad que escala<br>con tu negocio</h2>
+      <p class="section-sub">Comienza gratis y escala cuando lo necesites. Sin contratos largos.</p>
+    </div>
+    <div class="plans-grid">
+
+      <div class="plan-card reveal">
+        <div class="plan-name">Básico</div>
+        <div class="plan-price">$0 <span>/ mes</span></div>
+        <p class="plan-desc">Herramientas esenciales para higiene digital diaria.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 5 herramientas de análisis</li>
+          <li><span class="check">✓</span> VirusTotal, URLScan, HIBP</li>
+          <li><span class="check">✓</span> Google Safe Browsing</li>
+          <li><span class="check">✓</span> Medidor de contraseñas</li>
+          <li><span class="check">✓</span> Historial de análisis (7 días)</li>
+        </ul>
+        <a href="login.html" class="btn-outline-lg" style="width:100%;text-align:center;">Comenzar gratis</a>
+      </div>
+
+      <div class="plan-card featured reveal">
+        <div class="plan-badge-top">Más popular</div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">$12 <span>/ mes</span></div>
+        <p class="plan-desc">Para profesionales de TI y pequeñas empresas que necesitan más profundidad.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Todo lo del plan Básico</li>
+          <li><span class="check">✓</span> +5 herramientas avanzadas</li>
+          <li><span class="check">✓</span> Shodan, Censys, PhishTank</li>
+          <li><span class="check">✓</span> SSL Labs, AbuseIPDB</li>
+          <li><span class="check">✓</span> Reportes exportables (PDF)</li>
+          <li><span class="check">✓</span> Historial completo (90 días)</li>
+        </ul>
+        <a href="login.html" class="btn-primary-lg" style="width:100%;text-align:center;">Obtener Premium</a>
+      </div>
+
+      <div class="plan-card reveal">
+        <div class="plan-name">Institucional</div>
+        <div class="plan-price">$49 <span>/ mes</span></div>
+        <p class="plan-desc">Para Pymes que necesitan auditoría corporativa y control centralizado.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Todo lo del plan Premium</li>
+          <li><span class="check">✓</span> +5 herramientas corporativas</li>
+          <li><span class="check">✓</span> GreyNoise, SecurityTrails</li>
+          <li><span class="check">✓</span> AlienVault OTX</li>
+          <li><span class="check">✓</span> Módulo personalizable</li>
+          <li><span class="check">✓</span> Soporte técnico prioritario</li>
+          <li><span class="check">✓</span> Historial ilimitado</li>
+        </ul>
+        <a href="login.html#contact" class="btn-outline-lg" style="width:100%;text-align:center;">Contactar ventas</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ════════════════════════════════════════════════ -->
+  <div class="cta-banner reveal">
+    <div class="cta-text">
+      <h2 class="cta-title">¿Listo para proteger tu empresa?</h2>
+      <p class="cta-sub">Únete a CiberShield hoy. Gratis para siempre en el plan básico.</p>
+    </div>
+    <a href="login.html" class="btn-white">Crear cuenta gratis →</a>
   </div>
-</section>
 
-<!-- ═══ FEATURES ══════════════════════════════════════════════════ -->
-<section class="features" id="features">
-  <div class="features-header reveal">
-    <span class="section-label">¿Por qué CiberShield?</span>
-    <h2 class="section-title">Seguridad profesional,<br>sin la complejidad</h2>
-    <p class="section-sub">Diseñado para que cualquier persona o empresa pueda protegerse, sin necesitar un experto en TI.</p>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card reveal">
-      <div class="feature-icon">🔗</div>
-      <div class="feature-name">Todo centralizado</div>
-      <p class="feature-desc">No más abrir 6 pestañas distintas. Analiza URLs, archivos, IPs y credenciales desde un único panel.</p>
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon">🛡</div>
+          Ciber<span>Shield</span>
+        </a>
+        <p>Plataforma SaaS de ciberseguridad para Usuarios y Pymes dominicanas.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <ul>
+          <li><a href="index.html#features">Características</a></li>
+          <li><a href="index.html#tools">Herramientas</a></li>
+          <li><a href="precios.html">Planes y precios</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="#">Documentación</a></li>
+          <li><a href="#">Blog de seguridad</a></li>
+          <li><a href="#">API Reference</a></li>
+          <li><a href="#">Estado del servicio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Acerca de</a></li>
+          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos de uso</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-name">Resultados en segundos</div>
-      <p class="feature-desc">Nuestra arquitectura de orquestación consulta múltiples motores en paralelo y entrega un veredicto unificado al instante.</p>
+    <div class="footer-bottom">
+      <span>© 2026 CiberShield. Todos los derechos reservados.</span>
+      <span>Alineado con <a href="#">Ley 53-07</a> y <a href="#">CNCS 2030</a></span>
     </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon">📊</div>
-      <div class="feature-name">Reportes comprensibles</div>
-      <p class="feature-desc">Transformamos datos técnicos complejos en reportes visuales claros. Un semáforo verde o rojo basta para tomar decisiones.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon">🔐</div>
-      <div class="feature-name">Privacidad garantizada</div>
-      <p class="feature-desc">Verificamos contraseñas comprometidas usando k-Anonymity: nunca enviamos tu contraseña real a ningún servidor externo.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon">📈</div>
-      <div class="feature-name">Escalable para tu empresa</div>
-      <p class="feature-desc">Desde el plan gratuito individual hasta el plan institucional con auditorías corporativas y reportes personalizados.</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-icon">🇩🇴</div>
-      <div class="feature-name">Hecho para el Cibao</div>
-      <p class="feature-desc">Primera plataforma SaaS de ciberseguridad desarrollada localmente, alineada con la Ley 53-07 y la Estrategia Nacional 2030.</p>
-    </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ═══ TOOLS ═════════════════════════════════════════════════════ -->
-<section class="tools" id="tools">
-  <div class="tools-header reveal">
-    <span class="section-label">Las 15 herramientas</span>
-    <h2 class="section-title">Inteligencia de amenazas<br>de clase mundial</h2>
-    <p class="section-sub">Integramos las mejores APIs de ciberseguridad del mercado global, accesibles desde un solo lugar.</p>
-  </div>
-
-  <div class="tools-tabs reveal">
-    <button class="tool-tab active" onclick="filterTools('all', this)">Todas</button>
-    <button class="tool-tab" onclick="filterTools('basic', this)">Plan Básico</button>
-    <button class="tool-tab" onclick="filterTools('premium', this)">Plan Premium</button>
-    <button class="tool-tab" onclick="filterTools('institutional', this)">Plan Institucional</button>
-  </div>
-
-  <div class="tools-grid reveal" id="tools-grid">
-    <div class="tool-item" data-plan="basic">
-      <span class="tool-emoji">🦠</span>
-      <div class="tool-info">
-        <div class="tool-name">VirusTotal</div>
-        <div class="tool-category">Análisis de archivos</div>
-      </div>
-      <span class="tool-badge badge-free">Básico</span>
-    </div>
-    <div class="tool-item" data-plan="basic">
-      <span class="tool-emoji">🔗</span>
-      <div class="tool-info">
-        <div class="tool-name">URLScan.io</div>
-        <div class="tool-category">Análisis de URLs</div>
-      </div>
-      <span class="tool-badge badge-free">Básico</span>
-    </div>
-    <div class="tool-item" data-plan="basic">
-      <span class="tool-emoji">🔑</span>
-      <div class="tool-info">
-        <div class="tool-name">Have I Been Pwned</div>
-        <div class="tool-category">Brechas de datos</div>
-      </div>
-      <span class="tool-badge badge-free">Básico</span>
-    </div>
-    <div class="tool-item" data-plan="basic">
-      <span class="tool-emoji">🛡</span>
-      <div class="tool-info">
-        <div class="tool-name">Google Safe Browsing</div>
-        <div class="tool-category">Phishing / malware</div>
-      </div>
-      <span class="tool-badge badge-free">Básico</span>
-    </div>
-    <div class="tool-item" data-plan="basic">
-      <span class="tool-emoji">💪</span>
-      <div class="tool-info">
-        <div class="tool-name">zxcvbn</div>
-        <div class="tool-category">Fortaleza de contraseña</div>
-      </div>
-      <span class="tool-badge badge-free">Básico</span>
-    </div>
-    <div class="tool-item" data-plan="premium">
-      <span class="tool-emoji">🌐</span>
-      <div class="tool-info">
-        <div class="tool-name">Shodan</div>
-        <div class="tool-category">OSINT / puertos abiertos</div>
-      </div>
-      <span class="tool-badge badge-pro">Premium</span>
-    </div>
-    <div class="tool-item" data-plan="premium">
-      <span class="tool-emoji">📧</span>
-      <div class="tool-info">
-        <div class="tool-name">MXToolbox</div>
-        <div class="tool-category">Reputación de dominio</div>
-      </div>
-      <span class="tool-badge badge-pro">Premium</span>
-    </div>
-    <div class="tool-item" data-plan="premium">
-      <span class="tool-emoji">🎣</span>
-      <div class="tool-info">
-        <div class="tool-name">PhishTank</div>
-        <div class="tool-category">Base de datos phishing</div>
-      </div>
-      <span class="tool-badge badge-pro">Premium</span>
-    </div>
-    <div class="tool-item" data-plan="premium">
-      <span class="tool-emoji">🔒</span>
-      <div class="tool-info">
-        <div class="tool-name">SSL Labs</div>
-        <div class="tool-category">Auditoría SSL/TLS</div>
-      </div>
-      <span class="tool-badge badge-pro">Premium</span>
-    </div>
-    <div class="tool-item" data-plan="premium">
-      <span class="tool-emoji">📍</span>
-      <div class="tool-info">
-        <div class="tool-name">AbuseIPDB</div>
-        <div class="tool-category">Reputación de IP</div>
-      </div>
-      <span class="tool-badge badge-pro">Premium</span>
-    </div>
-    <div class="tool-item" data-plan="institutional">
-      <span class="tool-emoji">🕸</span>
-      <div class="tool-info">
-        <div class="tool-name">Censys</div>
-        <div class="tool-category">Exposición de activos</div>
-      </div>
-      <span class="tool-badge badge-inst">Institucional</span>
-    </div>
-    <div class="tool-item" data-plan="institutional">
-      <span class="tool-emoji">🔬</span>
-      <div class="tool-info">
-        <div class="tool-name">GreyNoise</div>
-        <div class="tool-category">Inteligencia de ruido</div>
-      </div>
-      <span class="tool-badge badge-inst">Institucional</span>
-    </div>
-    <div class="tool-item" data-plan="institutional">
-      <span class="tool-emoji">📡</span>
-      <div class="tool-info">
-        <div class="tool-name">SecurityTrails</div>
-        <div class="tool-category">Historial DNS</div>
-      </div>
-      <span class="tool-badge badge-inst">Institucional</span>
-    </div>
-    <div class="tool-item" data-plan="institutional">
-      <span class="tool-emoji">🧬</span>
-      <div class="tool-info">
-        <div class="tool-name">AlienVault OTX</div>
-        <div class="tool-category">Threat Intelligence</div>
-      </div>
-      <span class="tool-badge badge-inst">Institucional</span>
-    </div>
-    <div class="tool-item" data-plan="institutional">
-      <span class="tool-emoji">⚙️</span>
-      <div class="tool-info">
-        <div class="tool-name">Módulo Personalizado</div>
-        <div class="tool-category">Adaptación empresarial</div>
-      </div>
-      <span class="tool-badge badge-inst">Institucional</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PLANS ══════════════════════════════════════════════════════ -->
-<section class="plans" id="plans">
-  <div class="plans-header reveal">
-    <span class="section-label">Planes y precios</span>
-    <h2 class="section-title">Seguridad que escala<br>con tu negocio</h2>
-    <p class="section-sub">Comienza gratis y escala cuando lo necesites. Sin contratos largos.</p>
-  </div>
-  <div class="plans-grid">
-
-    <div class="plan-card reveal">
-      <div class="plan-name">Básico</div>
-      <div class="plan-price">$0 <span>/ mes</span></div>
-      <p class="plan-desc">Herramientas esenciales para higiene digital diaria.</p>
-      <div class="plan-divider"></div>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> 5 herramientas de análisis</li>
-        <li><span class="check">✓</span> VirusTotal, URLScan, HIBP</li>
-        <li><span class="check">✓</span> Google Safe Browsing</li>
-        <li><span class="check">✓</span> Medidor de contraseñas</li>
-        <li><span class="check">✓</span> Historial de análisis (7 días)</li>
-      </ul>
-      <a href="login.html" class="btn-outline-lg" style="width:100%;text-align:center;">Comenzar gratis</a>
-    </div>
-
-    <div class="plan-card featured reveal">
-      <div class="plan-badge-top">Más popular</div>
-      <div class="plan-name">Premium</div>
-      <div class="plan-price">$12 <span>/ mes</span></div>
-      <p class="plan-desc">Para profesionales de TI y pequeñas empresas que necesitan más profundidad.</p>
-      <div class="plan-divider"></div>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> Todo lo del plan Básico</li>
-        <li><span class="check">✓</span> +5 herramientas avanzadas</li>
-        <li><span class="check">✓</span> Shodan, Censys, PhishTank</li>
-        <li><span class="check">✓</span> SSL Labs, AbuseIPDB</li>
-        <li><span class="check">✓</span> Reportes exportables (PDF)</li>
-        <li><span class="check">✓</span> Historial completo (90 días)</li>
-      </ul>
-      <a href="login.html" class="btn-primary-lg" style="width:100%;text-align:center;">Obtener Premium</a>
-    </div>
-
-    <div class="plan-card reveal">
-      <div class="plan-name">Institucional</div>
-      <div class="plan-price">$49 <span>/ mes</span></div>
-      <p class="plan-desc">Para Pymes que necesitan auditoría corporativa y control centralizado.</p>
-      <div class="plan-divider"></div>
-      <ul class="plan-features">
-        <li><span class="check">✓</span> Todo lo del plan Premium</li>
-        <li><span class="check">✓</span> +5 herramientas corporativas</li>
-        <li><span class="check">✓</span> GreyNoise, SecurityTrails</li>
-        <li><span class="check">✓</span> AlienVault OTX</li>
-        <li><span class="check">✓</span> Módulo personalizable</li>
-        <li><span class="check">✓</span> Soporte técnico prioritario</li>
-        <li><span class="check">✓</span> Historial ilimitado</li>
-      </ul>
-      <a href="login.html#contact" class="btn-outline-lg" style="width:100%;text-align:center;">Contactar ventas</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══ CTA BANNER ════════════════════════════════════════════════ -->
-<div class="cta-banner reveal">
-  <div class="cta-text">
-    <h2 class="cta-title">¿Listo para proteger tu empresa?</h2>
-    <p class="cta-sub">Únete a CiberShield hoy. Gratis para siempre en el plan básico.</p>
-  </div>
-  <a href="login.html" class="btn-white">Crear cuenta gratis →</a>
-</div>
-
-<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
-<footer id="contact">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-icon">🛡</div>
-        Ciber<span>Shield</span>
-      </a>
-      <p>Plataforma SaaS de ciberseguridad para Pymes dominicanas. Desarrollado en UCATECI, La Vega, RD.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Plataforma</h4>
-      <ul>
-        <li><a href="index.html#features">Características</a></li>
-        <li><a href="index.html#tools">Herramientas</a></li>
-        <li><a href="precios.html">Planes y precios</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Recursos</h4>
-      <ul>
-        <li><a href="#">Documentación</a></li>
-        <li><a href="#">Blog de seguridad</a></li>
-        <li><a href="#">API Reference</a></li>
-        <li><a href="#">Estado del servicio</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Empresa</h4>
-      <ul>
-        <li><a href="#">Acerca de</a></li>
-        <li><a href="#contact">Contacto</a></li>
-        <li><a href="#">Política de privacidad</a></li>
-        <li><a href="#">Términos de uso</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 CiberShield. Todos los derechos reservados.</span>
-    <span>Alineado con <a href="#">Ley 53-07</a> y <a href="#">CNCS 2030</a></span>
-  </div>
-</footer>
-
-<script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
+
 </html>
