@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog de Seguridad — CiberShield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="blog_seguridad.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">🛡</div>
+    Ciber<span>Shield</span>
+  </a>
+  <div class="nav-cta">
+    <a href="documentacion.html" class="btn-ghost" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:500;">Documentación</a>
+    <a href="contacto.html" class="btn-ghost" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:500; margin-left:15px;">Contacto</a>
+    <a href="login.html" class="btn-primary" style="text-decoration:none; background:linear-gradient(135deg, var(--green-500), var(--green-700)); color:white; padding:10px 20px; border-radius:10px; font-weight:600; font-size:0.85rem; margin-left:20px;">Comenzar gratis</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section class="blog-hero">
+  <span class="blog-badge">Educación Digital</span>
+  <h1>Aprende a protegerte en el <span style="color:var(--green-600)">mundo digital</span></h1>
+  <p>Noticias, guías y consejos de expertos para navegar con seguridad en la República Dominicana.</p>
+</section>
+
+<!-- ═══ BLOG GRID ══════════════════════════════════════════════════ -->
+<main class="blog-container">
+  
+  <div class="blog-grid">
+    
+    <!-- Artículo 1 -->
+    <a href="#" class="blog-card">
+      <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800');"></div>
+      <div class="blog-content">
+        <span class="blog-category">Amenazas Locales</span>
+        <h2 class="blog-title">Phishing en Bancos Dominicanos: Cómo detectar el fraude</h2>
+        <p class="blog-excerpt">Analizamos las campañas de correos falsos que están afectando a los usuarios de la banca nacional este mes.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="author-chip">CS</div>
+            <span class="author-name">Equipo CiberShield</span>
+          </div>
+          <span class="blog-date">Mar 24, 2026</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Artículo 2 -->
+    <a href="#" class="blog-card">
+      <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800');"></div>
+      <div class="blog-content">
+        <span class="blog-category">Guías</span>
+        <h2 class="blog-title">5 Consejos de Higiene Digital para tu Pyme</h2>
+        <p class="blog-excerpt">Protege los activos de tu negocio con cambios sencillos pero poderosos en tu infraestructura tecnológica.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="author-chip">LR</div>
+            <span class="author-name">Luis Rosario</span>
+          </div>
+          <span class="blog-date">Mar 20, 2026</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Artículo 3 -->
+    <a href="#" class="blog-card">
+      <div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1614064641938-3bcee2c1f93e?auto=format&fit=crop&q=80&w=800');"></div>
+      <div class="blog-content">
+        <span class="blog-category">Legislación</span>
+        <h2 class="blog-title">Entendiendo la Ley 53-07 sobre Delitos de Alta Tecnología</h2>
+        <p class="blog-excerpt">Lo que todo ciudadano y empresario dominicano debe saber sobre sus derechos y deberes digitales.</p>
+        <div class="blog-footer">
+          <div class="blog-author">
+            <div class="author-chip">LE</div>
+            <span class="author-name">Legal Tech</span>
+          </div>
+          <span class="blog-date">Mar 15, 2026</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2>Suscríbete al Newsletter</h2>
+    <p>Recibe alertas de seguridad y consejos semanales directamente en tu bandeja de entrada.</p>
+    <form class="news-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');">
+      <input type="email" placeholder="tu@email.com" required>
+      <button type="submit">Suscribirme</button>
+    </form>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
+<footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; text-align:center;">
+  <p>© 2026 CiberShield · Protegiendo el Cibao y toda la República Dominicana</p>
+  <div style="margin-top:20px;">
+    <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
+    <a href="documentacion.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Documentación</a>
+    <a href="estado_servicio.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Estatus</a>
+    <a href="#" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Privacidad</a>
+  </div>
+</footer>
+
+</body>
+</html>

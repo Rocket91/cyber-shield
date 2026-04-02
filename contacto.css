@@ -1,0 +1,228 @@
+/* ─── CONTACTO.CSS ─────────────────────────────────────── */
+:root {
+  --white: #ffffff;
+  --green-50: #edfaf3;
+  --green-100: #d0f5e3;
+  --green-400: #34d07a;
+  --green-500: #1db85e;
+  --green-600: #17a050;
+  --green-700: #0e7a3c;
+  --green-900: #063d1e;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--slate-800);
+  line-height: 1.6;
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(52, 208, 122, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--slate-900);
+  text-decoration: none;
+}
+
+/* ─── CONTACT HERO ───────────────────────────────────────── */
+.contact-hero {
+  padding: 140px 5% 60px;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--green-50), var(--white));
+}
+
+.contact-hero h1 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 16px;
+}
+
+.contact-hero p {
+  font-size: 1.1rem;
+  color: var(--slate-600);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── CONTACT CONTENT ────────────────────────────────────── */
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto 120px;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+}
+
+/* Form */
+.contact-form-card {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid var(--slate-100);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.03);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--slate-700);
+  margin-bottom: 8px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--slate-100);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: var(--slate-50);
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--green-400);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(52, 208, 122, 0.1);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--slate-900);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-submit:hover {
+  background: var(--green-600);
+  transform: translateY(-2px);
+}
+
+/* Info Cards */
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid var(--slate-100);
+  text-decoration: none;
+  transition: all 0.3s;
+  display: block;
+}
+
+.info-card:hover {
+  border-color: var(--green-400);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--green-50);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.info-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  font-size: 0.95rem;
+  color: var(--slate-500);
+  margin-bottom: 16px;
+}
+
+.info-link {
+  font-weight: 700;
+  color: var(--green-600);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.whatsapp-card {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border: none;
+}
+
+.whatsapp-card .info-icon { background: rgba(255,255,255,0.2); color: white; }
+.whatsapp-card h4, .whatsapp-card p, .whatsapp-card .info-link { color: white; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-container { grid-template-columns: 1fr; }
+  .contact-hero h1 { font-size: 2.5rem; }
+}

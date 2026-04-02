@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estado del Servicio — CiberShield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="estado_servicio.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon" style="
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--green-500), var(--green-700));
+      border-radius: 10px; display: flex;
+      align-items: center; justify-content: center;
+      color: white; font-size: 1rem;
+    ">🛡</div>
+    Ciber<span style="color:var(--green-600)">Shield</span>
+  </a>
+  <div class="nav-cta">
+    <a href="index.html" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:600; margin-right:24px;">Volver al sitio</a>
+    <a href="contacto.html" style="text-decoration:none; border:1px solid var(--slate-200); padding:10px 20px; border-radius:12px; color:var(--slate-900); font-size:0.85rem; font-weight:600;">Soporte</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO STATUS ══════════════════════════════════════════════ -->
+<header class="status-hero">
+  <div class="global-status-card">
+    <div class="status-indicator-big">
+      <div class="pulse"></div>
+      <div class="status-icon-check">✓</div>
+    </div>
+    <div class="status-message">
+      <h1>Todos los sistemas operativos</h1>
+      <p>CiberShield está funcionando correctamente en este momento.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ SERVICES ═════════════════════════════════════════════════ -->
+<main class="services-container">
+  
+  <div class="services-list">
+    
+    <!-- Plataforma Web -->
+    <div class="service-item">
+      <div class="service-info">
+        <h3>Plataforma Web</h3>
+        <p>Dashboard de usuario y landing page principal.</p>
+        <div class="uptime-section">
+          <div class="uptime-header">
+            <span class="uptime-label">Uptime 90 días</span>
+            <span class="uptime-label" style="color:var(--status-ok)">100%</span>
+          </div>
+          <div class="uptime-bar">
+            <!-- Simulated 90 segments -->
+            <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+          </div>
+          <div class="uptime-footer">
+            <span>Hace 90 días</span>
+            <span>Hoy</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-status">
+        <div class="dot dot-ok"></div>
+        <span>Operacional</span>
+      </div>
+    </div>
+
+    <!-- API de Análisis -->
+    <div class="service-item">
+      <div class="service-info">
+        <h3>API de Análisis (Orquestador)</h3>
+        <p>Integración con motores de seguridad externos.</p>
+        <div class="uptime-section">
+          <div class="uptime-header">
+            <span class="uptime-label">Uptime 90 días</span>
+            <span class="uptime-label" style="color:var(--status-warning)">99.8%</span>
+          </div>
+          <div class="uptime-bar">
+            <!-- Simulated 90 segments with a warning -->
+            <div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day"></div><div class="uptime-day warning"></div><div class="uptime-day"></div><div class="uptime-day"></div>
+          </div>
+          <div class="uptime-footer">
+            <span>Hace 90 días</span>
+            <span>Hoy</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-status">
+        <div class="dot dot-ok"></div>
+        <span>Operacional</span>
+      </div>
+    </div>
+
+    <!-- Base de Datos -->
+    <div class="service-item">
+      <div class="service-info">
+        <h3>Base de Datos y Perfiles</h3>
+        <p>Servicios de autenticación y persistencia (Supabase).</p>
+      </div>
+      <div class="service-status">
+        <div class="dot dot-ok"></div>
+        <span>Operacional</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HISTORIAL DE INCIDENTES -->
+  <section class="incidents-section">
+    <h2 style="font-family:var(--font-display); font-size:1.6rem; color:var(--slate-900); margin-bottom:32px;">Historial de Incidentes</h2>
+    
+    <div class="incident-card">
+      <div class="incident-date">28 de Mar de 2026</div>
+      <div class="incident-details">
+        <div class="incident-title" style="color:var(--status-ok)">Mantenimiento de Infraestructura Completado</div>
+        <div class="incident-desc">Actualización exitosa de los motores de análisis para incluir nuevas firmas de malware bancario dominicano. No hubo interrupción del servicio.</div>
+      </div>
+    </div>
+
+    <div class="incident-card" style="border-color:var(--slate-100);">
+      <div class="incident-date">20 de Mar de 2026</div>
+      <div class="incident-details">
+        <div class="incident-title">Sin incidentes reportados</div>
+        <div class="incident-desc">Todos los servicios operaron con normalidad durante este período.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
+<footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; text-align:center;">
+  <p>© 2026 CiberShield · Estado de la Red en tiempo real</p>
+  <div style="margin-top:20px;">
+    <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
+    <a href="documentacion.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Guías</a>
+    <a href="blog_seguridad.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Blog</a>
+    <a href="contacto.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Contacto</a>
+  </div>
+</footer>
+
+</body>
+</html>

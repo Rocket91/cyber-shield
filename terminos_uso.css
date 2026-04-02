@@ -1,0 +1,185 @@
+/* ─── TERMINOS_USO.CSS ─────────────────────────────────────── */
+:root {
+  --white: #ffffff;
+  --green-50: #edfaf3;
+  --green-500: #1db85e;
+  --green-600: #17a050;
+  --green-700: #0e7a3c;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--slate-700);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(52, 208, 122, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--slate-900);
+  text-decoration: none;
+}
+
+/* ─── CONTENT HEADER ─────────────────────────────────────── */
+.legal-header {
+  padding: 140px 5% 60px;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--slate-50), var(--white));
+}
+
+.legal-header h1 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 16px;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: var(--slate-400);
+  font-weight: 600;
+}
+
+/* ─── LEGAL TEXT ─────────────────────────────────────────── */
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto 120px;
+  padding: 0 5%;
+}
+
+.legal-section {
+  margin-bottom: 48px;
+}
+
+.legal-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legal-section h2::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--green-500);
+  border-radius: 2px;
+}
+
+.legal-section p {
+  margin-bottom: 16px;
+}
+
+.legal-section h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  margin: 24px 0 12px;
+}
+
+/* Definitions list */
+.def-list {
+  background: var(--slate-50);
+  padding: 30px;
+  border-radius: 16px;
+  margin: 20px 0;
+}
+
+.def-item {
+  margin-bottom: 20px;
+}
+
+.def-term {
+  display: block;
+  font-weight: 700;
+  color: var(--slate-900);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Numbered rules */
+.legal-rules {
+  list-style: none;
+  counter-reset: rule-counter;
+}
+
+.legal-rules li {
+  counter-increment: rule-counter;
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 45px;
+}
+
+.legal-rules li::before {
+  content: counter(rule-counter);
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--green-100);
+  color: var(--green-700);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer {
+  background: var(--slate-900);
+  color: rgba(255,255,255,0.4);
+  padding: 60px 0;
+  text-align: center;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .legal-header h1 { font-size: 2.2rem; }
+}

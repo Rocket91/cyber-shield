@@ -1,0 +1,253 @@
+/* ─── ESTADO_SERVICIO.CSS ─────────────────────────────────────── */
+:root {
+  --white: #ffffff;
+  --green-50: #edfaf3;
+  --green-100: #d0f5e3;
+  --green-400: #34d07a;
+  --green-500: #1db85e;
+  --green-600: #17a050;
+  --green-700: #0e7a3c;
+  --green-900: #063d1e;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  
+  /* Status Colors */
+  --status-ok: #1db85e;
+  --status-warning: #f59e0b;
+  --status-error: #ef4444;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--slate-800);
+  line-height: 1.6;
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(52, 208, 122, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--slate-900);
+  text-decoration: none;
+}
+
+/* ─── HERO STATUS ────────────────────────────────────────── */
+.status-hero {
+  padding: 140px 5% 60px;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--slate-50), var(--white));
+}
+
+.global-status-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 32px;
+  border: 1px solid var(--slate-100);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.status-indicator-big {
+  width: 80px;
+  height: 80px;
+  background: var(--green-50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pulse {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: var(--green-400);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.status-icon-check {
+  font-size: 2.5rem;
+  color: var(--status-ok);
+  position: relative;
+  z-index: 2;
+}
+
+.status-message h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--slate-900);
+  margin-bottom: 8px;
+}
+
+.status-message p {
+  color: var(--slate-500);
+  font-size: 1.1rem;
+}
+
+/* ─── SERVICES GRID ──────────────────────────────────────── */
+.services-container {
+  max-width: 900px;
+  margin: 40px auto 100px;
+  padding: 0 5%;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service-item {
+  background: white;
+  border-radius: 20px;
+  padding: 24px 32px;
+  border: 1px solid var(--slate-100);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service-info h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  margin-bottom: 4px;
+}
+
+.service-info p {
+  font-size: 0.85rem;
+  color: var(--slate-400);
+}
+
+.service-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+.dot-ok { background: var(--status-ok); box-shadow: 0 0 8px var(--status-ok); }
+
+/* ─── UPTIME HISTORY ─────────────────────────────────────── */
+.uptime-section {
+  margin-top: 60px;
+}
+
+.uptime-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.uptime-label { font-size: 0.85rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase; }
+
+.uptime-bar {
+  display: flex;
+  gap: 3px;
+  height: 36px;
+}
+
+.uptime-day {
+  flex: 1;
+  background: var(--green-500);
+  border-radius: 2px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.uptime-day:hover { opacity: 1; transform: scaleY(1.1); }
+.uptime-day.warning { background: var(--status-warning); }
+
+.uptime-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  color: var(--slate-400);
+}
+
+/* ─── INCIDENTS ──────────────────────────────────────────── */
+.incidents-section {
+  margin-top: 80px;
+}
+
+.incident-card {
+  border-left: 3px solid var(--slate-200);
+  padding-left: 24px;
+  margin-bottom: 40px;
+}
+
+.incident-date {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 12px;
+}
+
+.incident-details {
+  background: var(--slate-50);
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+
+.incident-title { font-weight: 700; margin-bottom: 4px; font-size: 1rem; }
+.incident-desc { font-size: 0.9rem; color: var(--slate-600); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .global-status-card { padding: 30px 20px; }
+  .service-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+}

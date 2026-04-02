@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentación — CiberShield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="documentacion.css">
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">🛡</div>
+    Ciber<span>Shield</span>
+  </a>
+  <div class="nav-cta">
+    <a href="index.html" class="btn-ghost" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:500;">Volver al inicio</a>
+    <a href="login.html" class="btn-primary" style="text-decoration:none; background:linear-gradient(135deg, var(--green-500), var(--green-700)); color:white; padding:10px 20px; border-radius:10px; font-weight:600; font-size:0.85rem; margin-left:20px;">Mi Dashboard</a>
+  </div>
+</nav>
+
+<!-- ═══ LAYOUT ═══════════════════════════════════════════════════ -->
+<div class="doc-container">
+  
+  <!-- SIDEBAR -->
+  <aside class="doc-sidebar">
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Primeros Pasos</h3>
+      <ul class="doc-nav">
+        <li class="doc-nav-item"><a href="#introduccion" class="doc-nav-link active">Introducción</a></li>
+        <li class="doc-nav-item"><a href="#instalacion" class="doc-nav-link">Guía de Inicio</a></li>
+        <li class="doc-nav-item"><a href="#cuentas" class="doc-nav-link">Gestión de Cuentas</a></li>
+      </ul>
+    </div>
+    
+    <div class="sidebar-section" style="margin-top:40px;">
+      <h3 class="sidebar-title">Herramientas</h3>
+      <ul class="doc-nav">
+        <li class="doc-nav-item"><a href="#analisis-archivos" class="doc-nav-link">Análisis de Archivos</a></li>
+        <li class="doc-nav-item"><a href="#analisis-urls" class="doc-nav-link">Análisis de URLs</a></li>
+        <li class="doc-nav-item"><a href="#inteligencia-amenazas" class="doc-nav-link">Threat Intelligence</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section" style="margin-top:40px;">
+      <h3 class="sidebar-title">Soporte</h3>
+      <ul class="doc-nav">
+        <li class="doc-nav-item"><a href="#faq" class="doc-nav-link">Preguntas Frecuentes</a></li>
+        <li class="doc-nav-item"><a href="contacto.html" class="doc-nav-link">Contacto Técnico</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="doc-content">
+    
+    <article id="introduccion" class="doc-article">
+      <h1>Introducción a CiberShield</h1>
+      <p>Bienvenido a la documentación oficial de <strong>CiberShield</strong>. Nuestra plataforma centraliza las herramientas de ciberseguridad más potentes en un único panel intuitivo, diseñado específicamente para usuarios y Pymes en la República Dominicana.</p>
+      
+      <div class="doc-alert doc-alert-info">
+        <span class="doc-alert-icon">💡</span>
+        <div class="doc-alert-content">
+          <h4>¿Qué es CiberShield?</h4>
+          <p>Es un orquestador de seguridad que conecta con más de 15 APIs globales para ofrecerte un veredicto unificado sobre cualquier amenaza digital.</p>
+        </div>
+      </div>
+
+      <h2>¿Por qué usar CiberShield?</h2>
+      <p>La ciberseguridad suele ser compleja y costosa. CiberShield elimina la barrera técnica permitiendo que cualquier persona pueda realizar análisis profesionales de malware, phishing y vulnerabilidades sin ser un experto.</p>
+      
+      <ul>
+        <li><strong>Consolidación:</strong> Todas las herramientas en una sola pestaña.</li>
+        <li><strong>Velocidad:</strong> Análisis en paralelo para resultados instantáneos.</li>
+        <li><strong>Claridad:</strong> Reportes visuales fáciles de entender (Sistema de Semáforo).</li>
+      </ul>
+    </article>
+
+    <article id="analisis-archivos" class="doc-article" style="margin-top:80px;">
+      <h2>Análisis de Archivos</h2>
+      <p>Nuestra herramienta de análisis de archivos utiliza el motor de VirusTotal, consultando simultáneamente más de 70 motores antivirus (Kaspersky, McAfee, Symantec, etc.).</p>
+      
+      <div class="doc-alert doc-alert-warning">
+        <span class="doc-alert-icon">⚠️</span>
+        <div class="doc-alert-content">
+          <h4>Privacidad de Archivos</h4>
+          <p>Los archivos subidos para análisis son públicos dentro de la comunidad de VirusTotal. No subas archivos con información personal sensible o confidencial.</p>
+        </div>
+      </div>
+
+      <h3>Cómo interpretar los resultados</h3>
+      <p>Cada análisis devuelve un veredicto basado en la mayoría:</p>
+      <ul>
+        <li><code style="color:var(--green-600); background:var(--green-50);">0 detecciones</code>: El archivo es seguro.</li>
+        <li><code style="color:#f59e0b; background:#fffbeb;">1-3 detecciones</code>: Posible falso positivo, proceda con cautela.</li>
+        <li><code style="color:#ef4444; background:#fef2f2;">4+ detecciones</code>: El archivo es malicioso y debe ser eliminado.</li>
+      </ul>
+    </article>
+
+    <article id="seguridad-faq" class="doc-article" style="margin-top:80px;">
+      <h2>Seguridad y Privacidad</h2>
+      <p>En CiberShield nos tomamos en serio tu privacidad. Utilizamos protocolos de última generación para asegurar que tus datos nunca se vean comprometidos.</p>
+      
+      <h3>Cifrado de Contraseñas</h3>
+      <p>Nunca guardamos tu contraseña en texto plano. Utilizamos algoritmos de hash robustos y la técnica de k-Anonymity para verificar brechas de seguridad.</p>
+      
+      <pre>
+# Ejemplo de verificación segura (Pseudo-código)
+SHA1("tu_contraseña") = "ABCDE123456789..."
+Check_API("ABCDE") # Solo enviamos los primeros 5 caracteres
+      </pre>
+    </article>
+
+  </main>
+</div>
+
+<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
+<footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; margin-top:80px; text-align:center;">
+  <p>© 2026 CiberShield · Plataforma Unificada de Seguridad</p>
+  <div style="margin-top:20px;">
+    <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
+    <a href="blog_seguridad.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Blog</a>
+    <a href="login.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Acceder</a>
+  </div>
+</footer>
+
+<script>
+  // Simple active state toggle for sidebar links
+  const links = document.querySelectorAll('.doc-nav-link');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
