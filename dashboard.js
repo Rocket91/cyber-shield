@@ -19,7 +19,11 @@ async function logout() {
 // ─── SIDEBAR TOGGLE ───────────────────────────────────────────
 const sidebar = document.getElementById('sidebar');
 function toggleSidebar() {
-  sidebar.classList.toggle('mini');
+  if (window.innerWidth <= 900) {
+    sidebar.classList.toggle('show-mobile');
+  } else {
+    sidebar.classList.toggle('mini');
+  }
 }
 
 

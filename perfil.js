@@ -111,3 +111,16 @@ document.addEventListener('DOMContentLoaded', () => {
     switchTab(hash);
   }
 });
+
+// ─── SIDEBAR TOGGLE ───────────────────────────────────────────
+const sidebar = document.getElementById('sidebar');
+function toggleSidebar() {
+  if (sidebar) {
+    if (window.innerWidth <= 900) {
+      sidebar.classList.toggle('show-mobile');
+    } else {
+      sidebar.classList.toggle('mini');
+    }
+  }
+}
+

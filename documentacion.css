@@ -240,10 +240,16 @@ code {
 
 /* ─── RESPONSIVE ───────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .doc-sidebar {
-    display: none;
-  }
-  .doc-content {
-    padding: 40px 5%;
-  }
+  nav { padding: 0 4%; }
+  .doc-sidebar { display: none; }
+  .doc-content { padding: 40px 5%; margin: 0 auto; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  p { font-size: 0.95rem; }
+  .doc-alert { padding: 16px; flex-direction: column; }
+  pre { padding: 16px; font-size: 0.8rem; }
+  .nav-logo { font-size: 1.1rem; }
 }

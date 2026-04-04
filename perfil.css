@@ -34,7 +34,7 @@
   --sidebar-w:      240px;
   --sidebar-w-mini: 64px;
   --topbar-h:       64px;
-  --font-display:   'Syne', sans-serif;
+  --font-display:   'Inter', sans-serif;
   --font-body:      'DM Sans', sans-serif;
   --radius:         14px;
   --shadow-sm:      0 1px 4px rgba(0,0,0,0.06);
@@ -321,7 +321,6 @@ body {
   padding: 14px 0; border-bottom: 1px solid var(--slate-100);
 }
 .toggle-row:last-child { border-bottom: none; }
-.toggle-info {}
 .toggle-name { font-size: 0.88rem; font-weight: 500; color: var(--slate-800); }
 .toggle-desc { font-size: 0.75rem; color: var(--slate-400); margin-top: 2px; }
 .switch { position: relative; width: 42px; height: 24px; flex-shrink: 0; }
@@ -534,11 +533,80 @@ body {
   .grid-3-1 { grid-template-columns: 1fr; }
   .plan-cards { grid-template-columns: 1fr; }
 }
-@media (max-width: 768px) {
-  .sidebar { position: fixed; left:0; top:0; z-index:200; }
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    transition: transform 0.3s ease;
+    width: 260px;
+    z-index: 1000;
+  }
+  
+  .sidebar.show-mobile {
+    transform: translateX(0);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.4);
+  }
+
+  .main-wrap {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .profile-info-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 24px;
+  }
+
+  .profile-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .profile-meta {
+    padding-bottom: 0;
+  }
+
+  .profile-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-primary, .btn-outline {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .mobile-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
   .form-row { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
-  .profile-stats-row { grid-template-columns: 1fr 1fr; }
+  .page-content { padding: 16px; }
+  
+  .danger-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .btn-danger { width: 100%; text-align: center; }
+  
+  .upgrade-banner { flex-direction: column; text-align: center; }
+  .btn-white-sm { width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .profile-stats-row { grid-template-columns: 1fr; }
 }
 
 @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }

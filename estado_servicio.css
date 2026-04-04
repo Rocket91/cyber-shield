@@ -247,7 +247,25 @@ nav {
 .incident-desc { font-size: 0.9rem; color: var(--slate-600); }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 4%; }
+  .nav-links, .btn-ghost { display: none !important; }
+  .nav-cta { gap: 8px; }
+}
+
 @media (max-width: 600px) {
-  .global-status-card { padding: 30px 20px; }
-  .service-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .status-hero { padding: 100px 5% 40px; }
+  .global-status-card { padding: 30px 20px; border-radius: 20px; }
+  .status-message h1 { font-size: 1.8rem; }
+  .status-message p { font-size: 1rem; }
+  
+  .service-item { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .service-status { width: 100%; justify-content: space-between; border-top: 1px solid var(--slate-100); padding-top: 12px; }
+  
+  .uptime-bar { gap: 1px; height: 28px; }
+  .uptime-day:nth-child(-n+30) { display: none; } /* Ocultamos los primeros 30 días en móvil para ahorrar espacio */
+}
+
+@media (max-width: 480px) {
+  .nav-logo { font-size: 1.1rem; }
 }

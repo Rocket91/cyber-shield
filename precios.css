@@ -444,17 +444,29 @@ footer {
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .plans-grid { grid-template-columns: 1fr; max-width: 480px; }
-  .plan-card.featured { transform: none; }
-  .nav-links { display: none; }
-}
-@media (max-width: 600px) {
-  .pricing-hero { padding: 120px 5% 60px; }
-  .plans-section, .comparison, .faq { padding-left: 5%; padding-right: 5%; }
-  .cta-bottom { padding: 48px 28px; margin: 0 5% 60px; }
-  .trust-inner { gap: 24px; }
-  .comp-table { font-size: 0.78rem; }
-  .comp-table td { padding: 10px 14px; }
+  nav { padding: 0 4%; }
+  .nav-links, .btn-ghost { display: none !important; }
+  .nav-cta { gap: 8px; }
+  
+  .plans-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; gap: 32px; }
+  .plan-card { padding: 32px 24px; }
+  .plan-card.featured { transform: none !important; }
+  .plan-card.featured:hover { transform: translateY(-8px) !important; }
+
+  .comparison-inner { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .comp-table { min-width: 600px; }
+
+  .hero-title { font-size: 2.2rem; }
+  .hero-sub { font-size: 0.95rem; }
 }
 
-@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@media (max-width: 480px) {
+  .pricing-hero { padding: 100px 5% 40px; }
+  .hero-title { font-size: 1.8rem; }
+  .billing-switcher { transform: scale(0.9); }
+  .cta-bottom { padding: 40px 20px; }
+  .cta-btns { flex-direction: column; width: 100%; }
+  .cta-btns a { width: 100%; text-align: center; }
+  .nav-logo { font-size: 1.1rem; }
+  .footer-row { flex-direction: column; text-align: center; gap: 12px; }
+}

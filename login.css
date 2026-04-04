@@ -254,11 +254,20 @@ html, body {
 .form-panel { animation: fadeUp 0.4s ease both; }
 .form-panel.hidden { display: none; }
 
-@media (max-width: 800px) {
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
   .page { grid-template-columns: 1fr; }
   .left-panel { display: none; }
-  .right-panel { padding: 40px 28px; }
+  .right-panel { padding: 40px 24px; min-height: 100vh; align-items: flex-start; }
+  .auth-box { padding-top: 20px; }
   html, body { overflow: auto; }
 }
 
-@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@media (max-width: 480px) {
+  .form-title { font-size: 1.4rem; }
+  .form-sub { font-size: 0.8rem; }
+  .input-row { grid-template-columns: 1fr; }
+  .plan-opts { grid-template-columns: 1fr; }
+  .social-btns { flex-direction: column; }
+  .btn-social { width: 100%; }
+}

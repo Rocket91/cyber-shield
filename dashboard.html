@@ -134,6 +134,26 @@
       <!-- ═══ VIEW: DASHBOARD ════════════════════════════════════ -->
       <div class="view active" id="view-dashboard">
 
+        <!-- Mobile Quick Nav -->
+        <div class="mobile-nav-grid" id="mobile-nav-dashboard">
+          <a class="mnav-item" onclick="navigate('scan', this)">
+            <span class="mnav-icon">🔍</span>
+            <span class="mnav-label">Escanear</span>
+          </a>
+          <a class="mnav-item" onclick="navigate('history', this)">
+            <span class="mnav-icon">📋</span>
+            <span class="mnav-label">Historial</span>
+          </a>
+          <a class="mnav-item" onclick="window.location.href='perfil.html'">
+            <span class="mnav-icon">👤</span>
+            <span class="mnav-label">Mi Perfil</span>
+          </a>
+          <a class="mnav-item" onclick="navigate('notifications', this)">
+            <span class="mnav-icon">🔔</span>
+            <span class="mnav-label">Alertas</span>
+          </a>
+        </div>
+
         <!-- Stats row -->
         <div class="stat-row fade-in">
           <div class="stat-card">

@@ -1073,32 +1073,34 @@ footer {
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+@media (max-width: 930px) { /* Updated for consistency */
+  nav { padding: 0 4%; }
+  .nav-links, .btn-ghost { display: none !important; }
+  .nav-cta { gap: 8px; }
 
-  .hero-stats {
-    gap: 24px;
-  }
+  .hero { padding: 100px 5% 60px; }
+  .hero-title { font-size: 2.5rem; }
+  .hero-sub { font-size: 1rem; padding: 0 10px; }
+  .hero-stats { gap: 20px; }
+  .stat-divider { display: none; }
 
-  .stat-divider {
-    display: none;
-  }
+  .preview-grid, .preview-cards, .features-grid, .tools-grid { grid-template-columns: 1fr !important; }
+  .preview-sidebar { display: none; }
 
-  .preview-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .preview-sidebar {
-    display: none;
-  }
-
-  .cta-banner {
-    padding: 40px 28px;
-  }
+  .plans-grid { grid-template-columns: 1fr !important; max-width: 400px; margin: 0 auto; gap: 32px; }
+  
+  .footer-top { flex-direction: column; text-align: center; gap: 40px; }
+  .footer-brand { margin: 0 auto; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
 
   .plans-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 2rem; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
+  .btn-primary-lg, .btn-outline-lg { width: 100%; text-align: center; }
+  .nav-logo { font-size: 1.1rem; }
 }

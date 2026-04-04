@@ -294,8 +294,25 @@ nav {
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 4%; }
+  .nav-links, .btn-ghost { display: none !important; }
+  .nav-cta { gap: 8px; }
+  .author-name { display: none; } /* Ocultamos nombre en tarjetas pequeñas */
+}
+
 @media (max-width: 768px) {
-  .blog-hero h1 { font-size: 2.5rem; }
-  .news-form { flex-direction: column; }
+  .blog-hero { padding: 100px 5% 40px; }
+  .blog-hero h1 { font-size: 2.2rem; }
+  .blog-hero p { font-size: 1rem; }
+  .blog-grid { grid-template-columns: 1fr; gap: 24px; }
+  .news-form { flex-direction: column; width: 100%; max-width: 100%; }
+  .news-form button { padding: 14px; margin-top: 8px; }
   .newsletter { padding: 40px 20px; }
+  .newsletter h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+  .nav-logo { font-size: 1.1rem; }
+  .blog-hero h1 { font-size: 1.8rem; }
 }

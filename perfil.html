@@ -64,7 +64,7 @@
 <div class="main-wrap">
 
   <header class="topbar">
-    <button class="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('mini')">☰</button>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <div class="topbar-title">Mi Perfil <span>/ Cuenta y suscripción</span></div>
     <div style="display:flex;gap:8px;align-items:center">
       <button class="icon-btn">🔔</button>
@@ -74,6 +74,14 @@
   </header>
 
   <main class="page-content">
+
+    <!-- Mobile Quick Nav -->
+    <div class="mobile-nav-grid" id="mobile-nav-perfil">
+      <a class="mnav-item" href="dashboard.html">
+        <span class="mnav-icon">🏠</span>
+        <span class="mnav-label">Volver al Dashboard</span>
+      </a>
+    </div>
 
     <!-- Profile hero -->
     <div class="profile-hero">

@@ -155,7 +155,15 @@ footer {
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 4%; }
+  .nav-cta a:first-child { display: none; } /* Ocultamos 'Volver al inicio' en móvil */
+}
+
 @media (max-width: 600px) {
-  .legal-header h1 { font-size: 2.2rem; }
-  .legal-section h2 { font-size: 1.4rem; }
+  .legal-header { padding: 100px 5% 40px; }
+  .legal-header h1 { font-size: 1.8rem; }
+  .legal-section h2 { font-size: 1.3rem; }
+  .legal-container { margin-bottom: 60px; }
+  .nav-logo { font-size: 1.1rem; }
 }
