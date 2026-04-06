@@ -4,6 +4,10 @@ const SUPABASE_URL = 'https://bazgtcrhrifsxyrwzfpk.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhemd0Y3Jocmlmc3h5cnd6ZnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNjU4NjIsImV4cCI6MjA4OTk0MTg2Mn0.gkNA26aFphKbsN3x7UiqDYTUjuq0HNwmGZPTRiEDeX0';
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// ─── PLAN MOCKING ─────────────────────────────────────────────
+const urlParams = new URLSearchParams(window.location.search);
+const selectedPlan = urlParams.get('plan') || 'basico';
+
 // ─── TAB SWITCH ───────────────────────────────────────────────
 function switchTab(tab) {
   const isLogin = tab === 'login';
@@ -91,6 +95,8 @@ async function submitLogin() {
   if (error) {
     showAlert('login-alert', 'error', error.message);
   } else {
+    // Simular el guardado del plan
+    localStorage.setItem('userPlan', selectedPlan);
     showAlert('login-alert', 'success', '¡Sesión iniciada! Redirigiendo…');
     setTimeout(() => window.location.href = 'dashboard.html', 1000);
   }
@@ -132,6 +138,8 @@ async function submitRegister() {
   if (error) {
     showAlert('register-alert', 'error', error.message);
   } else {
+    // Simular el guardado del plan
+    localStorage.setItem('userPlan', selectedPlan);
     // Si la confirmación está desactivada, hay sesión activa → ir al dashboard
     const { data: { session } } = await sb.auth.getSession();
     if (session) {

@@ -32,10 +32,10 @@
         <span class="nav-label">Dashboard</span>
         <span class="tooltip">Dashboard</span>
       </a>
-      <a class="nav-item" onclick="navigate('scan', this)">
-        <span class="nav-icon">🔍</span>
-        <span class="nav-label">Escanear</span>
-        <span class="tooltip">Escanear</span>
+      <a class="nav-item" onclick="navigate('reports', this)">
+        <span class="nav-icon">📄</span>
+        <span class="nav-label">Reportes</span>
+        <span class="tooltip">Reportes</span>
       </a>
       <a class="nav-item" onclick="navigate('history', this)">
         <span class="nav-icon">📋</span>
@@ -51,25 +51,87 @@
 
       <div class="nav-group-label" style="margin-top:16px">Herramientas</div>
 
-      <a class="nav-item" onclick="navigate('scan', this); setTab('url')">
-        <span class="nav-icon">🔗</span>
-        <span class="nav-label">Analizar URL</span>
-        <span class="tooltip">Analizar URL</span>
-      </a>
-      <a class="nav-item" onclick="navigate('scan', this); setTab('file')">
+      <!-- BÁSICAS -->
+      <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('file')">
         <span class="nav-icon">📁</span>
         <span class="nav-label">Analizar Archivo</span>
         <span class="tooltip">Analizar Archivo</span>
       </a>
-      <a class="nav-item" onclick="navigate('scan', this); setTab('ip')">
+      <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('url')">
+        <span class="nav-icon">🔗</span>
+        <span class="nav-label">Analizar URL</span>
+        <span class="tooltip">Analizar URL</span>
+      </a>
+      <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('breach')">
+        <span class="nav-icon">🔓</span>
+        <span class="nav-label">Brechas de Datos</span>
+        <span class="tooltip">Brechas de Datos</span>
+      </a>
+      <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('phishing')">
+        <span class="nav-icon">🛡</span>
+        <span class="nav-label">Phishing / Malware</span>
+        <span class="tooltip">Phishing / Malware</span>
+      </a>
+      <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('pass')">
+        <span class="nav-icon">🔑</span>
+        <span class="nav-label">Fortaleza Contraseña</span>
+        <span class="tooltip">Fortaleza Contraseña</span>
+      </a>
+
+      <!-- PREMIUM -->
+      <div class="nav-group-label" data-plan-header="premium" style="display:none; margin-top:16px; color:#f59e0b">Premium</div>
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('osint')" style="display:none">
         <span class="nav-icon">🌐</span>
+        <span class="nav-label">OSINT / Puertos</span>
+        <span class="tooltip">OSINT / Puertos</span>
+      </a>
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('domain')" style="display:none">
+        <span class="nav-icon">📡</span>
+        <span class="nav-label">Reputación Dominio</span>
+        <span class="tooltip">Reputación Dominio</span>
+      </a>
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('phishtank')" style="display:none">
+        <span class="nav-icon">🎣</span>
+        <span class="nav-label">Base de Phishing</span>
+        <span class="tooltip">Base de Phishing</span>
+      </a>
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('ssl')" style="display:none">
+        <span class="nav-icon">🔒</span>
+        <span class="nav-label">Auditoría SSL/TLS</span>
+        <span class="tooltip">Auditoría SSL/TLS</span>
+      </a>
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('ip')" style="display:none">
+        <span class="nav-icon">📍</span>
         <span class="nav-label">Reputación IP</span>
         <span class="tooltip">Reputación IP</span>
       </a>
-      <a class="nav-item" onclick="navigate('scan', this); setTab('hash')">
+
+      <!-- INSTITUCIONAL -->
+      <div class="nav-group-label" data-plan-header="institucional" style="display:none; margin-top:16px; color:#8b5cf6">Institucional</div>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('assets')" style="display:none">
+        <span class="nav-icon">🕸</span>
+        <span class="nav-label">Exposición Activos</span>
+        <span class="tooltip">Exposición Activos</span>
+      </a>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('noise')" style="display:none">
+        <span class="nav-icon">🔬</span>
+        <span class="nav-label">Inteligencia Ruido</span>
+        <span class="tooltip">Inteligencia Ruido</span>
+      </a>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('dns')" style="display:none">
+        <span class="nav-icon">🗺</span>
+        <span class="nav-label">Historial DNS</span>
+        <span class="tooltip">Historial DNS</span>
+      </a>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('threat')" style="display:none">
         <span class="nav-icon">🧬</span>
-        <span class="nav-label">Análisis Hash</span>
-        <span class="tooltip">Análisis Hash</span>
+        <span class="nav-label">Threat Intelligence</span>
+        <span class="tooltip">Threat Intelligence</span>
+      </a>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('custom')" style="display:none">
+        <span class="nav-icon">🧩</span>
+        <span class="nav-label">Módulo Personal</span>
+        <span class="tooltip">Módulo Personal</span>
       </a>
 
       <div class="nav-group-label" style="margin-top:16px">Cuenta</div>
@@ -79,11 +141,7 @@
         <span class="nav-label">Mi Perfil</span>
         <span class="tooltip">Mi Perfil</span>
       </a>
-      <a class="nav-item" href="perfil.html#settings">
-        <span class="nav-icon">⚙️</span>
-        <span class="nav-label">Configuración</span>
-        <span class="tooltip">Configuración</span>
-      </a>
+
       <a class="nav-item" href="#" onclick="logout()" style="color: rgba(248,113,113,0.7)">
         <span class="nav-icon">🚪</span>
         <span class="nav-label">Cerrar sesión</span>
@@ -414,21 +472,12 @@
             <span class="plan-chip"><span class="chip-dot"></span>Plan Básico</span>
           </div>
           <div class="card-body">
-            <div class="scan-tabs" id="scan-tabs">
-              <button class="scan-tab active" onclick="setTab('url', this)">🔗 URL</button>
-              <button class="scan-tab" onclick="setTab('file', this)">📁 Archivo</button>
-              <button class="scan-tab" onclick="setTab('ip', this)">🌐 Dirección IP</button>
-              <button class="scan-tab" onclick="setTab('hash', this)">🧬 Hash de archivo</button>
-              <button class="scan-tab" onclick="setTab('pass', this)">🔑 Contraseña</button>
-              <button class="scan-tab" onclick="setTab('domain', this)">📡 Dominio/Email</button>
-            </div>
-
             <!-- Text input row (URL, IP, Hash, Pass, Domain) -->
             <div id="scan-text-input">
               <div class="scan-input-row">
                 <div class="scan-field">
                   <span class="scan-icon" id="scan-input-icon">🔗</span>
-                  <input type="text" id="scan-input" placeholder="Pega una URL, ej: https://ejemplo.com" />
+                  <input type="text" id="scan-input" placeholder="Pega una URL..." />
                 </div>
                 <button class="btn-scan" onclick="runScan()">Analizar</button>
               </div>
@@ -445,6 +494,14 @@
               <input type="file" id="file-input" style="display:none" onchange="handleFileSelect(event)" />
             </div>
 
+            <!-- Custom Module Area -->
+            <div id="custom-module-area" style="display:none; text-align:center; padding:40px 20px;">
+              <div style="font-size:3rem; margin-bottom:16px;">🧩</div>
+              <h3 style="color:var(--slate-900); font-family:var(--font-display); font-size:1.4rem; margin-bottom:8px; font-weight:800;">Módulo Personalizado Pyme</h3>
+              <p style="color:var(--slate-500); font-size:0.95rem; margin-bottom:24px; max-width:450px; margin-left:auto; margin-right:auto; line-height:1.5;">Integra tus propias herramientas de ciberseguridad, APIs privadas o flujos de trabajo corporativos directamente en CiberShield para centralizar toda tu inteligencia.</p>
+              <button class="btn-primary" style="padding:12px 24px;">Configurar Integración</button>
+            </div>
+
             <!-- Result box -->
             <div class="scan-result" id="scan-result">
               <div class="spinner" id="result-spinner"></div>
@@ -458,122 +515,6 @@
               </div>
             </div>
 
-          </div>
-        </div>
-
-        <!-- Tool info cards -->
-        <div class="grid-2 fade-in">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Herramientas disponibles</div>
-            </div>
-            <div class="card-body">
-              <div style="display:flex;flex-direction:column;gap:10px" id="tool-list">
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
-                  <span style="font-size:1.1rem">🦠</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">VirusTotal</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">70+ motores antivirus</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
-                </div>
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
-                  <span style="font-size:1.1rem">🔗</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">URLScan.io</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Análisis forense de URLs</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
-                </div>
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
-                  <span style="font-size:1.1rem">🔑</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Have I Been Pwned</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Brechas de credenciales</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
-                </div>
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100)">
-                  <span style="font-size:1.1rem">🛡</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Google Safe Browsing</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Detección phishing/malware</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:12px;padding:8px 0">
-                  <span style="font-size:1.1rem">💪</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">zxcvbn</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Fortaleza de contraseñas</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600">Activo</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">Herramientas bloqueadas</div>
-              <a class="card-action" href="precios.html">Actualizar plan →</a>
-            </div>
-            <div class="card-body">
-              <div style="display:flex;flex-direction:column;gap:10px">
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.55">
-                  <span style="font-size:1.1rem">🌐</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Shodan</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">OSINT / puertos abiertos</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#fef3c7;color:#92400e;font-weight:600">🔒
-                    Premium</span>
-                </div>
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.55">
-                  <span style="font-size:1.1rem">📧</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">MXToolbox</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Reputación de dominio</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#fef3c7;color:#92400e;font-weight:600">🔒
-                    Premium</span>
-                </div>
-                <div
-                  style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--slate-100);opacity:0.45">
-                  <span style="font-size:1.1rem">🕸</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">Censys</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Exposición de activos</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#ede9fe;color:#5b21b6;font-weight:600">🔒
-                    Institucional</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:12px;padding:8px 0;opacity:0.45">
-                  <span style="font-size:1.1rem">🧬</span>
-                  <div style="flex:1">
-                    <div style="font-size:0.85rem;font-weight:600;color:var(--slate-800)">AlienVault OTX</div>
-                    <div style="font-size:0.72rem;color:var(--slate-400)">Threat Intelligence global</div>
-                  </div>
-                  <span
-                    style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:#ede9fe;color:#5b21b6;font-weight:600">🔒
-                    Institucional</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -758,6 +699,24 @@
           </div>
         </div>
       </div><!-- /view-notifications -->
+
+      <!-- ═══ VIEW: REPORTS ═════════════════════════════════════ -->
+      <div class="view" id="view-reports">
+        <div class="card fade-in">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Reportes de Seguridad</div>
+              <div class="card-sub">Exporta o programa envíos de tus escaneos</div>
+            </div>
+            <button class="btn-primary"><span>+</span> Generar Nuevo</button>
+          </div>
+          <div class="card-body" style="text-align: center; padding: 60px 20px;">
+            <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
+            <h3 style="color: var(--slate-800); margin-bottom: 10px;">Zona de reportes en construcción</h3>
+            <p style="color: var(--slate-500); font-size: 0.9rem; max-width: 400px; margin: 0 auto;">Próximamente podrás generar reportes detallados en PDF y exportar tus análisis de de seguridad para tu empresa o clientes.</p>
+          </div>
+        </div>
+      </div><!-- /view-reports -->
 
     </main>
   </div><!-- /main-wrap -->

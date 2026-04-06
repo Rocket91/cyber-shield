@@ -4,11 +4,52 @@ const SUPABASE_URL = 'https://bazgtcrhrifsxyrwzfpk.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhemd0Y3Jocmlmc3h5cnd6ZnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNjU4NjIsImV4cCI6MjA4OTk0MTg2Mn0.gkNA26aFphKbsN3x7UiqDYTUjuq0HNwmGZPTRiEDeX0';
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// ─── PROTECCIÓN DE SESIÓN ─────────────────────────────────────
+// ─── PROTECCIÓN DE SESIÓN Y PLAN MOCKING ──────────────────────
+const userPlan = localStorage.getItem('userPlan') || 'basico';
+
 (async () => {
   const { data: { session } } = await sb.auth.getSession();
   if (!session) window.location.href = 'login.html';
 })();
+
+// DYNAMIC UI RENDERING BASED ON PLAN
+document.addEventListener('DOMContentLoaded', () => {
+  const topCardPlan = document.querySelector('.card-header .plan-chip');
+  const sidebarPlan = document.querySelector('.user-plan');
+  
+  let planText = 'Básico';
+  let planColor = 'var(--green-400)';
+  if (userPlan === 'premium') { planText = 'Premium'; planColor = '#f59e0b'; }
+  if (userPlan === 'institucional') { planText = 'Institucional'; planColor = '#8b5cf6'; }
+  
+  if (sidebarPlan && topCardPlan) {
+    sidebarPlan.innerHTML = `✦ Plan ${planText}`;
+    sidebarPlan.style.color = planColor;
+    topCardPlan.innerHTML = `<span class="chip-dot" style="background:${planColor}"></span>Plan ${planText}`;
+  }
+
+  // Show/Hide sidebar tools based on plan
+  const plans = ['basico', 'premium', 'institucional'];
+  const maxIndex = plans.indexOf(userPlan);
+
+  document.querySelectorAll('.nav-item[data-plan]').forEach(el => {
+    const itemPlan = el.getAttribute('data-plan');
+    if (plans.indexOf(itemPlan) <= maxIndex) {
+      el.style.display = 'flex';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+
+  document.querySelectorAll('.nav-group-label[data-plan-header]').forEach(el => {
+    const itemPlan = el.getAttribute('data-plan-header');
+    if (plans.indexOf(itemPlan) <= maxIndex) {
+      el.style.display = 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+});
 
 // ─── CERRAR SESIÓN ────────────────────────────────────────────
 async function logout() {
@@ -33,6 +74,7 @@ const titles = {
   scan:          'Escanear <span>/ Motor de análisis</span>',
   history:       'Historial <span>/ Análisis recientes</span>',
   notifications: 'Alertas <span>/ Notificaciones</span>',
+  reports:       'Reportes <span>/ Generación y exportación</span>',
 };
 
 function navigate(viewId, navEl) {
@@ -54,41 +96,56 @@ function navigate(viewId, navEl) {
 
 // ─── SCAN TABS ────────────────────────────────────────────────
 const scanConfig = {
-  url:    { icon: '🔗', placeholder: 'Pega una URL, ej: https://ejemplo.com' },
-  ip:     { icon: '🌐', placeholder: 'Dirección IP, ej: 190.85.42.17' },
-  hash:   { icon: '🧬', placeholder: 'Hash MD5/SHA256, ej: a1b2c3d4e5f6…' },
-  pass:   { icon: '🔑', placeholder: 'Escribe tu contraseña para verificarla (no se almacena)' },
-  domain: { icon: '📡', placeholder: 'Dominio o email, ej: empresa.com' },
-  file:   { icon: '📁', placeholder: '' },
+  // Básicos
+  file:     { title: 'Analizar Archivo', icon: '📁', placeholder: 'Selecciona o arrastra un archivo...' },
+  url:      { title: 'Analizar URL', icon: '🔗', placeholder: 'Pega una URL, ej: https://ejemplo.com' },
+  breach:   { title: 'Brechas de Datos', icon: '🔓', placeholder: 'Introduce tu correo para verificar brechas...' },
+  phishing: { title: 'Phishing / Malware', icon: '🛡', placeholder: 'Pega el dominio o URL sospechosos...' },
+  pass:     { title: 'Fortaleza Contraseña', icon: '🔑', placeholder: 'Escribe tu contraseña para verificarla (no se almacena)' },
+
+  // Premium
+  osint:    { title: 'OSINT / Puertos', icon: '🌐', placeholder: 'Dirección IP para buscar puertos expuestos...' },
+  domain:   { title: 'Reputación Dominio', icon: '📡', placeholder: 'Dominio o email, ej: empresa.com' },
+  phishtank:{ title: 'Base de Phishing', icon: '🎣', placeholder: 'Introduce el dominio para comparar con la base...' },
+  ssl:      { title: 'Auditoría SSL/TLS', icon: '🔒', placeholder: 'Dominio a auditar...' },
+  ip:       { title: 'Reputación IP', icon: '📍', placeholder: 'Dirección IP, ej: 190.85.42.17' },
+
+  // Institucional
+  assets:   { title: 'Exposición Activos', icon: '🕸', placeholder: 'Dominio de tu empresa...' },
+  noise:    { title: 'Inteligencia Ruido', icon: '🔬', placeholder: 'IP para filtrar escaneos benignos/maliciosos...' },
+  dns:      { title: 'Historial DNS', icon: '🗺', placeholder: 'Dominio a consultar...' },
+  threat:   { title: 'Threat Intelligence', icon: '🧬', placeholder: 'Asociar Hashes o IPs a grupos APT...' },
+  custom:   { title: 'Módulo Personal', icon: '🧩', placeholder: 'Acceso a configuraciones del módulo...' }
 };
 let currentTab = 'url';
 
 function setTab(tab, btnEl) {
   currentTab = tab;
-  // Update tab buttons
-  if (btnEl) {
-    document.querySelectorAll('.scan-tab').forEach(t => t.classList.remove('active'));
-    btnEl.classList.add('active');
-  } else {
-    document.querySelectorAll('.scan-tab').forEach(t => {
-      const onclick = t.getAttribute('onclick') || '';
-      if (onclick.includes("'" + tab + "'")) t.classList.add('active');
-      else t.classList.remove('active');
-    });
-  }
+  
   // Show/hide inputs
   const textInput = document.getElementById('scan-text-input');
   const fileArea  = document.getElementById('file-upload-area');
+  const customArea= document.getElementById('custom-module-area');
   const result    = document.getElementById('scan-result');
   result.classList.remove('show');
 
+  const cfg = scanConfig[tab];
+
+  // Update topbar title for specific tool
+  document.getElementById('topbar-title').innerHTML = `${cfg.title} <span>/ Herramientas</span>`;
+
   if (tab === 'file') {
     textInput.style.display = 'none';
+    if(customArea) customArea.style.display = 'none';
     fileArea.style.display  = 'block';
+  } else if (tab === 'custom') {
+    textInput.style.display = 'none';
+    fileArea.style.display  = 'none';
+    if(customArea) customArea.style.display = 'block';
   } else {
     textInput.style.display = 'block';
     fileArea.style.display  = 'none';
-    const cfg = scanConfig[tab];
+    if(customArea) customArea.style.display = 'none';
     document.getElementById('scan-input-icon').textContent = cfg.icon;
     document.getElementById('scan-input').placeholder = cfg.placeholder;
     document.getElementById('scan-input').value = '';
