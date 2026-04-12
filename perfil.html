@@ -29,9 +29,9 @@
       <span class="nav-icon">📋</span><span class="nav-label">Historial</span>
       <span class="tooltip">Historial</span>
     </a>
-    <a class="nav-item" href="dashboard.html">
+    <a class="nav-item" href="dashboard.html#notifications">
       <span class="nav-icon">🔔</span><span class="nav-label">Alertas</span>
-      <span class="nav-badge">3</span><span class="tooltip">Alertas</span>
+      <span class="nav-badge" id="sidebar-alerts-badge" style="display:none">0</span><span class="tooltip">Alertas</span>
     </a>
     <div class="nav-group-label" style="margin-top:16px">Cuenta</div>
     <a class="nav-item active" href="perfil.html">
@@ -46,7 +46,7 @@
       <span class="nav-icon">💳</span><span class="nav-label">Suscripción</span>
       <span class="tooltip">Suscripción</span>
     </a>
-    <a class="nav-item" href="login.html" style="color:rgba(248,113,113,0.7)">
+    <a class="nav-item" href="#" onclick="logout()" style="color:rgba(248,113,113,0.7)">
       <span class="nav-icon">🚪</span><span class="nav-label">Cerrar sesión</span>
       <span class="tooltip">Cerrar sesión</span>
     </a>
@@ -67,9 +67,9 @@
     <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <div class="topbar-title">Mi Perfil <span>/ Cuenta y suscripción</span></div>
     <div style="display:flex;gap:8px;align-items:center">
-      <button class="icon-btn">🔔</button>
-      <button class="icon-btn">⚙️</button>
-      <div class="user-avatar" style="cursor:pointer">LM</div>
+      <button class="icon-btn" onclick="window.location.href='dashboard.html#notifications'" title="Ver alertas">🔔</button>
+
+      <div class="user-avatar" style="cursor:pointer" title="Mi perfil" onclick="window.location.href='perfil.html'">LM</div>
     </div>
   </header>
 
@@ -137,6 +137,7 @@
       <button class="page-tab" id="tab-btn-suscripcion" onclick="switchTab('suscripcion', this)">💳 Suscripción</button>
       <button class="page-tab" id="tab-btn-seguridad" onclick="switchTab('seguridad', this)">🔐 Seguridad</button>
       <button class="page-tab" id="tab-btn-actividad" onclick="switchTab('actividad', this)">📋 Actividad</button>
+      <button class="page-tab" id="tab-btn-equipo" onclick="switchTab('equipo', this)" style="display:none">👥 Equipo</button>
     </div>
 
     <!-- ─── TAB: PERFIL ────────────────────────────────────────── -->
@@ -154,24 +155,24 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Nombre</label>
-                <input class="form-input" type="text" value="Luis Diego"/>
+                <input class="form-input" type="text" id="input-nombre" value="" placeholder="Cargando..."/>
               </div>
               <div class="form-group">
                 <label class="form-label">Apellido</label>
-                <input class="form-input" type="text" value="Matías Núñez"/>
+                <input class="form-input" type="text" id="input-apellido" value="" placeholder="Cargando..."/>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Correo electrónico</label>
-              <input class="form-input" type="email" value="luis.matias@ucateci.edu.do"/>
+              <input class="form-input" type="email" id="input-email" value="" placeholder="Cargando..." readonly/>
             </div>
             <div class="form-group">
               <label class="form-label">Teléfono</label>
-              <input class="form-input" type="tel" value="+1 (809) 555-0123"/>
+              <input class="form-input" type="tel" id="input-telefono" value="" placeholder="+1 (809) 555-0000"/>
             </div>
             <div class="form-group">
               <label class="form-label">Empresa / Institución</label>
-              <input class="form-input" type="text" value="UCATECI"/>
+              <input class="form-input" type="text" id="input-empresa" value="" placeholder="Ej: UCATECI"/>
             </div>
             <div class="form-group">
               <label class="form-label">Rol</label>
@@ -184,7 +185,7 @@
             </div>
             <div class="form-actions">
               <button class="btn-outline">Cancelar</button>
-              <button class="btn-primary" onclick="showToast('✅','Información actualizada')">Guardar</button>
+              <button class="btn-primary" id="btn-guardar-perfil" onclick="saveProfile()">Guardar</button>
             </div>
           </div>
         </div>
@@ -200,28 +201,28 @@
                   <div class="toggle-name">Alertas de amenazas</div>
                   <div class="toggle-desc">Notificar cuando se detecte malware o phishing</div>
                 </div>
-                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+                <label class="switch"><input type="checkbox" id="pref-alertas_dashboard" onchange="saveNotificationPrefs()" checked><span class="switch-slider"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-info">
                   <div class="toggle-name">Resumen semanal</div>
                   <div class="toggle-desc">Reporte de actividad cada lunes</div>
                 </div>
-                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+                <label class="switch"><input type="checkbox" id="pref-resumen_semanal" onchange="saveNotificationPrefs()" checked><span class="switch-slider"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-info">
                   <div class="toggle-name">Correos promocionales</div>
                   <div class="toggle-desc">Novedades y actualizaciones del producto</div>
                 </div>
-                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+                <label class="switch"><input type="checkbox" id="pref-correos_promocionales" onchange="saveNotificationPrefs()"><span class="switch-slider"></span></label>
               </div>
               <div class="toggle-row">
                 <div class="toggle-info">
                   <div class="toggle-name">Recordatorio de análisis</div>
                   <div class="toggle-desc">Recordar verificar activos digitales nuevos</div>
                 </div>
-                <label class="switch"><input type="checkbox" checked><span class="switch-slider"></span></label>
+                <label class="switch"><input type="checkbox" id="pref-recordatorio_analisis" onchange="saveNotificationPrefs()" checked><span class="switch-slider"></span></label>
               </div>
             </div>
           </div>
@@ -274,8 +275,8 @@
           <div class="card-body">
             <div class="plan-cards">
 
-              <div class="plan-mini current">
-                <div class="plan-mini-badge">✦ Plan actual</div>
+              <div class="plan-mini" id="plan-card-basico">
+                <div class="plan-mini-badge" id="plan-badge-basico" style="display:none">✦ Plan actual</div>
                 <div class="plan-mini-name">Básico</div>
                 <div class="plan-mini-price">$0 <span>/mes</span></div>
                 <ul>
@@ -285,10 +286,11 @@
                   <li><span class="ck">✓</span> Historial 7 días</li>
                   <li><span class="ck">✓</span> 50 análisis/día</li>
                 </ul>
-                <button class="btn-plan active-plan">Plan actual</button>
+                <button class="btn-plan" id="btn-plan-basico">Plan actual</button>
               </div>
 
-              <div class="plan-mini">
+              <div class="plan-mini" id="plan-card-premium">
+                <div class="plan-mini-badge" id="plan-badge-premium" style="display:none">✦ Plan actual</div>
                 <div class="plan-mini-name">Premium</div>
                 <div class="plan-mini-price">$12 <span>/mes</span></div>
                 <ul>
@@ -298,10 +300,11 @@
                   <li><span class="ck">✓</span> Historial 90 días</li>
                   <li><span class="ck">✓</span> Reportes PDF</li>
                 </ul>
-                <button class="btn-plan" onclick="showToast('💳','Redirigiendo al pago…')">Actualizar</button>
+                <button class="btn-plan" id="btn-plan-premium" onclick="showToast('💳','Redirigiendo al pago…')">Actualizar</button>
               </div>
 
-              <div class="plan-mini">
+              <div class="plan-mini" id="plan-card-institucional">
+                <div class="plan-mini-badge" id="plan-badge-institucional" style="display:none">✦ Plan actual</div>
                 <div class="plan-mini-name">Institucional</div>
                 <div class="plan-mini-price">$49 <span>/mes</span></div>
                 <ul>
@@ -311,7 +314,7 @@
                   <li><span class="ck">✓</span> Historial ilimitado</li>
                   <li><span class="ck">✓</span> Módulo personalizable</li>
                 </ul>
-                <button class="btn-plan" onclick="showToast('📞','Un asesor te contactará pronto')">Contactar</button>
+                <button class="btn-plan" id="btn-plan-institucional" onclick="showToast('📞','Un asesor te contactará pronto')">Contactar</button>
               </div>
 
             </div>
@@ -320,28 +323,26 @@
 
         <!-- Current subscription -->
         <div style="display:flex;flex-direction:column;gap:16px">
-          <div class="sub-card">
-            <div class="sub-plan-badge"><span class="dot"></span>Plan Activo</div>
-            <div class="sub-name">Plan Básico</div>
-            <div class="sub-desc">Gratuito para siempre · Sin tarjeta de crédito</div>
+          <div class="sub-card" id="sub-card">
+            <div class="sub-plan-badge" id="sub-plan-badge"><span class="dot"></span>Plan Activo</div>
+            <div class="sub-name" id="sub-plan-name">Cargando…</div>
+            <div class="sub-desc" id="sub-plan-desc">Verificando suscripción…</div>
             <div class="sub-usage">
               <div class="usage-label">
                 <span>Análisis hoy</span>
-                <span>47 / 50</span>
+                <span id="sub-usage-count">— / —</span>
               </div>
               <div class="usage-bar">
-                <div class="usage-fill" style="width:94%"></div>
+                <div class="usage-fill" id="sub-usage-fill" style="width:0%"></div>
               </div>
             </div>
-            <div class="sub-features">
-              <div class="sub-feat"><span class="check">✓</span> 5 herramientas activas</div>
-              <div class="sub-feat"><span class="check">✓</span> 50 análisis por día</div>
-              <div class="sub-feat"><span class="check">✓</span> Historial de 7 días</div>
+            <div class="sub-features" id="sub-features">
+              <!-- populated by JS -->
             </div>
-            <div class="upgrade-banner">
+            <div class="upgrade-banner" id="upgrade-banner" style="display:none">
               <div class="upgrade-text">
                 <div class="upgrade-title">¿Necesitas más?</div>
-                <div class="upgrade-sub">Premium por solo $12/mes</div>
+                <div class="upgrade-sub" id="upgrade-sub-text">Premium por solo $12/mes</div>
               </div>
               <button class="btn-white-sm" onclick="showToast('💳','Redirigiendo al pago…')">Actualizar →</button>
             </div>
@@ -351,11 +352,11 @@
             <div class="card-header">
               <div class="card-title">Facturación</div>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="billing-section">
+              <!-- populated by JS -->
               <div style="text-align:center;padding:20px 0;color:var(--slate-400)">
-                <div style="font-size:2rem;margin-bottom:8px">💳</div>
-                <div style="font-size:0.85rem">Sin método de pago</div>
-                <div style="font-size:0.75rem;margin-top:4px">Actualmente en el plan gratuito</div>
+                <div style="font-size:1.5rem;margin-bottom:8px">⏳</div>
+                <div style="font-size:0.82rem">Cargando información de pago…</div>
               </div>
             </div>
           </div>
@@ -378,11 +379,17 @@
           <div class="card-body">
             <div class="form-group">
               <label class="form-label">Contraseña actual</label>
-              <input class="form-input" type="password" placeholder="••••••••"/>
+              <div style="position:relative;">
+                <input class="form-input" type="password" id="pass-current" placeholder="••••••••" style="padding-right:40px;"/>
+                <button type="button" onclick="togglePass('pass-current',this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--slate-400); cursor:pointer; padding:0; font-size:1.1rem">👁</button>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">Nueva contraseña</label>
-              <input class="form-input" type="password" placeholder="••••••••" id="new-pass" oninput="checkStrength(this.value)"/>
+              <div style="position:relative;">
+                <input class="form-input" type="password" id="pass-new" placeholder="••••••••" oninput="checkStrength(this.value)" style="padding-right:40px;"/>
+                <button type="button" onclick="togglePass('pass-new',this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--slate-400); cursor:pointer; padding:0; font-size:1.1rem">👁</button>
+              </div>
               <div id="strength-bar" style="height:4px;border-radius:2px;margin-top:8px;background:var(--slate-100);overflow:hidden">
                 <div id="strength-fill" style="height:100%;width:0%;border-radius:2px;transition:width 0.3s,background 0.3s"></div>
               </div>
@@ -390,10 +397,13 @@
             </div>
             <div class="form-group">
               <label class="form-label">Confirmar nueva contraseña</label>
-              <input class="form-input" type="password" placeholder="••••••••"/>
+              <div style="position:relative;">
+                <input class="form-input" type="password" id="pass-confirm" placeholder="••••••••" style="padding-right:40px;"/>
+                <button type="button" onclick="togglePass('pass-confirm',this)" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--slate-400); cursor:pointer; padding:0; font-size:1.1rem">👁</button>
+              </div>
             </div>
             <div class="form-actions">
-              <button class="btn-primary" onclick="showToast('🔐','Contraseña actualizada correctamente')">Actualizar contraseña</button>
+              <button class="btn-primary" onclick="updateUserPassword()" id="btn-update-pass">Actualizar contraseña</button>
             </div>
           </div>
         </div>
@@ -410,21 +420,7 @@
                   <div class="toggle-name">Activar 2FA</div>
                   <div class="toggle-desc">Protege tu cuenta con un código adicional</div>
                 </div>
-                <label class="switch"><input type="checkbox" onchange="showToast('🔒','2FA actualizado')"><span class="switch-slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div class="toggle-info">
-                  <div class="toggle-name">Aplicación autenticadora</div>
-                  <div class="toggle-desc">Google Authenticator, Authy, etc.</div>
-                </div>
-                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
-              </div>
-              <div class="toggle-row">
-                <div class="toggle-info">
-                  <div class="toggle-name">SMS como respaldo</div>
-                  <div class="toggle-desc">Código de verificación por mensaje de texto</div>
-                </div>
-                <label class="switch"><input type="checkbox"><span class="switch-slider"></span></label>
+                <label class="switch"><input type="checkbox" id="toggle-2fa" onchange="handle2FAToggle()"><span class="switch-slider"></span></label>
               </div>
             </div>
           </div>
@@ -433,22 +429,11 @@
             <div class="card-header">
               <div class="card-title">Sesiones activas</div>
             </div>
-            <div class="card-body">
-              <div class="log-item">
-                <div class="log-icon-wrap li-green">💻</div>
-                <div class="log-content">
-                  <div class="log-title">Chrome · Windows 11</div>
-                  <div class="log-detail">La Vega, RD · Sesión actual</div>
-                </div>
-                <span style="font-size:0.7rem;padding:2px 8px;border-radius:100px;background:var(--green-50);color:var(--green-700);font-weight:600;white-space:nowrap">Activa</span>
-              </div>
-              <div class="log-item">
-                <div class="log-icon-wrap li-blue">📱</div>
-                <div class="log-content">
-                  <div class="log-title">Safari · iPhone</div>
-                  <div class="log-detail">Santo Domingo, RD · hace 2 días</div>
-                </div>
-                <button style="font-size:0.72rem;color:var(--red-600);background:none;border:none;cursor:pointer;font-weight:600" onclick="showToast('🔒','Sesión cerrada')">Cerrar</button>
+            <div class="card-body" id="sessions-list">
+              <!-- Populated dynamically by perfil.js -->
+              <div style="text-align:center;padding:24px 0;color:var(--slate-400)">
+                <div style="font-size:1.5rem;margin-bottom:8px">⏳</div>
+                <div style="font-size:0.82rem">Cargando sesiones…</div>
               </div>
             </div>
           </div>
@@ -549,18 +534,80 @@
       </div>
     </div>
 
+    <!-- ─── TAB: EQUIPO ────────────────────────────────────────── -->
+    <div class="tab-panel" id="tab-equipo">
+      <div class="grid-2">
+        <div class="card" style="grid-column: span 2;">
+          <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div class="card-title">Gestión de Equipo</div>
+              <div class="card-sub">Administra el acceso de tus empleados al entorno Institucional (<span id="team-count">0/10</span> usados)</div>
+            </div>
+            <button class="btn-primary" onclick="openInviteModal()">+ Invitar Empleado</button>
+          </div>
+          
+          <div style="margin-top:20px;">
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+              <thead>
+                <tr style="border-bottom:2px solid var(--slate-100); color:var(--slate-400); font-size:0.85rem;">
+                  <th style="padding:12px 8px;">EMPLEADO</th>
+                  <th style="padding:12px 8px;">ROL</th>
+                  <th style="padding:12px 8px;">ESTADO</th>
+                  <th style="padding:12px 8px; text-align:right;">ACCIÓN</th>
+                </tr>
+              </thead>
+              <tbody id="team-list-body">
+                <!-- Data injected by JS -->
+                <tr>
+                  <td colspan="4" style="text-align:center; padding:30px; color:var(--slate-400);">Cargando tu equipo...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div class="card" style="grid-column: span 2; margin-top: 24px;">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Actividad Consolidada del Equipo</div>
+              <div class="card-sub">Resumen de los últimos análisis realizados por tus empleados</div>
+            </div>
+          </div>
+          <div style="margin-top:20px;">
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+              <thead>
+                <tr style="border-bottom:2px solid var(--slate-100); color:var(--slate-400); font-size:0.85rem;">
+                  <th style="padding:12px 8px;">EMPLEADO</th>
+                  <th style="padding:12px 8px;">ACCIÓN / HERRAMIENTA</th>
+                  <th style="padding:12px 8px;">FECHA</th>
+                  <th style="padding:12px 8px; text-align:right;">RESULTADO</th>
+                </tr>
+              </thead>
+              <tbody id="team-activity-body">
+                <tr>
+                  <td colspan="4" style="text-align:center; padding:30px; color:var(--slate-400);">No hay actividad reciente en el equipo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>
 
 <!-- ═══ MODAL ═════════════════════════════════════════════════════ -->
-<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-icon" id="modal-icon">⚠️</div>
-    <div class="modal-title" id="modal-title">¿Estás seguro?</div>
-    <div class="modal-desc" id="modal-desc">Esta acción no se puede deshacer.</div>
-    <div class="modal-actions">
-      <button class="modal-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="modal-confirm" id="modal-confirm" onclick="confirmModal()">Confirmar</button>
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.6); backdrop-filter:blur(4px); z-index:2000; align-items:center; justify-content:center;">
+  <div class="modal-card" style="background:white; width:90%; max-width:420px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.2); overflow:hidden; display:flex; flex-direction:column;">
+    <div style="padding:32px 24px 20px; text-align:center;">
+      <div id="modal-icon" style="font-size:3.5rem; line-height:1; margin-bottom:16px;">⚠️</div>
+      <h3 id="modal-title" style="color:var(--slate-900); font-family:var(--font-display); font-size:1.3rem; font-weight:800; margin-bottom:10px;">¿Estás seguro?</h3>
+      <p id="modal-desc" style="color:var(--slate-500); font-size:0.95rem; line-height:1.5;">Esta acción no se puede deshacer.</p>
+    </div>
+    <div style="padding:16px 24px 24px; display:flex; gap:12px; justify-content:center; background:var(--slate-50);">
+      <button class="btn-white-sm" onclick="closeModal()" style="flex:1; padding:12px; border-radius:10px;">Cancelar</button>
+      <button class="btn-danger" id="modal-confirm" onclick="confirmModal()" style="flex:1; padding:12px; border-radius:10px;">Confirmar</button>
     </div>
   </div>
 </div>
@@ -571,6 +618,79 @@
   <span id="toast-msg">Acción completada</span>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- MODALES -->
+
+<!-- Modal Activar 2FA (Setup) -->
+<div id="modal-mfa-setup" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.5); z-index:1000; align-items:center; justify-content:center; opacity:1">
+  <div class="modal-content" style="background:#fff; width:90%; max-width:450px; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1); max-height:90vh; overflow-y:auto;">
+    <h3 style="margin-bottom:12px; color:var(--slate-800)">Configurar Autenticación 2FA</h3>
+    <p style="font-size:0.9rem; color:var(--slate-500); margin-bottom:16px;">
+      Abre tu aplicación autenticadora (Google Authenticator, Authy, etc.) y escanea el código QR de abajo.
+    </p>
+
+    <div style="text-align:center; margin-bottom:20px;">
+      <img id="mfa-qr-img" src="" alt="Código QR 2FA" style="display:block; margin:0 auto; width:160px; height:160px; border-radius:8px; border:2px solid var(--slate-100);" />
+    </div>
+
+    <div class="form-group" style="margin-bottom:16px;">
+      <label class="form-label">Código de verificación (6 dígitos)</label>
+      <input class="form-input" type="text" id="mfa-code-input" placeholder="000000" maxlength="6" style="text-align:center; letter-spacing: 8px; font-size: 1.2rem; font-weight:bold;"/>
+    </div>
+
+    <!-- MOCK RECOVERY WORDS -->
+    <div style="background:var(--slate-50); border:1px solid var(--slate-100); border-radius:8px; padding:16px; margin-bottom:20px;">
+      <h4 style="font-size:0.85rem; color:var(--slate-800); margin-bottom:8px;">Palabras clave de recuperación (Copia de seguridad)</h4>
+      <p style="font-size:0.75rem; color:var(--slate-500); margin-bottom:12px;">Guarda estas 12 palabras en un lugar seguro. Si pierdes el acceso a tu app autenticadora, las necesitarás para restablecer el acceso.</p>
+      <div id="mfa-recovery-words" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; font-family:monospace; font-size:0.8rem; font-weight:600; color:var(--slate-700);">
+        <!-- populated by js -->
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+      <button class="btn-white-sm" onclick="cancelMFAEnroll()" style="flex:1;">Cancelar</button>
+      <button class="btn-primary" id="btn-verify-mfa" onclick="verifyMFAEnroll()" style="flex:1;">Verificar y Activar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Invitar Miembro -->
+<div id="modal-invite-member" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.5); z-index:1000; align-items:center; justify-content:center; opacity:1">
+  <div class="modal-content" style="background:#fff; width:90%; max-width:400px; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1)">
+    <h3 style="margin-bottom:12px; color:var(--slate-800)">Invitar Empleado</h3>
+    <p style="font-size:0.9rem; color:var(--slate-500); margin-bottom:16px;">
+      El empleado recibirá un correo de invitación y heredará las ventajas de tu plan Institucional.
+    </p>
+
+    <div class="form-group" style="margin-bottom:16px;">
+      <label class="form-label">Correo electrónico del empleado</label>
+      <input class="form-input" type="email" id="invite-email-input" placeholder="empleado@tuempresa.com" />
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:20px;">
+      <button class="btn-white-sm" onclick="document.getElementById('modal-invite-member').style.display='none'" style="flex:1;">Cancelar</button>
+      <button class="btn-primary" id="btn-send-invite" onclick="sendTeamInvite()" style="flex:1;">Enviar Invitación</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Desactivar 2FA -->
+<div id="modal-disable-mfa" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.5); z-index:1000; align-items:center; justify-content:center; opacity:1">
+  <div class="modal-content" style="background:#fff; width:90%; max-width:400px; padding:24px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.1)">
+    <h3 style="margin-bottom:12px; color:var(--slate-800)">Desactivar 2FA</h3>
+    <p style="font-size:0.9rem; color:var(--slate-500); margin-bottom:20px;">Por seguridad, ingresa el código de 6 dígitos de tu aplicación autenticadora para confirmar la desactivación.</p>
+    <div class="form-group">
+      <label class="form-label">Código TOTP</label>
+      <input type="text" class="form-input" id="mfa-disable-code" placeholder="000000" maxlength="6" style="text-align:center; letter-spacing: 5px; font-size: 1.2rem; font-weight:bold;">
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:24px;">
+      <button class="btn-white-sm" onclick="closeDisableMFAModal()">Cancelar</button>
+      <button class="btn-primary" id="btn-confirm-disable" onclick="confirmDisableMFA()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="perfil.js"></script>
 </body>
 </html>

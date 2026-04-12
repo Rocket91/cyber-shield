@@ -42,10 +42,10 @@
         <span class="nav-label">Historial</span>
         <span class="tooltip">Historial</span>
       </a>
-      <a class="nav-item" onclick="navigate('notifications', this)">
+      <a class="nav-item" id="nav-notifications" onclick="navigate('notifications', this)">
         <span class="nav-icon">🔔</span>
         <span class="nav-label">Alertas</span>
-        <span class="nav-badge">3</span>
+        <span class="nav-badge" id="sidebar-alerts-badge" style="display:none">0</span>
         <span class="tooltip">Alertas</span>
       </a>
 
@@ -151,10 +151,13 @@
     </nav>
 
     <div class="sidebar-user">
-      <div class="user-avatar">LM</div>
+      <div class="user-avatar" id="sidebar-avatar">LM</div>
       <div class="user-info">
-        <div class="user-name">Luis Matías</div>
-        <div class="user-plan">✦ Plan Básico</div>
+        <div class="user-name" id="sidebar-name">Luis Matías</div>
+        <div class="user-plan" id="sidebar-plan">✦ Plan Básico</div>
+        <div id="team-badge" style="display:none; font-size:0.7rem; color:var(--slate-400); margin-top:2px;">
+          <span class="nav-icon" style="font-size:0.7rem">👥</span> Equipo: <span id="team-name">Cargando...</span>
+        </div>
       </div>
     </div>
 
@@ -176,11 +179,11 @@
         <input type="text" placeholder="Buscar análisis, URL, archivo…" />
       </div>
       <div class="topbar-actions">
-        <button class="icon-btn" onclick="navigate('notifications', null)" title="Notificaciones">
+        <button class="icon-btn" onclick="navigate('notifications', document.getElementById('nav-notifications'))" title="Notificaciones">
           🔔
-          <span class="badge-dot"></span>
+          <span class="badge-dot" style="display:none" id="header-bell-dot"></span>
         </button>
-        <button class="icon-btn" title="Configuración">⚙️</button>
+
         <div class="user-avatar" style="cursor:pointer" title="Mi perfil" onclick="window.location.href='perfil.html'">
           LM</div>
       </div>
@@ -272,48 +275,12 @@
                     <th>Hora</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="type-icon type-file">📁</span></td>
-                    <td><span class="target-text">factura_octubre.pdf</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
-                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 5 min</td>
-                  </tr>
-                  <tr>
-                    <td><span class="type-icon type-url">🔗</span></td>
-                    <td><span class="target-text">login-banco-rd.xyz</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">URLScan</td>
-                    <td><span class="status-pill pill-threat"><span class="status-dot"></span>Phishing</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 18 min</td>
-                  </tr>
-                  <tr>
-                    <td><span class="type-icon type-ip">🌐</span></td>
-                    <td><span class="target-text">190.85.42.17</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">AbuseIPDB</td>
-                    <td><span class="status-pill pill-warning"><span class="status-dot"></span>Sospechoso</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 1h</td>
-                  </tr>
-                  <tr>
-                    <td><span class="type-icon type-file">📁</span></td>
-                    <td><span class="target-text">setup_update.exe</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
-                    <td><span class="status-pill pill-threat"><span class="status-dot"></span>Malware</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 2h</td>
-                  </tr>
-                  <tr>
-                    <td><span class="type-icon type-hash">🧬</span></td>
-                    <td><span class="target-text">a1b2c3d4e5f6…</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
-                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 3h</td>
-                  </tr>
-                  <tr>
-                    <td><span class="type-icon type-url">🔗</span></td>
-                    <td><span class="target-text">google.com</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">Safe Browsing</td>
-                    <td><span class="status-pill pill-clean"><span class="status-dot"></span>Limpio</span></td>
-                    <td style="font-size:0.75rem;color:var(--slate-400)">hace 4h</td>
+                <tbody id="recent-activity-body">
+                  <tr id="recent-activity-empty">
+                    <td colspan="5" style="text-align:center;padding:28px;color:var(--slate-400);font-size:0.83rem">
+                      <div style="font-size:1.5rem;margin-bottom:6px">⏳</div>
+                      Cargando análisis recientes…
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -322,41 +289,6 @@
 
           <!-- Right column -->
           <div style="display:flex;flex-direction:column;gap:16px">
-
-            <!-- Quick scan -->
-            <div class="card">
-              <div class="card-header">
-                <div class="card-title">Escaneo rápido</div>
-              </div>
-              <div class="card-body">
-                <div class="quick-tools">
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('url')">
-                    <span class="qt-icon">🔗</span>
-                    <span class="qt-label">URL</span>
-                  </a>
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('file')">
-                    <span class="qt-icon">📁</span>
-                    <span class="qt-label">Archivo</span>
-                  </a>
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('ip')">
-                    <span class="qt-icon">🌐</span>
-                    <span class="qt-label">IP</span>
-                  </a>
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('hash')">
-                    <span class="qt-icon">🧬</span>
-                    <span class="qt-label">Hash</span>
-                  </a>
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('pass')">
-                    <span class="qt-icon">🔑</span>
-                    <span class="qt-label">Contraseña</span>
-                  </a>
-                  <a class="quick-tool" onclick="navigate('scan',null);setTab('domain')">
-                    <span class="qt-icon">📡</span>
-                    <span class="qt-label">Dominio</span>
-                  </a>
-                </div>
-              </div>
-            </div>
 
             <!-- Weekly chart -->
             <div class="card">
@@ -423,36 +355,10 @@
             <a class="card-action" onclick="navigate('notifications', null)">Ver todas →</a>
           </div>
           <div class="card-body">
-            <div class="alerts-list">
-              <div class="alert-item critical">
-                <span class="alert-icon">🚨</span>
-                <div class="alert-content">
-                  <div class="alert-title">Phishing detectado — login-banco-rd.xyz</div>
-                  <div class="alert-desc">El enlace analizado fue identificado como sitio de suplantación bancaria por
-                    14 de 15 motores.</div>
-                  <div class="alert-time">Hace 18 minutos</div>
-                </div>
-                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
-              </div>
-              <div class="alert-item warning">
-                <span class="alert-icon">⚠️</span>
-                <div class="alert-content">
-                  <div class="alert-title">IP sospechosa — 190.85.42.17</div>
-                  <div class="alert-desc">Esta dirección IP tiene reportes de actividad maliciosa en los últimos 30
-                    días.</div>
-                  <div class="alert-time">Hace 1 hora</div>
-                </div>
-                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
-              </div>
-              <div class="alert-item info">
-                <span class="alert-icon">ℹ️</span>
-                <div class="alert-content">
-                  <div class="alert-title">Tu plan Básico tiene 47 análisis restantes hoy</div>
-                  <div class="alert-desc">Considera actualizar al plan Premium para análisis ilimitados y herramientas
-                    avanzadas.</div>
-                  <div class="alert-time">Hoy, 9:00 AM</div>
-                </div>
-                <button class="alert-dismiss" onclick="this.closest('.alert-item').remove()">✕</button>
+            <div class="alerts-list" id="dashboard-alerts-list">
+              <!-- JS will load recent alerts here -->
+              <div style="text-align:center; padding: 20px; color: var(--slate-400); font-size: 0.85rem;">
+                 Cargando alertas...
               </div>
             </div>
           </div>
@@ -502,17 +408,43 @@
               <button class="btn-primary" style="padding:12px 24px;">Configurar Integración</button>
             </div>
 
-            <!-- Result box -->
+            <!-- Result box (Improved) -->
             <div class="scan-result" id="scan-result">
-              <div class="spinner" id="result-spinner"></div>
-              <div class="result-icon" id="result-icon" style="display:none"></div>
-              <div class="result-info">
-                <div class="result-title" id="result-title">Analizando…</div>
-                <div class="result-detail" id="result-detail">Consultando motores de análisis</div>
+
+              <!-- Loading state -->
+              <div id="result-loading" style="display:none; text-align:center; flex-direction:column; align-items:center;">
+                <div class="spinner" style="margin-bottom:16px; width:30px; height:30px;"></div>
+                <div style="font-weight:700; color:var(--slate-800)">Consultando motores de análisis...</div>
+                <div style="font-size:0.85rem; color:var(--slate-500); margin-top:4px">Buscando indicadores de compromiso en tiempo real</div>
               </div>
-              <div class="result-engines" id="result-engines" style="display:none">
-                <div class="result-engines"></div>
+
+              <!-- Detailed Result Content -->
+              <div id="result-content" style="display:none; flex-direction:column; gap:20px;">
+                <div class="result-header">
+                  <div class="result-status-icon" id="result-icon"></div>
+                  <div class="result-header-text">
+                    <div class="result-status-text" id="result-status-tag">Limpio</div>
+                    <div class="result-title" id="result-title">Sin amenazas detectadas</div>
+                  </div>
+                  <div class="result-engines-box" id="result-engines">
+                    <!-- Motor counts -->
+                  </div>
+                </div>
+
+                <div class="result-explanation" id="result-explanation">
+                  <!-- Plain language explanation -->
+                </div>
+
+                <div class="result-tips">
+                  <div class="result-tips-title">
+                    <span>🛡️</span> Consejos de protección
+                  </div>
+                  <div class="tips-list" id="result-tips-list">
+                    <!-- Tips items injected by JS -->
+                  </div>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -532,24 +464,24 @@
           </div>
           <div class="card-body">
             <div class="filter-row" style="margin-bottom:18px">
-              <select class="filter-select">
-                <option>Todos los tipos</option>
-                <option>URL</option>
-                <option>Archivo</option>
-                <option>Dirección IP</option>
-                <option>Hash</option>
+              <select class="filter-select" id="filter-type" onchange="applyHistoryFilters()">
+                <option value="all">Todos los tipos</option>
+                <option value="url">URL</option>
+                <option value="file">Archivo</option>
+                <option value="ip">Dirección IP</option>
+                <option value="hash">Hash</option>
               </select>
-              <select class="filter-select">
-                <option>Todos los estados</option>
-                <option>Limpio</option>
-                <option>Amenaza</option>
-                <option>Sospechoso</option>
+              <select class="filter-select" id="filter-status" onchange="applyHistoryFilters()">
+                <option value="all">Todos los estados</option>
+                <option value="clean">Limpio</option>
+                <option value="threat">Amenaza</option>
+                <option value="warning">Sospechoso</option>
               </select>
-              <select class="filter-select">
-                <option>Últimos 7 días</option>
-                <option>Hoy</option>
-                <option>Ayer</option>
-                <option>Este mes</option>
+              <select class="filter-select" id="filter-date" onchange="applyHistoryFilters()">
+                <option value="all">Cualquier fecha</option>
+                <option value="today">Hoy</option>
+                <option value="yesterday">Ayer</option>
+                <option value="month">Este mes</option>
               </select>
             </div>
             <table class="activity-table">
@@ -563,8 +495,8 @@
                   <th>Fecha</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
+              <tbody id="history-table-body">
+                <tr data-type="file" data-status="clean" data-date="today">
                   <td><span class="type-icon type-file">📁</span></td>
                   <td><span class="target-text">factura_octubre.pdf</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
@@ -572,7 +504,7 @@
                   <td style="font-size:0.78rem">0 / 70</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 14:32</td>
                 </tr>
-                <tr>
+                <tr data-type="url" data-status="threat" data-date="today">
                   <td><span class="type-icon type-url">🔗</span></td>
                   <td><span class="target-text">login-banco-rd.xyz</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">URLScan + Google</td>
@@ -580,7 +512,7 @@
                   <td style="font-size:0.78rem">14 / 15</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 14:14</td>
                 </tr>
-                <tr>
+                <tr data-type="ip" data-status="warning" data-date="today">
                   <td><span class="type-icon type-ip">🌐</span></td>
                   <td><span class="target-text">190.85.42.17</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">AbuseIPDB</td>
@@ -588,7 +520,7 @@
                   <td style="font-size:0.78rem">3 / 15</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 13:21</td>
                 </tr>
-                <tr>
+                <tr data-type="file" data-status="threat" data-date="today">
                   <td><span class="type-icon type-file">📁</span></td>
                   <td><span class="target-text">setup_update.exe</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
@@ -596,7 +528,7 @@
                   <td style="font-size:0.78rem">52 / 70</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 12:05</td>
                 </tr>
-                <tr>
+                <tr data-type="hash" data-status="clean" data-date="today">
                   <td><span class="type-icon type-hash">🧬</span></td>
                   <td><span class="target-text">a1b2c3d4e5f67890…</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
@@ -604,7 +536,7 @@
                   <td style="font-size:0.78rem">0 / 70</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Hoy 09:47</td>
                 </tr>
-                <tr>
+                <tr data-type="url" data-status="clean" data-date="yesterday">
                   <td><span class="type-icon type-url">🔗</span></td>
                   <td><span class="target-text">google.com</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Safe Browsing</td>
@@ -612,7 +544,7 @@
                   <td style="font-size:0.78rem">0 / 5</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 18:30</td>
                 </tr>
-                <tr>
+                <tr data-type="file" data-status="clean" data-date="yesterday">
                   <td><span class="type-icon type-file">📁</span></td>
                   <td><span class="target-text">contrato_2025.docx</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">VirusTotal</td>
@@ -620,13 +552,20 @@
                   <td style="font-size:0.78rem">0 / 70</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 16:10</td>
                 </tr>
-                <tr>
+                <tr data-type="url" data-status="threat" data-date="yesterday">
                   <td><span class="type-icon type-url">🔗</span></td>
                   <td><span class="target-text">ofertas-amazon-rd.site</span></td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">URLScan + Google</td>
                   <td><span class="status-pill pill-threat"><span class="status-dot"></span>Phishing</span></td>
                   <td style="font-size:0.78rem">11 / 15</td>
                   <td style="font-size:0.75rem;color:var(--slate-400)">Ayer 11:55</td>
+                </tr>
+                <!-- No results message -->
+                <tr id="history-no-results" style="display:none">
+                  <td colspan="6" style="text-align:center; padding: 40px; color: var(--slate-400);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🔍</div>
+                    No se encontraron análisis con los filtros seleccionados.
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -643,72 +582,29 @@
               <div class="card-title">Alertas y notificaciones</div>
             </div>
             <div style="display:flex;align-items:center;gap:10px">
-              <span class="notif-count">3 nuevas</span>
+              <span class="notif-count" id="notif-count-text">0 nuevas</span>
               <button class="mark-all" onclick="markAllRead()">Marcar todo como leído</button>
             </div>
           </div>
           <div style="padding: 0" id="notif-list">
-            <div class="notif-item unread">
-              <div class="notif-avatar na-red">🚨</div>
-              <div class="notif-body">
-                <div class="notif-title">Phishing detectado</div>
-                <div class="notif-desc">El enlace <strong>login-banco-rd.xyz</strong> fue identificado como sitio de
-                  phishing bancario. 14 de 15 motores confirman la amenaza. Evita compartir este enlace.</div>
-                <div class="notif-time">Hace 18 minutos</div>
+              <!-- JS will load notifications here -->
+              <div style="text-align:center; padding: 40px; color: var(--slate-400);">
+                 Cargando notificaciones...
               </div>
-              <div class="unread-dot"></div>
-            </div>
-            <div class="notif-item unread">
-              <div class="notif-avatar na-red">⚠️</div>
-              <div class="notif-body">
-                <div class="notif-title">Malware identificado — setup_update.exe</div>
-                <div class="notif-desc">El archivo analizado contiene código malicioso. 52 de 70 motores de VirusTotal
-                  lo clasifican como troyano. No ejecutes este archivo.</div>
-                <div class="notif-time">Hace 2 horas</div>
-              </div>
-              <div class="unread-dot"></div>
-            </div>
-            <div class="notif-item unread">
-              <div class="notif-avatar na-amber">📡</div>
-              <div class="notif-body">
-                <div class="notif-title">IP sospechosa — 190.85.42.17</div>
-                <div class="notif-desc">Esta dirección IP tiene 47 reportes de actividad maliciosa en los últimos 30
-                  días según AbuseIPDB. Se recomienda bloquearla en tu firewall.</div>
-                <div class="notif-time">Hace 1 hora</div>
-              </div>
-              <div class="unread-dot"></div>
-            </div>
-            <div class="notif-item">
-              <div class="notif-avatar na-blue">ℹ️</div>
-              <div class="notif-body">
-                <div class="notif-title">Resumen semanal disponible</div>
-                <div class="notif-desc">Esta semana realizaste 47 análisis. Se detectaron 3 amenazas. Tu tasa de
-                  seguridad fue del 93.6%.</div>
-                <div class="notif-time">Ayer, 8:00 AM</div>
-              </div>
-            </div>
-            <div class="notif-item">
-              <div class="notif-avatar na-green">✅</div>
-              <div class="notif-body">
-                <div class="notif-title">Cuenta verificada correctamente</div>
-                <div class="notif-desc">Tu cuenta fue verificada y el plan Básico está activo. Tienes acceso a 5
-                  herramientas de análisis.</div>
-                <div class="notif-time">Hace 3 días</div>
-              </div>
-            </div>
           </div>
         </div>
       </div><!-- /view-notifications -->
 
       <!-- ═══ VIEW: REPORTS ═════════════════════════════════════ -->
       <div class="view" id="view-reports">
-        <div class="card fade-in">
+        <!-- Authorized Module -->
+        <div class="card fade-in" id="reports-module">
           <div class="card-header">
             <div>
               <div class="card-title">Reportes de Seguridad</div>
               <div class="card-sub">Exporta o programa envíos de tus escaneos</div>
             </div>
-            <button class="btn-primary"><span>+</span> Generar Nuevo</button>
+            <button class="btn-primary" onclick="openReportModal()"><span>+</span> Generar Nuevo</button>
           </div>
           <div class="card-body" style="text-align: center; padding: 60px 20px;">
             <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
@@ -716,10 +612,61 @@
             <p style="color: var(--slate-500); font-size: 0.9rem; max-width: 400px; margin: 0 auto;">Próximamente podrás generar reportes detallados en PDF y exportar tus análisis de de seguridad para tu empresa o clientes.</p>
           </div>
         </div>
+        
+        <!-- Blocked Message (Non-Institutional) -->
+        <div class="card fade-in" id="reports-blocked" style="display:none; text-align:center; padding: 80px 20px;">
+          <div style="font-size: 3.5rem; margin-bottom: 24px;">🔒</div>
+          <h3 style="color: var(--slate-800); font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Función Exclusiva</h3>
+          <p style="color: var(--slate-500); font-size: 0.95rem; max-width: 400px; margin: 0 auto 32px; line-height: 1.5;">Esta función es exclusiva del Plan Institucional. Actualiza para acceder a generación y envíos de reportes en PDF y más ventajas.</p>
+          <button class="btn-primary" style="padding: 12px 28px;" onclick="window.location.href='precios.html'">Comparar Planes →</button>
+        </div>
       </div><!-- /view-reports -->
 
     </main>
   </div><!-- /main-wrap -->
+
+  <!-- ═══ MODAL: NUEVO REPORTE ════════════════════════════════ -->
+  <div id="report-modal" class="modal-overlay">
+    <div class="modal-card fade-in">
+      <div class="modal-header">
+        <div class="modal-title">Nuevo Reporte de Seguridad</div>
+        <button class="modal-close" onclick="closeReportModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Configure los parámetros para generar su reporte personalizado.</p>
+        
+        <div class="modal-form-group">
+          <label class="modal-label">Nombre del reporte</label>
+          <input type="text" class="modal-input" id="report-name" placeholder="Ej: Auditoría Mensual - Octubre">
+        </div>
+
+        <div class="modal-form-group">
+          <label class="modal-label">Tipo de análisis</label>
+          <select class="modal-input" id="report-type">
+            <option value="urls">Análisis de URLs</option>
+            <option value="files">Análisis de Archivos</option>
+            <option value="ips">Reputación de IPs</option>
+            <option value="full">Reporte Completo</option>
+          </select>
+        </div>
+
+        <div class="grid-2" style="gap: 16px; margin-top: 8px;">
+          <div class="modal-form-group">
+            <label class="modal-label">Desde</label>
+            <input type="date" class="modal-input" id="report-from">
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-label">Hasta</label>
+            <input type="date" class="modal-input" id="report-to">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeReportModal()">Cancelar</button>
+        <button class="btn-primary" onclick="generateReportSimulation()" style="flex: 1">Generar Reporte</button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="dashboard.js"></script>

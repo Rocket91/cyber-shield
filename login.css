@@ -193,7 +193,14 @@ html, body {
   border-radius: 12px; box-shadow: 0 4px 16px rgba(29,184,94,0.3);
   transition: all 0.2s; position: relative; overflow: hidden;
 }
-.btn-submit:hover { box-shadow: 0 6px 24px rgba(29,184,94,0.4); transform: translateY(-1px); }
+.btn-submit:hover:not(:disabled) { box-shadow: 0 6px 24px rgba(29,184,94,0.4); transform: translateY(-1px); }
+.btn-submit:disabled {
+  background: var(--slate-300);
+  color: var(--slate-500);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
 .btn-submit.loading { pointer-events: none; }
 .btn-submit .spinner {
   display: none; width: 18px; height: 18px; border-radius: 50%;

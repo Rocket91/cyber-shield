@@ -70,7 +70,8 @@
           </div>
           <div class="price-annual-note" id="note-basic">Gratis para siempre</div>
         </div>
-        <button class="btn-plan btn-plan-outline" onclick="window.open('login.html?plan=basico', '_blank')">Empezar
+        <button class="btn-plan btn-plan-outline" id="btn-basico"
+          onclick="window.open('login.html?plan=basico&tipo=' + currentBilling, '_blank')">Empezar
           gratis →</button>
         <div class="plan-divider"></div>
         <ul class="plan-features">
@@ -102,7 +103,8 @@
           </div>
           <div class="price-annual-note" id="note-premium">Facturación mensual</div>
         </div>
-        <button class="btn-plan btn-plan-filled" onclick="window.open('login.html?plan=premium', '_blank')">Obtener
+        <button class="btn-plan btn-plan-filled" id="btn-premium"
+          onclick="window.open('login.html?plan=premium&tipo=' + currentBilling, '_blank')">Obtener
           Premium →</button>
         <div class="plan-divider"></div>
         <ul class="plan-features">
@@ -139,8 +141,8 @@
           </div>
           <div class="price-annual-note" id="note-inst">Facturación mensual</div>
         </div>
-        <button class="btn-plan btn-plan-ghost"
-          onclick="window.open('login_pyme.html?plan=institucional', '_blank')">Contactar ventas →</button>
+        <button class="btn-plan btn-plan-ghost" id="btn-institucional"
+          onclick="handleInstClick()">Contactar ventas →</button>
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <div class="feat-group-label">Todo lo del plan Premium, más:</div>

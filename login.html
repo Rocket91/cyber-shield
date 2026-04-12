@@ -166,12 +166,12 @@
         <div class="check-row">
           <input type="checkbox" class="check-input" id="accept-terms"/>
           <label class="check-label" for="accept-terms">
-            Acepto los <a href="#">Términos de servicio</a> y la
-            <a href="#">Política de privacidad</a> de CiberShield.
+            Acepto los <a href="terminos_uso.html" target="_blank">Términos de servicio</a> y la
+            <a href="politica_privacidad.html" target="_blank">Política de privacidad</a> de CiberShield.
           </label>
         </div>
 
-        <button class="btn-submit" id="btn-register" onclick="submitRegister()">
+        <button class="btn-submit" id="btn-register" onclick="submitRegister()" disabled>
           <span class="btn-text">Crear cuenta gratis →</span>
           <div class="spinner"></div>
         </button>
@@ -180,6 +180,32 @@
       </div>
 
     </div>
+
+    <!-- MFA VERIFICATION PANEL -->
+    <div class="form-panel hidden" id="panel-mfa">
+      <h2 class="form-title">Autenticación en 2 Pasos</h2>
+      <p class="form-sub">Ingresa el código de 6 dígitos generado por tu aplicación autenticadora (Google Authenticator, Authy, etc.).</p>
+
+      <div class="alert-box" id="mfa-alert"></div>
+
+      <div class="input-group">
+        <label class="input-label">Código TOTP</label>
+        <div class="input-wrap">
+          <span class="input-icon">🔑</span>
+          <input type="text" class="form-input" id="mfa-code" placeholder="000000" maxlength="6" style="letter-spacing: 8px; font-size: 1.25rem; font-weight: bold; text-align: center;"/>
+        </div>
+      </div>
+
+      <button class="btn-submit" id="btn-mfa" onclick="submitMFA()">
+        <span class="btn-text">Verificar y Entrar →</span>
+        <div class="spinner"></div>
+      </button>
+
+      <div style="margin-top:20px; text-align:center;">
+        <a href="#" class="forgot-link" onclick="location.reload()">Cancelar y volver loguearse</a>
+      </div>
+    </div>
+
   </div>
 </div>
 

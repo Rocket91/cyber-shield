@@ -1,109 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto — CiberShield</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="contacto.css">
 </head>
+
 <body>
 
-<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">
-    <div class="logo-icon" style="
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon" style="
       width: 36px; height: 36px;
       background: linear-gradient(135deg, var(--green-500), var(--green-700));
       border-radius: 10px; display: flex;
       align-items: center; justify-content: center;
       color: white; font-size: 1rem;
     ">🛡</div>
-    Ciber<span style="color:var(--green-600)">Shield</span>
-  </a>
-  <div class="nav-cta">
-    <a href="index.html" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:600; margin-right:24px;">Inicio</a>
-    <a href="login.html" style="text-decoration:none; background:var(--slate-900); padding:10px 20px; border-radius:12px; color:white; font-size:0.85rem; font-weight:600;">Comenzar ahora</a>
-  </div>
-</nav>
-
-<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
-<header class="contact-hero">
-  <h1>Estamos aquí para <span style="color:var(--green-600)">ayudarte</span></h1>
-  <p>¿Tienes dudas sobre nuestros planes o necesitas soporte técnico especializado? Nuestro equipo está listo para responderte.</p>
-</header>
-
-<!-- ═══ CONTACT CONTENT ══════════════════════════════════════════ -->
-<main class="contact-container">
-  
-  <!-- Formulario -->
-  <div class="contact-form-card">
-    <form id="contactForm" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');">
-      <div class="form-group">
-        <label>Nombre completo</label>
-        <input type="text" placeholder="Ej. Juan Pérez" required>
-      </div>
-      <div class="form-group">
-        <label>Correo electrónico profesional</label>
-        <input type="email" placeholder="nombre@empresa.com" required>
-      </div>
-      <div class="form-group">
-        <label>Asunto</label>
-        <select required>
-          <option value="">Selecciona una opción</option>
-          <option value="ventas">Ventas y Planes</option>
-          <option value="soporte">Soporte Técnico</option>
-          <option value="demo">Solicitar Demo</option>
-          <option value="otro">Otro asunto</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Mensaje</label>
-        <textarea rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
-      </div>
-      <button type="submit" class="btn-submit">Enviar mensaje →</button>
-    </form>
-  </div>
-
-  <!-- Info Lateral -->
-  <div class="contact-info-panel">
-    
-    <!-- WhatsApp Directo -->
-    <a href="https://wa.me/18297178779?text=Hola,%20quisiera%20más%20información%20sobre%20CiberShield" target="_blank" class="info-card whatsapp-card">
-      <div class="info-icon">📱</div>
-      <h4>WhatsApp Directo</h4>
-      <p>Chatea directamente con nuestro fundador para una respuesta inmediata.</p>
-      <div class="info-link">829-717-8779 →</div>
+      Ciber<span style="color:var(--green-600)">Shield</span>
     </a>
+    <div class="nav-cta">
+      <a href="index.html"
+        style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:600; margin-right:24px;">Inicio</a>
+      <a href="login.html"
+        style="text-decoration:none; background:var(--slate-900); padding:10px 20px; border-radius:12px; color:white; font-size:0.85rem; font-weight:600;">Comenzar
+        ahora</a>
+    </div>
+  </nav>
 
-    <!-- Email -->
-    <div class="info-card">
-      <div class="info-icon">✉️</div>
-      <h4>Correo Electrónico</h4>
-      <p>Escríbenos para consultas detalladas o propuestas comerciales.</p>
-      <a href="mailto:luisdiegomatiasnunez@gmail.com" class="info-link" style="text-decoration:none;">luisdiegomatiasnunez@gmail.com →</a>
+  <!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+  <header class="contact-hero">
+    <h1>Estamos aquí para <span style="color:var(--green-600)">ayudarte</span></h1>
+    <p>¿Tienes dudas sobre nuestros planes o necesitas soporte técnico especializado? Nuestro equipo está listo para
+      responderte.</p>
+  </header>
+
+  <!-- ═══ CONTACT CONTENT ══════════════════════════════════════════ -->
+  <main class="contact-container">
+
+    <!-- Formulario -->
+    <div class="contact-form-card">
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" id="contact-name" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="contact-email" placeholder="tu@correo.com" required>
+        </div>
+        <div class="form-group">
+          <label>Tipo de usuario</label>
+          <select id="contact-type" required>
+            <option value="">Selecciona tu perfil</option>
+            <option value="personal">Usuario personal</option>
+            <option value="pyme">Pyme / Empresa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Asunto</label>
+          <select id="contact-subject" required>
+            <option value="">Selecciona una opción</option>
+            <option value="ventas">Ventas y Planes</option>
+            <option value="soporte">Soporte Técnico</option>
+            <option value="demo">Solicitar Demo</option>
+            <option value="otro">Otro asunto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea id="contact-message" rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-submit">Enviar mensaje →</button>
+      </form>
     </div>
 
-    <!-- Ubicación -->
-    <div class="info-card" style="border-color:var(--slate-100); opacity:0.8;">
-      <div class="info-icon">📍</div>
-      <h4>Ubicación</h4>
-      <p>Operando desde el corazón del Cibao para todo el país.</p>
-      <div class="info-link" style="color:var(--slate-400)">La Vega, República Dominicana</div>
+    <!-- Info Lateral -->
+    <div class="contact-info-panel">
+
+      <!-- WhatsApp Directo -->
+      <a href="https://wa.me/18297178779?text=Hola,%20quisiera%20más%20información%20sobre%20CiberShield"
+        target="_blank" class="info-card whatsapp-card">
+        <div class="info-icon">📱</div>
+        <h4>WhatsApp Directo</h4>
+        <p>Chatea directamente con nuestro fundador para una respuesta inmediata.</p>
+        <div class="info-link">829-717-8779 →</div>
+      </a>
+
+      <!-- Email -->
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <h4>Correo Electrónico</h4>
+        <p>Escríbenos para consultas detalladas o propuestas comerciales.</p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luisdiegomatiasnunez@gmail.com" target="_blank"
+          class="info-link" style="text-decoration:none;">luisdiegomatiasnunez@gmail.com →</a>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="info-card" style="border-color:var(--slate-100); opacity:0.8;">
+        <div class="info-icon">📍</div>
+        <h4>Ubicación</h4>
+        <p>Operando desde el corazón del Cibao para todo el país.</p>
+        <div class="info-link" style="color:var(--slate-400)">La Vega, República Dominicana</div>
+      </div>
+
     </div>
 
-  </div>
+  </main>
 
-</main>
+  <!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
+  <footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; text-align:center;">
+    <p>© 2026 CiberShield · Soluciones de Seguridad por Cyber Shield</p>
+    <div style="margin-top:20px;">
+      <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
+      <a href="documentacion.html"
+        style="color:var(--green-400); text-decoration:none; margin:0 15px;">Documentación</a>
+      <a href="politica_privacidad.html"
+        style="color:var(--green-400); text-decoration:none; margin:0 15px;">Privacidad</a>
+  </footer>
 
-<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
-<footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; text-align:center;">
-  <p>© 2026 CiberShield · Soluciones de Seguridad de Luis Rosario</p>
-  <div style="margin-top:20px;">
-    <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
-    <a href="documentacion.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Documentación</a>
-    <a href="politica_privacidad.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Privacidad</a>
-</footer>
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="contacto.js"></script>
 </body>
+
 </html>

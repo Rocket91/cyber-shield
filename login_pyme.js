@@ -4,9 +4,40 @@ const SUPABASE_URL = 'https://bazgtcrhrifsxyrwzfpk.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJhemd0Y3Jocmlmc3h5cnd6ZnBrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQzNjU4NjIsImV4cCI6MjA4OTk0MTg2Mn0.gkNA26aFphKbsN3x7UiqDYTUjuq0HNwmGZPTRiEDeX0';
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// ─── PLAN MOCKING ─────────────────────────────────────────────
-const urlParams = new URLSearchParams(window.location.search);
-const selectedPlan = urlParams.get('plan') || 'basico';
+// ─── SESSION CHECK (server-validated) ─────────────────────────
+(async () => {
+  const qp = new URLSearchParams(window.location.search);
+  const planParam = qp.get('plan') || 'institucional';
+  const tipoRaw   = qp.get('tipo');
+  const _bm = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
+  const tipoParam  = _bm[tipoRaw] || tipoRaw || 'trimestral';
+
+  const { data: { user }, error } = await sb.auth.getUser();
+  if (user && !error) {
+    // Logged-in user upgrading to institucional — update plan first
+    await syncPlanToSupabase(user.id, planParam, tipoParam);
+    localStorage.setItem('userPlan', planParam);
+    window.location.replace('dashboard.html');
+  } else {
+    // Clear any stale session data
+    await sb.auth.signOut({ scope: 'local' });
+    localStorage.removeItem('userPlan');
+    localStorage.removeItem('sb-remember-me');
+    sessionStorage.removeItem('sb-bazgtcrhrifsxyrwzfpk-auth');
+    // Auto-open Register tab (fix race condition)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => switchTab('register'));
+    } else {
+      switchTab('register');
+    }
+  }
+})();
+
+// ─── PLAN FROM URL ─────────────────────────────────────────────
+const urlParams    = new URLSearchParams(window.location.search);
+const selectedPlan = urlParams.get('plan') || 'institucional';
+const _bmap        = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
+const selectedTipo = _bmap[urlParams.get('tipo')] || urlParams.get('tipo') || 'trimestral';
 
 // ─── TAB SWITCH ───────────────────────────────────────────────
 function switchTab(tab) {
@@ -72,6 +103,33 @@ function setLoading(btnId, loading) {
   if (btn) btn.classList.toggle('loading', loading);
 }
 
+// ─── SYNC PLAN TO SUPABASE ────────────────────────────────────────
+async function syncPlanToSupabase(userId, plan, tipoPago) {
+  if (!userId || !plan || plan === 'basico') return;
+
+  const today = new Date().toISOString().split('T')[0];
+  const vence = new Date();
+  if (tipoPago === 'trimestral') vence.setMonth(vence.getMonth() + 3);
+  else if (tipoPago === 'anual')  vence.setFullYear(vence.getFullYear() + 1);
+  else                            vence.setMonth(vence.getMonth() + 1);
+
+  const { error: subErr } = await sb.from('suscripciones').upsert({
+    user_id: userId,
+    plan,
+    tipo_pago: tipoPago || 'trimestral',
+    fecha_inicio: today,
+    fecha_vencimiento: vence.toISOString().split('T')[0],
+    activo: true,
+  }, { onConflict: 'user_id' });
+  if (subErr) console.warn('Error sincronizando suscripción:', subErr.message);
+
+  const { error: perfilErr } = await sb.from('perfiles').upsert({
+    id: userId,
+    plan,
+  }, { onConflict: 'id' });
+  if (perfilErr) console.warn('Error actualizando plan en perfiles:', perfilErr.message);
+}
+
 // ─── LOGIN ────────────────────────────────────────────────────
 async function submitLogin() {
   const email = document.getElementById('login-email').value.trim();
@@ -95,7 +153,10 @@ async function submitLogin() {
   if (error) {
     showAlert('login-alert', 'error', error.message);
   } else {
-    // Simular el guardado del plan
+    const { data: { session: loginSession } } = await sb.auth.getSession();
+    if (loginSession) {
+      await syncPlanToSupabase(loginSession.user.id, selectedPlan, selectedTipo);
+    }
     localStorage.setItem('userPlan', selectedPlan);
     showAlert('login-alert', 'success', '¡Sesión iniciada! Redirigiendo…');
     setTimeout(() => window.location.href = 'dashboard.html', 1000);
@@ -138,11 +199,10 @@ async function submitRegister() {
   if (error) {
     showAlert('register-alert', 'error', error.message);
   } else {
-    // Simular el guardado del plan
     localStorage.setItem('userPlan', selectedPlan);
-    // Si la confirmación está desactivada, hay sesión activa → ir al dashboard
     const { data: { session } } = await sb.auth.getSession();
     if (session) {
+      await syncPlanToSupabase(session.user.id, selectedPlan, selectedTipo);
       showAlert('register-alert', 'success', '¡Cuenta creada! Redirigiendo…');
       setTimeout(() => window.location.href = 'dashboard.html', 800);
     } else {
@@ -194,4 +254,15 @@ document.addEventListener('keydown', e => {
   if (!loginPanel) return;
   const loginHidden = loginPanel.classList.contains('hidden');
   if (!loginHidden) submitLogin(); else submitRegister();
+});
+
+// ─── TERMS CHECKBOX ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const termsCheck = document.getElementById('accept-terms');
+  const btnRegister = document.getElementById('btn-register');
+  if (termsCheck && btnRegister) {
+    termsCheck.addEventListener('change', (e) => {
+      btnRegister.disabled = !e.target.checked;
+    });
+  }
 });

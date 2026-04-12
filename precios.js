@@ -111,6 +111,31 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 });
 
+// Billing key → tipo_pago (Spanish DB values)
+const billingToTipo = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
+
+// Institucional click handler: block monthly, open login for trimestral/anual
+function handleInstClick() {
+  if (currentBilling === 'monthly') {
+    // Flash the note with an error
+    const note = document.getElementById('note-inst');
+    if (note) {
+      note.innerHTML = '<span style="color:#ef4444;font-weight:700">⚠ Plan Institucional requiere pago Trimestral o Anual</span>';
+      setTimeout(() => setBilling('monthly'), 3000); // reset after 3s
+    }
+    // Shake the button
+    const btn = document.getElementById('btn-institucional');
+    if (btn) {
+      btn.style.animation = 'none';
+      btn.classList.add('shake-error');
+      setTimeout(() => btn.classList.remove('shake-error'), 600);
+    }
+    return;
+  }
+  const tipo = billingToTipo[currentBilling] || 'trimestral';
+  window.open(`login_pyme.html?plan=institucional&tipo=${tipo}`, '_blank');
+}
+
 // FAQ
 function toggleFaq(item) {
   const isOpen = item.classList.contains('open');
