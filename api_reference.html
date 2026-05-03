@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference — CyberShield</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="api_reference.css">
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon" style="
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, #1db85e, #17a050);
+        border-radius: 8px; display: flex;
+        align-items: center; justify-content: center;
+        color: white; font-size: 0.9rem;
+      ">🛡</div>
+      CyberShield <small style="margin-left:8px; color:var(--slate-400); font-size:0.7rem;">API v1</small>
+    </a>
+    <div class="nav-links">
+      <a href="index.html"
+        style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:600;">Volver al sitio</a>
+    </div>
+  </nav>
+
+  <div class="api-wrapper">
+
+    <!-- Column 1: Sidebar -->
+    <aside class="api-sidebar">
+      <div class="sidebar-group">
+        <h5>Introducción</h5>
+        <ul class="sidebar-nav">
+          <li><a href="#intro">Comenzando</a></li>
+          <li><a href="#auth">Autenticación</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <h5>Endpoints</h5>
+        <ul class="sidebar-nav">
+          <li><a href="#scans">Escaneos</a></li>
+          <li><a href="#results">Resultados</a></li>
+          <li><a href="#vulnerabilities">Vulnerabilidades</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Column 2 & 3: Main Content -->
+    <main class="api-main">
+
+      <div style="width: 100%;">
+
+        <!-- INTRO SECTION -->
+        <section id="intro" class="api-section">
+          <div class="section-content">
+            <h1>API Reference</h1>
+            <p>Bienvenido a la documentación oficial de la API de CyberShield. Nuestra API está diseñada sobre
+              arquitectura <strong>REST</strong>, proporcionando endpoints predecibles orientados a recursos para
+              gestionar auditorías de seguridad.</p>
+            <p>Todas las respuestas son devueltas en formato <strong>JSON</strong> estándar, incluyendo códigos de
+              estado HTTP apropiados para indicar el éxito o fracaso de las peticiones.</p>
+
+            <h2 id="auth">Autenticación</h2>
+            <p>Para interactuar con la API, debe autenticar sus peticiones mediante un <strong>Bearer Token</strong>.
+              Puede generar su API Key desde el dashboard de su cuenta.</p>
+            <p>Incluya el token en la cabecera HTTP de cada petición:</p>
+            <code
+              style="background:var(--slate-100); padding:10px; border-radius:8px; display:block; font-family:var(--font-mono); font-size:0.85rem;">Authorization: Bearer <TU_API_KEY></code>
+          </div>
+          <div class="section-code">
+            <!-- Espacio vacío o ejemplo global -->
+          </div>
+        </section>
+
+        <!-- SCANS ENDPOINT -->
+        <section id="scans" class="api-section">
+          <div class="section-content">
+            <h2>Crear Escaneo</h2>
+            <p>Inicia un nuevo análisis de seguridad sobre un objetivo específico (URL o IP).</p>
+            <div style="margin-bottom:20px;">
+              <span class="endpoint-badge badge-post">POST</span>
+              <span class="endpoint-url">/api/v1/scan</span>
+            </div>
+
+            <h5>Parámetros del Body (JSON)</h5>
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="param-name">target</span></td>
+                  <td><span class="param-type">string</span></td>
+                  <td>La URL o dirección IP a analizar.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">profile</span></td>
+                  <td><span class="param-type">string</span></td>
+                  <td>Perfil de análisis: <code class="code-attr">quick</code>, <code class="code-attr">full</code> o
+                    <code class="code-attr">stealth</code>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="section-code">
+            <div class="code-block">
+              <div class="code-header">
+                <span>Ejemplo cURL</span>
+                <button class="btn-copy" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>curl -X POST https://api.cybershield.do/v1/scan \
+  -H <span class="code-string">"Authorization: Bearer $API_KEY"</span> \
+  -H <span class="code-string">"Content-Type: application/json"</span> \
+  -d '{
+    <span class="code-attr">"target"</span>: <span class="code-string">"https://example.com"</span>,
+    <span class="code-attr">"profile"</span>: <span class="code-string">"full"</span>
+  }'</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESULTS ENDPOINT -->
+        <section id="results" class="api-section">
+          <div class="section-content">
+            <h2>Obtener Resultados</h2>
+            <p>Recupera el informe detallado de un escaneo finalizado mediante su identificador único.</p>
+            <div style="margin-bottom:20px;">
+              <span class="endpoint-badge badge-get">GET</span>
+              <span class="endpoint-url">/api/v1/results/{scan_id}</span>
+            </div>
+
+            <h5>Path Parameters</h5>
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="param-name">scan_id</span></td>
+                  <td><span class="param-type">uuid</span></td>
+                  <td>El ID único generado al iniciar el escaneo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="section-code">
+            <div class="code-block">
+              <div class="code-header">
+                <span>Respuesta Exitosa (200 OK)</span>
+                <button class="btn-copy" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code>{
+  <span class="code-attr">"id"</span>: <span class="code-string">"7a2b..."</span>,
+  <span class="code-attr">"status"</span>: <span class="code-string">"completed"</span>,
+  <span class="code-attr">"findings"</span>: <span class="code-number">12</span>,
+  <span class="code-attr">"risk_score"</span>: <span class="code-number">8.5</span>
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- CVE LOOKUP ENDPOINT -->
+        <section id="vulnerabilities" class="api-section">
+          <div class="section-content">
+            <h2>CVE Lookup</h2>
+            <p>Consulta nuestra base de datos de vulnerabilidades conocidas (Common Vulnerabilities and Exposures) en
+              tiempo real.</p>
+            <div style="margin-bottom:20px;">
+              <span class="endpoint-badge badge-get">GET</span>
+              <span class="endpoint-url">/api/v1/cve-lookup</span>
+            </div>
+
+            <h5>Query Parameters</h5>
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="param-name">q</span></td>
+                  <td><span class="param-type">string</span></td>
+                  <td>Término de búsqueda (ej. "Apache 2.4", "CVE-2021-44228").</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="section-code">
+            <div class="code-block">
+              <div class="code-header">
+                <span>Ejemplo Python (Requests)</span>
+                <button class="btn-copy" onclick="copyCode(this)">Copy</button>
+              </div>
+              <pre><code><span class="code-keyword">import</span> requests
+
+url = <span class="code-string">"https://api.cybershield.do/v1/cve-lookup"</span>
+headers = {<span class="code-string">"Authorization"</span>: <span class="code-string">"Bearer YOUR_KEY"</span>}
+params = {<span class="code-string">"q"</span>: <span class="code-string">"log4j"</span>}
+
+response = requests.get(url, headers=headers, params=params)
+print(response.json())</code></pre>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.closest('.code-block').querySelector('pre code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.style.borderColor = '#1db85e';
+        btn.style.color = '#1db85e';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+
+</html>

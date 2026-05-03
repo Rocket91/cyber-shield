@@ -7,36 +7,49 @@ const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
 // ─── SESSION CHECK (server-validated) ─────────────────────────
 (async () => {
   const qp = new URLSearchParams(window.location.search);
-  const planParam = qp.get('plan') || 'institucional';
-  const tipoRaw   = qp.get('tipo');
+  const planParam = qp.get('plan');
+  const tipoRaw = qp.get('tipo');
   const _bm = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
-  const tipoParam  = _bm[tipoRaw] || tipoRaw || 'trimestral';
+  const tipoParam = _bm[tipoRaw] || tipoRaw || 'trimestral';
 
   const { data: { user }, error } = await sb.auth.getUser();
-  if (user && !error) {
-    // Logged-in user upgrading to institucional — update plan first
-    await syncPlanToSupabase(user.id, planParam, tipoParam);
-    localStorage.setItem('userPlan', planParam);
-    window.location.replace('dashboard.html');
-  } else {
-    // Clear any stale session data
+
+  // FORZAR cierre de sesión si se viene desde Precios para registrar una cuenta
+  if (planParam) {
+    if (user) {
+      await sb.auth.signOut({ scope: 'local' });
+    }
+    localStorage.removeItem('userPlan');
+    localStorage.removeItem('sb-remember-me');
+    localStorage.removeItem('sb-bazgtcrhrifsxyrwzfpk-auth');
+    sessionStorage.removeItem('sb-bazgtcrhrifsxyrwzfpk-auth');
+  }
+
+  if (planParam) {
     await sb.auth.signOut({ scope: 'local' });
     localStorage.removeItem('userPlan');
     localStorage.removeItem('sb-remember-me');
     sessionStorage.removeItem('sb-bazgtcrhrifsxyrwzfpk-auth');
-    // Auto-open Register tab (fix race condition)
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => switchTab('register'));
     } else {
       switchTab('register');
     }
+  } else if (user && !error) {
+    window.location.replace('dashboard.html');
+  } else {
+    await sb.auth.signOut({ scope: 'local' });
+    localStorage.removeItem('userPlan');
+    localStorage.removeItem('sb-remember-me');
+    sessionStorage.removeItem('sb-bazgtcrhrifsxyrwzfpk-auth');
   }
 })();
 
 // ─── PLAN FROM URL ─────────────────────────────────────────────
-const urlParams    = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search);
 const selectedPlan = urlParams.get('plan') || 'institucional';
-const _bmap        = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
+const _bmap = { monthly: 'mensual', quarterly: 'trimestral', annual: 'anual' };
 const selectedTipo = _bmap[urlParams.get('tipo')] || urlParams.get('tipo') || 'trimestral';
 
 // ─── TAB SWITCH ───────────────────────────────────────────────
@@ -58,18 +71,18 @@ function togglePass(id, btn) {
 
 // ─── PASSWORD STRENGTH ────────────────────────────────────────
 const strengthLevels = [
-  { label: 'Muy débil',  color: '#ef4444', w: '15%'  },
-  { label: 'Débil',      color: '#f97316', w: '30%'  },
-  { label: 'Regular',    color: '#f59e0b', w: '55%'  },
-  { label: 'Buena',      color: '#22c55e', w: '75%'  },
-  { label: 'Excelente',  color: '#16a34a', w: '100%' },
+  { label: 'Muy débil', color: '#ef4444', w: '15%' },
+  { label: 'Débil', color: '#f97316', w: '30%' },
+  { label: 'Regular', color: '#f59e0b', w: '55%' },
+  { label: 'Buena', color: '#22c55e', w: '75%' },
+  { label: 'Excelente', color: '#16a34a', w: '100%' },
 ];
 function checkStrength(val) {
   const wrap = document.getElementById('strength-wrap');
   if (!val) { wrap.classList.remove('show'); return; }
   wrap.classList.add('show');
   let score = 0;
-  if (val.length >= 8)  score++;
+  if (val.length >= 8) score++;
   if (val.length >= 12) score++;
   if (/[A-Z]/.test(val)) score++;
   if (/[0-9]/.test(val)) score++;
@@ -77,7 +90,7 @@ function checkStrength(val) {
   score = Math.max(1, score);
   const l = strengthLevels[score - 1];
   const fill = document.getElementById('strength-fill');
-  fill.style.width      = l.w;
+  fill.style.width = l.w;
   fill.style.background = l.color;
   const lbl = document.getElementById('strength-label');
   lbl.textContent = l.label;
@@ -105,13 +118,31 @@ function setLoading(btnId, loading) {
 
 // ─── SYNC PLAN TO SUPABASE ────────────────────────────────────────
 async function syncPlanToSupabase(userId, plan, tipoPago) {
-  if (!userId || !plan || plan === 'basico') return;
+  if (!userId || !plan) return;
+
+  // ── 1. Update perfiles.plan using UPDATE (not upsert) so the trigger's
+  //      ON CONFLICT DO NOTHING can't block the plan assignment.
+  //      We wait a moment first to ensure the trigger has finished inserting.
+  await new Promise(r => setTimeout(r, 300));
+
+  const { error: perfilErr } = await sb
+    .from('perfiles')
+    .update({ plan })
+    .eq('id', userId);
+  if (perfilErr) {
+    console.warn('Error actualizando plan en perfiles:', perfilErr.message);
+    // Fallback: upsert if the row didn't exist yet
+    await sb.from('perfiles').upsert({ id: userId, plan }, { onConflict: 'id' });
+  }
+
+  // ── 2. Skip inserting subscription row for free plan (no billing needed)
+  if (plan === 'basico') return;
 
   const today = new Date().toISOString().split('T')[0];
   const vence = new Date();
   if (tipoPago === 'trimestral') vence.setMonth(vence.getMonth() + 3);
-  else if (tipoPago === 'anual')  vence.setFullYear(vence.getFullYear() + 1);
-  else                            vence.setMonth(vence.getMonth() + 1);
+  else if (tipoPago === 'anual') vence.setFullYear(vence.getFullYear() + 1);
+  else vence.setMonth(vence.getMonth() + 1);
 
   const { error: subErr } = await sb.from('suscripciones').upsert({
     user_id: userId,
@@ -122,18 +153,12 @@ async function syncPlanToSupabase(userId, plan, tipoPago) {
     activo: true,
   }, { onConflict: 'user_id' });
   if (subErr) console.warn('Error sincronizando suscripción:', subErr.message);
-
-  const { error: perfilErr } = await sb.from('perfiles').upsert({
-    id: userId,
-    plan,
-  }, { onConflict: 'id' });
-  if (perfilErr) console.warn('Error actualizando plan en perfiles:', perfilErr.message);
 }
 
 // ─── LOGIN ────────────────────────────────────────────────────
 async function submitLogin() {
   const email = document.getElementById('login-email').value.trim();
-  const pass  = document.getElementById('login-pass').value;
+  const pass = document.getElementById('login-pass').value;
 
   // Validación
   let valid = true;
@@ -165,16 +190,16 @@ async function submitLogin() {
 
 // ─── REGISTER ─────────────────────────────────────────────────
 async function submitRegister() {
-  const name     = document.getElementById('reg-name').value.trim();
+  const name = document.getElementById('reg-name').value.trim();
   const lastname = document.getElementById('reg-lastname').value.trim();
-  const email    = document.getElementById('reg-email').value.trim();
-  const pass     = document.getElementById('reg-pass').value;
-  const terms    = document.getElementById('accept-terms').checked;
+  const email = document.getElementById('reg-email').value.trim();
+  const pass = document.getElementById('reg-pass').value;
+  const terms = document.getElementById('accept-terms').checked;
 
   // Validación
   let valid = true;
-  setError('reg-name',     'err-reg-name',     !name);
-  setError('reg-lastname', 'err-reg-lastname',  !lastname);
+  setError('reg-name', 'err-reg-name', !name);
+  setError('reg-lastname', 'err-reg-lastname', !lastname);
   if (!name || !lastname) valid = false;
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   setError('reg-email', 'err-reg-email', !emailOk);

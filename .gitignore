@@ -10,3 +10,16 @@ desktop.ini
 
 # Node (por si en el futuro usas npm)
 node_modules/
+
+# Python backend
+api/.env
+.env
+api/__pycache__/
+api/routers/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/

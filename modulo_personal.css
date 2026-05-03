@@ -1,0 +1,128 @@
+/* modulo_personal.css */
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 16px;
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.option-label:hover {
+  background: var(--slate-100);
+}
+
+.option-label input[type="radio"] {
+  accent-color: var(--green-600);
+  width: 18px;
+  height: 18px;
+}
+
+.option-label span {
+  font-weight: 600;
+  color: var(--slate-800);
+}
+
+.form-section {
+  padding: 16px 20px;
+  border-left: 3px solid var(--green-500);
+  background: var(--white);
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-600);
+}
+
+.custom-input {
+  padding: 10px 14px;
+  border: 1px solid var(--slate-300);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--slate-900);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.custom-input:focus {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(222, 255, 154, 0.3);
+}
+
+.custom-textarea {
+  font-family: monospace;
+  resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--slate-700);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--slate-200);
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 12px 16px;
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+  color: #065f46;
+  border-radius: 6px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode adjustments (if supported globally) */
+@media (prefers-color-scheme: dark) {
+  body {
+    /* Simple support if the rest is adapted */
+  }
+}

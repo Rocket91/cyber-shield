@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CiberShield — Planes y Precios</title>
+  <title>CyberShield — Planes y Precios</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
     rel="stylesheet" />
@@ -17,7 +17,7 @@
   <nav id="navbar">
     <a href="index.html" class="nav-logo">
       <div class="logo-icon">🛡</div>
-      Ciber<span>Shield</span>
+      CyberShield
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Inicio</a></li>
@@ -141,8 +141,8 @@
           </div>
           <div class="price-annual-note" id="note-inst">Facturación mensual</div>
         </div>
-        <button class="btn-plan btn-plan-ghost" id="btn-institucional"
-          onclick="handleInstClick()">Contactar ventas →</button>
+        <button class="btn-plan btn-plan-ghost" id="btn-institucional" onclick="handleInstClick()">Contactar ventas
+          →</button>
         <div class="plan-divider"></div>
         <ul class="plan-features">
           <div class="feat-group-label">Todo lo del plan Premium, más:</div>
@@ -157,7 +157,6 @@
           <li class="feat-item"><span class="feat-check">✓</span> Módulo personalizable</li>
           <div class="feat-group-label">Corporativo</div>
           <li class="feat-item"><span class="feat-check">✓</span> Historial ilimitado</li>
-          <li class="feat-item"><span class="feat-check">✓</span> Multi-usuario (hasta 10)</li>
           <li class="feat-item"><span class="feat-check">✓</span> Soporte técnico prioritario</li>
           <li class="feat-item"><span class="feat-check">✓</span> SLA garantizado</li>
         </ul>
@@ -324,7 +323,7 @@
             <tr>
               <td>Exportar reportes PDF</td>
               <td><span class="cross-icon">✕</span></td>
-              <td><span class="check-icon">✓</span></td>
+              <td><span class="cross-icon">✕</span></td>
               <td><span class="check-icon">✓</span></td>
             </tr>
             <tr>
@@ -425,7 +424,7 @@
   <!-- ═══ FOOTER ═════════════════════════════════════════════════════ -->
   <footer>
     <div class="footer-row">
-      <span>© 2026 CiberShield · La Vega, República Dominicana</span>
+      <span>© 2026 CyberShield · La Vega, República Dominicana</span>
       <span>Conforme con <a href="#">Ley 53-07</a> · <a href="#">Privacidad</a> · <a href="#">Términos</a></span>
     </div>
   </footer>
@@ -449,6 +448,30 @@
         id="m-title">Obtener Premium</div>
       <div style="font-size:0.85rem;color:var(--slate-500);text-align:center;line-height:1.6;margin-bottom:24px"
         id="m-desc">Accede a 10 herramientas avanzadas y análisis ilimitados.</div>
+
+      <!-- Métodos de pago (preparación API) -->
+      <div style="margin-bottom:24px;" id="m-payment-methods">
+        <label
+          style="font-size:0.85rem; font-weight:600; color:var(--slate-700); display:block; margin-bottom:12px;">Método
+          de pago</label>
+        <div style="display:flex; gap:12px;">
+          <label
+            style="flex:1; border:2px solid var(--green-500); border-radius:10px; padding:12px; cursor:pointer; display:flex; align-items:center; gap:8px; background:var(--green-50);"
+            id="lbl-pay-card-precios" onclick="selectPaymentMethodPrecios('card')">
+            <input type="radio" name="precios-payment" checked style="accent-color:var(--green-600)">
+            <span style="font-size:1.2rem">💳</span> <span style="font-size:0.9rem; font-weight:600;">Tarjeta</span>
+          </label>
+          <label
+            style="flex:1; border:1.5px solid var(--slate-200); border-radius:10px; padding:12px; cursor:pointer; display:flex; align-items:center; gap:8px;"
+            id="lbl-pay-paypal-precios" onclick="selectPaymentMethodPrecios('paypal')">
+            <input type="radio" name="precios-payment" style="accent-color:var(--slate-600)">
+            <span
+              style="font-size:1.2rem; color:#003087; font-weight:800; font-style:italic; letter-spacing:-1px;">Pay<span
+                style="color:#0079C1">Pal</span></span>
+          </label>
+        </div>
+      </div>
+
       <div style="display:flex;gap:10px">
         <button onclick="closeModal()"
           style="flex:1;padding:11px;border-radius:10px;background:var(--slate-100);color:var(--slate-600);border:none;font-family:var(--font-body);font-size:0.88rem;font-weight:600;cursor:pointer">Cancelar</button>

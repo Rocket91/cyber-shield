@@ -168,3 +168,22 @@ function closeModal() {
   const ov = document.getElementById('modal-overlay');
   if (ov) ov.style.display = 'none';
 }
+
+function selectPaymentMethodPrecios(method) {
+  const lblCard = document.getElementById('lbl-pay-card-precios');
+  const lblPaypal = document.getElementById('lbl-pay-paypal-precios');
+
+  if (lblCard && lblPaypal) {
+    if (method === 'card') {
+      lblCard.style.border = '2px solid var(--green-500)';
+      lblCard.style.background = 'var(--green-50)';
+      lblPaypal.style.border = '1.5px solid var(--slate-200)';
+      lblPaypal.style.background = 'transparent';
+    } else {
+      lblPaypal.style.border = '2px solid var(--green-500)';
+      lblPaypal.style.background = 'var(--green-50)';
+      lblCard.style.border = '1.5px solid var(--slate-200)';
+      lblCard.style.background = 'transparent';
+    }
+  }
+}

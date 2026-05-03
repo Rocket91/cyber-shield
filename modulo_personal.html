@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield — Módulo Personal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="dashboard.css?v=2">
+  <link rel="stylesheet" href="modulo_personal.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
+      <div class="logo-icon">🛡</div>
+      <span class="logo-text">CyberShield</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Principal</div>
+      <a class="nav-item" href="dashboard.html">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <div class="nav-group-label" style="margin-top:16px; color:#8b5cf6">Institucional</div>
+      <a class="nav-item active" href="#">
+        <span class="nav-icon">🧩</span>
+        <span class="nav-label">Módulo Personal</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main-wrap">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+      <div class="topbar-breadcrumb">
+        Herramientas <span>/ Módulo Personal / Configurar</span>
+      </div>
+      <div class="topbar-actions" style="margin-left: auto;">
+        <div class="user-avatar" id="topbar-avatar" style="cursor:pointer" onclick="window.location.href='perfil.html'">
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content" id="module-content" style="display:none;">
+
+      <div class="card fade-in">
+        <div class="card-header" style="flex-direction:column; align-items:flex-start; gap:8px;">
+          <h2 style="margin:0; font-family:var(--font-display); font-size:1.6rem; color:var(--slate-900);">Configuración
+            de Integración Pyme</h2>
+          <div class="card-sub" style="margin:0;">Conecta herramientas corporativas directamente a CyberShield</div>
+        </div>
+        <div class="card-body">
+
+          <form id="pyme-config-form" onsubmit="event.preventDefault(); guardarConfiguracion();">
+
+            <div class="options-container">
+              <!-- API REST -->
+              <label class="option-label">
+                <input type="radio" name="integ-type" value="api" checked onchange="toggleFormFields()">
+                <span>API REST Privada</span>
+              </label>
+              <div id="fields-api" class="form-section">
+                <div class="input-group">
+                  <label>Endpoint URL *</label>
+                  <input type="url" id="api-url" placeholder="https://api.tuempresa.com/v1/scan" class="custom-input">
+                </div>
+                <div class="input-group">
+                  <label>Bearer Token / API Key *</label>
+                  <input type="password" id="api-key" placeholder="sk_live_..." class="custom-input">
+                </div>
+                <div class="input-group">
+                  <label>Método HTTP</label>
+                  <select id="api-method" class="custom-input">
+                    <option value="POST">POST</option>
+                    <option value="GET">GET</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Webhook -->
+              <label class="option-label">
+                <input type="radio" name="integ-type" value="webhook" onchange="toggleFormFields()">
+                <span>Webhook de Alertas</span>
+              </label>
+              <div id="fields-webhook" class="form-section" style="display:none;">
+                <div class="input-group">
+                  <label>URL del Webhook *</label>
+                  <input type="url" id="webhook-url" placeholder="https://tuempresa.com/webhooks/cybershield"
+                    class="custom-input">
+                </div>
+                <div class="input-group">
+                  <label>Eventos a escuchar</label>
+                  <div class="checkbox-group">
+                    <label><input type="checkbox" value="threat"> Amenazas detectadas</label>
+                    <label><input type="checkbox" value="scan"> Análisis completado</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Script Custom -->
+              <label class="option-label">
+                <input type="radio" name="integ-type" value="script" onchange="toggleFormFields()">
+                <span>Script Custom</span>
+              </label>
+              <div id="fields-script" class="form-section" style="display:none;">
+                <div class="input-group">
+                  <label>Código del script (.py / .sh) *</label>
+                  <textarea id="script-code" rows="8" placeholder="# Escribe tu script aquí..."
+                    class="custom-input custom-textarea"></textarea>
+                  <small style="color:var(--red-500); margin-top:6px; display:block;">⚠️ Advertencia de seguridad: Los
+                    scripts personalizados se ejecutan en entorno aislado (sandbox).</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inline Success Message -->
+            <div id="success-msg" class="success-message" style="display:none;">
+              ✅ Configuración guardada correctamente.
+            </div>
+
+            <!-- Acciones -->
+            <div class="actions-row">
+              <button type="button" class="btn-secondary" onclick="window.history.back()">Cancelar</button>
+              <button type="submit" class="btn-primary">Guardar Configuración</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bloqueo para planes no institucionales -->
+    <main class="page-content" id="module-blocked" style="display:none;">
+      <div class="card" style="text-align:center; padding: 60px 20px;">
+        <div style="font-size:3rem; margin-bottom:16px;">🔒</div>
+        <h3 style="color:var(--slate-800); font-family:var(--font-display);">Acceso Denegado</h3>
+        <p style="color:var(--slate-500); max-width:400px; margin:10px auto;">Este módulo es exclusivo del Plan
+          Institucional.</p>
+        <button class="btn-primary" style="margin-top:20px;" onclick="window.location.href='dashboard.html'">Volver al
+          Dashboard</button>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="modulo_personal.js"></script>
+</body>
+
+</html>

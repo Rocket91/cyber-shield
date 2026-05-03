@@ -47,7 +47,7 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--slate-800);
-  display: flex; height: 100vh; overflow: hidden;
+  display: flex; height: 100vh; width: 100%; overflow: hidden;
 }
 
 /* ═══ SIDEBAR (identical to dashboard) ══════════════════════ */
@@ -618,3 +618,57 @@ body {
 
 @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* ═══ DARK MODE GLOBALS ══════════════════════════════════ */
+body.dark-mode {
+  --white: #0f172a;
+  --bg: #020617;
+  --slate-50: #1e293b;
+  --slate-100: #334155;
+  --slate-200: #475569;
+  --slate-300: #64748b;
+  --slate-400: #94a3b8;
+  --slate-500: #cbd5e1;
+  --slate-600: #e2e8f0;
+  --slate-700: #f1f5f9;
+  --slate-800: #f8fafc;
+  --slate-900: #ffffff;
+}
+
+body.dark-mode .card,
+body.dark-mode .topbar,
+body.dark-mode .modal-content {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark-mode input, body.dark-mode select {
+  color: #fff;
+  background-color: var(--slate-50);
+}
+
+body.dark-mode select option {
+  background-color: var(--slate-50);
+  color: #fff;
+}
+
+body.dark-mode .plan-mini.current {
+  background: rgba(29, 184, 94, 0.1);
+}
+
+body.dark-mode .sub-card {
+  background: linear-gradient(135deg, var(--bg) 60%, rgba(29, 184, 94, 0.05));
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .sub-plan-badge {
+  background: rgba(29, 184, 94, 0.1);
+  border-color: rgba(29, 184, 94, 0.2);
+  color: var(--green-400);
+}
+
+body.dark-mode .logo-text { color: white; }
+
+body.dark-mode .sidebar {
+  background: #020617;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}

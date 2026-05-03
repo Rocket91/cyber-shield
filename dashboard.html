@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CiberShield — Dashboard</title>
+  <title>CyberShield — Dashboard</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="dashboard.css?v=2">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 
     <div class="sidebar-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
       <div class="logo-icon">🛡</div>
-      <span class="logo-text">Ciber<span>Shield</span></span>
+      <span class="logo-text">CyberShield</span>
     </div>
 
     <nav class="sidebar-nav">
@@ -29,22 +29,22 @@
 
       <a class="nav-item active" onclick="navigate('dashboard', this)">
         <span class="nav-icon">🏠</span>
-        <span class="nav-label">Dashboard</span>
+        <span class="nav-label" data-i18n="dashboard">Dashboard</span>
         <span class="tooltip">Dashboard</span>
       </a>
-      <a class="nav-item" onclick="navigate('reports', this)">
+      <a class="nav-item" id="nav-reports" data-plan="institucional" onclick="navigate('reports', this)">
         <span class="nav-icon">📄</span>
-        <span class="nav-label">Reportes</span>
+        <span class="nav-label" data-i18n="reports">Reportes</span>
         <span class="tooltip">Reportes</span>
       </a>
       <a class="nav-item" onclick="navigate('history', this)">
         <span class="nav-icon">📋</span>
-        <span class="nav-label">Historial</span>
+        <span class="nav-label" data-i18n="history">Historial</span>
         <span class="tooltip">Historial</span>
       </a>
       <a class="nav-item" id="nav-notifications" onclick="navigate('notifications', this)">
         <span class="nav-icon">🔔</span>
-        <span class="nav-label">Alertas</span>
+        <span class="nav-label" data-i18n="alerts">Alertas</span>
         <span class="nav-badge" id="sidebar-alerts-badge" style="display:none">0</span>
         <span class="tooltip">Alertas</span>
       </a>
@@ -54,83 +54,91 @@
       <!-- BÁSICAS -->
       <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('file')">
         <span class="nav-icon">📁</span>
-        <span class="nav-label">Analizar Archivo</span>
+        <span class="nav-label" data-i18n="tool_file">Analizar Archivo</span>
         <span class="tooltip">Analizar Archivo</span>
       </a>
       <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('url')">
         <span class="nav-icon">🔗</span>
-        <span class="nav-label">Analizar URL</span>
+        <span class="nav-label" data-i18n="tool_url">Analizar URL</span>
         <span class="tooltip">Analizar URL</span>
       </a>
       <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('breach')">
         <span class="nav-icon">🔓</span>
-        <span class="nav-label">Brechas de Datos</span>
+        <span class="nav-label" data-i18n="tool_breach">Brechas de Datos</span>
         <span class="tooltip">Brechas de Datos</span>
       </a>
       <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('phishing')">
         <span class="nav-icon">🛡</span>
-        <span class="nav-label">Phishing / Malware</span>
+        <span class="nav-label" data-i18n="tool_phishing">Phishing / Malware</span>
         <span class="tooltip">Phishing / Malware</span>
       </a>
       <a class="nav-item" data-plan="basico" onclick="navigate('scan', this); setTab('pass')">
         <span class="nav-icon">🔑</span>
-        <span class="nav-label">Fortaleza Contraseña</span>
+        <span class="nav-label" data-i18n="tool_pass">Fortaleza Contraseña</span>
         <span class="tooltip">Fortaleza Contraseña</span>
       </a>
 
       <!-- PREMIUM -->
-      <div class="nav-group-label" data-plan-header="premium" style="display:none; margin-top:16px; color:#f59e0b">Premium</div>
+      <div class="nav-group-label" data-plan-header="premium" style="display:none; margin-top:16px; color:#f59e0b">
+        Premium</div>
       <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('osint')" style="display:none">
         <span class="nav-icon">🌐</span>
-        <span class="nav-label">OSINT / Puertos</span>
+        <span class="nav-label" data-i18n="tool_osint">OSINT / Puertos</span>
         <span class="tooltip">OSINT / Puertos</span>
       </a>
       <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('domain')" style="display:none">
         <span class="nav-icon">📡</span>
-        <span class="nav-label">Reputación Dominio</span>
+        <span class="nav-label" data-i18n="tool_domain">Reputación Dominio</span>
         <span class="tooltip">Reputación Dominio</span>
       </a>
-      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('phishtank')" style="display:none">
+      <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('phishtank')"
+        style="display:none">
         <span class="nav-icon">🎣</span>
-        <span class="nav-label">Base de Phishing</span>
+        <span class="nav-label" data-i18n="tool_phishtank">Base de Phishing</span>
         <span class="tooltip">Base de Phishing</span>
       </a>
       <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('ssl')" style="display:none">
         <span class="nav-icon">🔒</span>
-        <span class="nav-label">Auditoría SSL/TLS</span>
+        <span class="nav-label" data-i18n="tool_ssl">Auditoría SSL/TLS</span>
         <span class="tooltip">Auditoría SSL/TLS</span>
       </a>
       <a class="nav-item" data-plan="premium" onclick="navigate('scan', this); setTab('ip')" style="display:none">
         <span class="nav-icon">📍</span>
-        <span class="nav-label">Reputación IP</span>
+        <span class="nav-label" data-i18n="tool_ip">Reputación IP</span>
         <span class="tooltip">Reputación IP</span>
       </a>
 
       <!-- INSTITUCIONAL -->
-      <div class="nav-group-label" data-plan-header="institucional" style="display:none; margin-top:16px; color:#8b5cf6">Institucional</div>
-      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('assets')" style="display:none">
+      <div class="nav-group-label" data-plan-header="institucional"
+        style="display:none; margin-top:16px; color:#8b5cf6">Institucional</div>
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('assets')"
+        style="display:none">
         <span class="nav-icon">🕸</span>
-        <span class="nav-label">Exposición Activos</span>
+        <span class="nav-label" data-i18n="tool_assets">Exposición Activos</span>
         <span class="tooltip">Exposición Activos</span>
       </a>
-      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('noise')" style="display:none">
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('noise')"
+        style="display:none">
         <span class="nav-icon">🔬</span>
-        <span class="nav-label">Inteligencia Ruido</span>
+        <span class="nav-label" data-i18n="tool_noise">Inteligencia Ruido</span>
         <span class="tooltip">Inteligencia Ruido</span>
       </a>
-      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('dns')" style="display:none">
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('dns')"
+        style="display:none">
         <span class="nav-icon">🗺</span>
-        <span class="nav-label">Historial DNS</span>
+        <span class="nav-label" data-i18n="tool_dns">Historial DNS</span>
         <span class="tooltip">Historial DNS</span>
       </a>
-      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('threat')" style="display:none">
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('threat')"
+        style="display:none">
         <span class="nav-icon">🧬</span>
-        <span class="nav-label">Threat Intelligence</span>
+        <span class="nav-label" data-i18n="tool_threat">Threat Intelligence</span>
         <span class="tooltip">Threat Intelligence</span>
       </a>
-      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('custom')" style="display:none">
+      <a class="nav-item" data-plan="institucional" onclick="navigate('scan', this); setTab('custom')"
+        style="display:none">
         <span class="nav-icon">🧩</span>
-        <span class="nav-label">Módulo Personal</span>
+        <span class="nav-label" data-i18n="tool_custom">Módulo Personal</span>
         <span class="tooltip">Módulo Personal</span>
       </a>
 
@@ -138,26 +146,23 @@
 
       <a class="nav-item" href="perfil.html">
         <span class="nav-icon">👤</span>
-        <span class="nav-label">Mi Perfil</span>
+        <span class="nav-label" data-i18n="profile">Mi Perfil</span>
         <span class="tooltip">Mi Perfil</span>
       </a>
 
       <a class="nav-item" href="#" onclick="logout()" style="color: rgba(248,113,113,0.7)">
         <span class="nav-icon">🚪</span>
-        <span class="nav-label">Cerrar sesión</span>
+        <span class="nav-label" data-i18n="logout">Cerrar sesión</span>
         <span class="tooltip">Cerrar sesión</span>
       </a>
 
     </nav>
 
     <div class="sidebar-user">
-      <div class="user-avatar" id="sidebar-avatar">LM</div>
+      <div class="user-avatar" id="sidebar-avatar"></div>
       <div class="user-info">
-        <div class="user-name" id="sidebar-name">Luis Matías</div>
-        <div class="user-plan" id="sidebar-plan">✦ Plan Básico</div>
-        <div id="team-badge" style="display:none; font-size:0.7rem; color:var(--slate-400); margin-top:2px;">
-          <span class="nav-icon" style="font-size:0.7rem">👥</span> Equipo: <span id="team-name">Cargando...</span>
-        </div>
+        <div class="user-name" id="sidebar-name"></div>
+        <div class="user-plan" id="sidebar-plan"></div>
       </div>
     </div>
 
@@ -174,18 +179,14 @@
       <div class="topbar-breadcrumb" id="topbar-title">
         Dashboard <span>/ Resumen</span>
       </div>
-      <div class="topbar-search">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Buscar análisis, URL, archivo…" />
-      </div>
-      <div class="topbar-actions">
-        <button class="icon-btn" onclick="navigate('notifications', document.getElementById('nav-notifications'))" title="Notificaciones">
+      <div class="topbar-actions" style="margin-left: auto;">
+        <button class="icon-btn" onclick="navigate('notifications', document.getElementById('nav-notifications'))"
+          title="Notificaciones">
           🔔
           <span class="badge-dot" style="display:none" id="header-bell-dot"></span>
         </button>
 
-        <div class="user-avatar" style="cursor:pointer" title="Mi perfil" onclick="window.location.href='perfil.html'">
-          LM</div>
+        <div class="user-avatar" id="topbar-avatar" style="cursor:pointer" title="Mi perfil" onclick="window.location.href='perfil.html'"></div>
       </div>
     </header>
 
@@ -220,31 +221,32 @@
           <div class="stat-card">
             <div class="stat-info">
               <div class="stat-label">Análisis hoy</div>
-              <div class="stat-value">47</div>
-              <div class="stat-sub"><span class="up">↑ 12%</span> vs ayer</div>
+              <div class="stat-value" id="stat-analysis-today">--</div>
+              <div class="stat-sub" id="stat-analysis-trend">Cargando...</div>
             </div>
             <div class="stat-icon-wrap icon-blue">📊</div>
           </div>
           <div class="stat-card">
             <div class="stat-info">
               <div class="stat-label">Amenazas detectadas</div>
-              <div class="stat-value" style="color:var(--red-600)">3</div>
-              <div class="stat-sub"><span class="down">↑ 1</span> esta semana</div>
+              <div class="stat-value" style="color:var(--red-600)" id="stat-threats-total">--</div>
+              <div class="stat-sub" id="stat-threats-trend">Cargando...</div>
             </div>
             <div class="stat-icon-wrap icon-red">⚠️</div>
           </div>
           <div class="stat-card">
             <div class="stat-info">
               <div class="stat-label">Archivos limpios</div>
-              <div class="stat-value" style="color:var(--green-600)">44</div>
-              <div class="stat-sub"><span class="up">93.6%</span> tasa de seguridad</div>
+              <div class="stat-value" style="color:var(--green-600)" id="stat-clean-total">--</div>
+              <div class="stat-sub" id="stat-clean-trend">Cargando...</div>
             </div>
             <div class="stat-icon-wrap icon-green">✅</div>
           </div>
           <div class="stat-card">
             <div class="stat-info">
               <div class="stat-label">Plan activo</div>
-              <div class="stat-value" style="font-size:1.3rem; color:var(--green-600)">Básico</div>
+              <div class="stat-value" style="font-size:1.3rem; color:var(--green-600)" id="stat-plan-active">Cargando...
+              </div>
               <div class="stat-sub" style="color:var(--green-600); cursor:pointer"
                 onclick="window.location.href='precios.html'">Actualizar →</div>
             </div>
@@ -269,7 +271,7 @@
                 <thead>
                   <tr>
                     <th>Tipo</th>
-                    <th>Objetivo</th>
+                    <th data-i18n="th_target">Objetivo</th>
                     <th>Motor</th>
                     <th>Estado</th>
                     <th>Hora</th>
@@ -301,31 +303,31 @@
               <div class="card-body">
                 <div class="mini-chart">
                   <div class="bar-wrap">
-                    <div class="bar" style="height:30px"></div>
+                    <div class="bar" id="chart-bar-1" style="height:5px"></div>
                     <div class="bar-label">L</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar" style="height:45px"></div>
+                    <div class="bar" id="chart-bar-2" style="height:5px"></div>
                     <div class="bar-label">M</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar" style="height:22px"></div>
+                    <div class="bar" id="chart-bar-3" style="height:5px"></div>
                     <div class="bar-label">X</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar" style="height:50px"></div>
+                    <div class="bar" id="chart-bar-4" style="height:5px"></div>
                     <div class="bar-label">J</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar threat" style="height:18px"></div>
+                    <div class="bar" id="chart-bar-5" style="height:5px"></div>
                     <div class="bar-label">V</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar" style="height:35px"></div>
+                    <div class="bar" id="chart-bar-6" style="height:5px"></div>
                     <div class="bar-label">S</div>
                   </div>
                   <div class="bar-wrap">
-                    <div class="bar" style="height:55px"></div>
+                    <div class="bar" id="chart-bar-0" style="height:5px"></div>
                     <div class="bar-label">D</div>
                   </div>
                 </div>
@@ -358,7 +360,7 @@
             <div class="alerts-list" id="dashboard-alerts-list">
               <!-- JS will load recent alerts here -->
               <div style="text-align:center; padding: 20px; color: var(--slate-400); font-size: 0.85rem;">
-                 Cargando alertas...
+                Cargando alertas...
               </div>
             </div>
           </div>
@@ -403,19 +405,27 @@
             <!-- Custom Module Area -->
             <div id="custom-module-area" style="display:none; text-align:center; padding:40px 20px;">
               <div style="font-size:3rem; margin-bottom:16px;">🧩</div>
-              <h3 style="color:var(--slate-900); font-family:var(--font-display); font-size:1.4rem; margin-bottom:8px; font-weight:800;">Módulo Personalizado Pyme</h3>
-              <p style="color:var(--slate-500); font-size:0.95rem; margin-bottom:24px; max-width:450px; margin-left:auto; margin-right:auto; line-height:1.5;">Integra tus propias herramientas de ciberseguridad, APIs privadas o flujos de trabajo corporativos directamente en CiberShield para centralizar toda tu inteligencia.</p>
-              <button class="btn-primary" style="padding:12px 24px;">Configurar Integración</button>
+              <h3
+                style="color:var(--slate-900); font-family:var(--font-display); font-size:1.4rem; margin-bottom:8px; font-weight:800;">
+                Módulo Personalizado Pyme</h3>
+              <p
+                style="color:var(--slate-500); font-size:0.95rem; margin-bottom:24px; max-width:450px; margin-left:auto; margin-right:auto; line-height:1.5;">
+                Integra tus propias herramientas de ciberseguridad, APIs privadas o flujos de trabajo corporativos
+                directamente en CyberShield para centralizar toda tu inteligencia.</p>
+              <button class="btn-primary" style="padding:12px 24px;"
+                onclick="window.location.href='modulo_personal.html'">Configurar Integración</button>
             </div>
 
             <!-- Result box (Improved) -->
             <div class="scan-result" id="scan-result">
 
               <!-- Loading state -->
-              <div id="result-loading" style="display:none; text-align:center; flex-direction:column; align-items:center;">
+              <div id="result-loading"
+                style="display:none; text-align:center; flex-direction:column; align-items:center;">
                 <div class="spinner" style="margin-bottom:16px; width:30px; height:30px;"></div>
                 <div style="font-weight:700; color:var(--slate-800)">Consultando motores de análisis...</div>
-                <div style="font-size:0.85rem; color:var(--slate-500); margin-top:4px">Buscando indicadores de compromiso en tiempo real</div>
+                <div style="font-size:0.85rem; color:var(--slate-500); margin-top:4px">Buscando indicadores de
+                  compromiso en tiempo real</div>
               </div>
 
               <!-- Detailed Result Content -->
@@ -489,10 +499,10 @@
                 <tr>
                   <th>Tipo</th>
                   <th>Objetivo analizado</th>
-                  <th>Herramienta</th>
+                  <th data-i18n="th_tool">Herramienta</th>
                   <th>Estado</th>
                   <th>Motores</th>
-                  <th>Fecha</th>
+                  <th data-i18n="th_date">Fecha</th>
                 </tr>
               </thead>
               <tbody id="history-table-body">
@@ -587,10 +597,10 @@
             </div>
           </div>
           <div style="padding: 0" id="notif-list">
-              <!-- JS will load notifications here -->
-              <div style="text-align:center; padding: 40px; color: var(--slate-400);">
-                 Cargando notificaciones...
-              </div>
+            <!-- JS will load notifications here -->
+            <div style="text-align:center; padding: 40px; color: var(--slate-400);">
+              Cargando notificaciones...
+            </div>
           </div>
         </div>
       </div><!-- /view-notifications -->
@@ -606,24 +616,97 @@
             </div>
             <button class="btn-primary" onclick="openReportModal()"><span>+</span> Generar Nuevo</button>
           </div>
-          <div class="card-body" style="text-align: center; padding: 60px 20px;">
-            <div style="font-size: 3rem; margin-bottom: 20px;">📊</div>
-            <h3 style="color: var(--slate-800); margin-bottom: 10px;">Zona de reportes en construcción</h3>
-            <p style="color: var(--slate-500); font-size: 0.9rem; max-width: 400px; margin: 0 auto;">Próximamente podrás generar reportes detallados en PDF y exportar tus análisis de de seguridad para tu empresa o clientes.</p>
+          <div class="card-body" id="reports-list-area" style="padding:0;">
+            <table class="activity-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Rango de fechas</th>
+                  <th>Generado el</th>
+                  <th>Tamaño</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="reports-table-body">
+                <tr id="reports-empty-state">
+                  <td colspan="6" style="text-align:center; padding: 40px; color: var(--slate-400);">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📄</div>
+                    Aún no has generado reportes.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        
+
+        <!-- Detalle de reporte -->
+        <div class="card fade-in report-detail" id="report-detail-view" style="display:none;">
+          <div class="card-header" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+              <button class="btn-secondary" onclick="volverReportes()"
+                style="border:none; padding:8px 0; background:none;">&larr; Volver a Reportes</button>
+              <div style="display:flex; gap:10px;">
+                <button class="btn-secondary btn-pdf" onclick="descargarPdfReporte()">Descargar PDF</button>
+                <button class="btn-primary btn-print" onclick="imprimirReporte()">Imprimir</button>
+              </div>
+            </div>
+            <div>
+              <h2 id="detail-report-name"
+                style="margin:0; font-family:var(--font-display); font-size:1.8rem; color:var(--slate-900);">Nombre del
+                Reporte</h2>
+              <div style="display:flex; gap:16px; margin-top:8px; color:var(--slate-500); font-size:0.9rem;">
+                <span><strong>Tipo:</strong> <span id="detail-report-type"></span></span>
+                <span><strong>Rango:</strong> <span id="detail-report-range"></span></span>
+                <span><strong>Fecha:</strong> <span id="detail-report-date"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" style="padding: 30px 20px;">
+            <h3 style="color:var(--slate-800); margin-bottom:16px;">Resumen Ejecutivo</h3>
+            <p style="color:var(--slate-600); line-height:1.6; margin-bottom:24px;">Este documento contiene el
+              consolidado de las operaciones de escaneo, alertas detectadas y análisis de vulnerabilidades para el
+              periodo seleccionado. Todos los datos están clasificados y organizados por nivel de severidad.</p>
+
+            <div id="detail-report-stats"
+              style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:16px; margin-bottom:30px;">
+            </div>
+
+            <h3 style="color:var(--slate-800); margin-bottom:16px;">Detalle de Análisis</h3>
+            <table class="activity-table">
+              <thead>
+                <tr>
+                  <th>Elemento</th>
+                  <th>Tipo</th>
+                  <th>Resultado</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody id="detail-records-body"></tbody>
+            </table>
+          </div>
+        </div>
+
         <!-- Blocked Message (Non-Institutional) -->
         <div class="card fade-in" id="reports-blocked" style="display:none; text-align:center; padding: 80px 20px;">
           <div style="font-size: 3.5rem; margin-bottom: 24px;">🔒</div>
-          <h3 style="color: var(--slate-800); font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Función Exclusiva</h3>
-          <p style="color: var(--slate-500); font-size: 0.95rem; max-width: 400px; margin: 0 auto 32px; line-height: 1.5;">Esta función es exclusiva del Plan Institucional. Actualiza para acceder a generación y envíos de reportes en PDF y más ventajas.</p>
-          <button class="btn-primary" style="padding: 12px 28px;" onclick="window.location.href='precios.html'">Comparar Planes →</button>
+          <h3
+            style="color: var(--slate-800); font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">
+            Función Exclusiva</h3>
+          <p
+            style="color: var(--slate-500); font-size: 0.95rem; max-width: 400px; margin: 0 auto 32px; line-height: 1.5;">
+            Esta función es exclusiva del Plan Institucional. Actualiza para acceder a generación y envíos de reportes
+            en PDF y más ventajas.</p>
+          <button class="btn-primary" style="padding: 12px 28px;" onclick="window.location.href='precios.html'">Comparar
+            Planes →</button>
         </div>
       </div><!-- /view-reports -->
 
     </main>
   </div><!-- /main-wrap -->
+
+  <div id="toast-container"
+    style="position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:10px; z-index:9999;"></div>
 
   <!-- ═══ MODAL: NUEVO REPORTE ════════════════════════════════ -->
   <div id="report-modal" class="modal-overlay">
@@ -634,7 +717,7 @@
       </div>
       <div class="modal-body">
         <p class="modal-desc">Configure los parámetros para generar su reporte personalizado.</p>
-        
+
         <div class="modal-form-group">
           <label class="modal-label">Nombre del reporte</label>
           <input type="text" class="modal-input" id="report-name" placeholder="Ej: Auditoría Mensual - Octubre">
@@ -668,7 +751,11 @@
     </div>
   </div>
 
+
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="i18n.js"></script>
   <script src="dashboard.js"></script>
 </body>
 

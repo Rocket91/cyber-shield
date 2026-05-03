@@ -1,331 +1,392 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Documentación — CiberShield</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentación — CyberShield</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="documentacion.css">
 </head>
+
 <body>
 
-<!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
-<nav id="navbar">
-  <a href="index.html" class="nav-logo">
-    <div class="logo-icon">🛡</div>
-    Ciber<span>Shield</span>
-  </a>
-  <div class="nav-cta">
-    <a href="index.html" class="btn-ghost" style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:500;">Volver al inicio</a>
-    <a href="login.html" class="btn-primary" style="text-decoration:none; background:linear-gradient(135deg, var(--green-500), var(--green-700)); color:white; padding:10px 20px; border-radius:10px; font-weight:600; font-size:0.85rem; margin-left:20px;">Mi Dashboard</a>
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🛡</div>
+      CyberShield
+    </a>
+    <div class="nav-cta">
+      <a href="index.html" class="btn-ghost"
+        style="text-decoration:none; color:var(--slate-600); font-size:0.9rem; font-weight:500;">Volver al inicio</a>
+      <a href="login.html" class="btn-primary"
+        style="text-decoration:none; background:linear-gradient(135deg, var(--green-500), var(--green-700)); color:white; padding:10px 20px; border-radius:10px; font-weight:600; font-size:0.85rem; margin-left:20px;">Mi
+        Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- ═══ LAYOUT ═══════════════════════════════════════════════════ -->
+  <div class="doc-container">
+
+    <!-- SIDEBAR -->
+    <aside class="doc-sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Primeros Pasos</h3>
+        <ul class="doc-nav">
+          <li class="doc-nav-item"><a href="#introduccion" class="doc-nav-link active">Introducción</a></li>
+          <li class="doc-nav-item"><a href="#cuentas" class="doc-nav-link">Gestión de Cuenta</a></li>
+          <li class="doc-nav-item"><a href="#planes" class="doc-nav-link">Planes y Facturación</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section" style="margin-top:40px;">
+        <h3 class="sidebar-title">Plataforma</h3>
+        <ul class="doc-nav">
+          <li class="doc-nav-item"><a href="#guia-herramientas" class="doc-nav-link">Guía de Herramientas</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section" style="margin-top:40px;">
+        <h3 class="sidebar-title">Soporte</h3>
+        <ul class="doc-nav">
+          <li class="doc-nav-item"><a href="#faq" class="doc-nav-link">Preguntas Frecuentes</a></li>
+          <li class="doc-nav-item"><a href="contacto.html" class="doc-nav-link">Contacto Técnico</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="doc-content">
+
+      <article id="introduccion" class="doc-article">
+        <h1>Introducción a CyberShield</h1>
+        <p>Bienvenido a la documentación oficial de <strong>CyberShield</strong>. Nuestra plataforma centraliza las
+          herramientas de ciberseguridad más potentes en un único panel intuitivo, diseñado específicamente para
+          usuarios y Pymes en la República Dominicana.</p>
+
+        <div class="doc-alert doc-alert-info">
+          <span class="doc-alert-icon">💡</span>
+          <div class="doc-alert-content">
+            <h4>¿Qué es CyberShield?</h4>
+            <p>Es un orquestador de seguridad que conecta con múltiples APIs globales (VirusTotal, HaveIBeenPwned,
+              Shodan, Google Safe Browsing) para ofrecerte un veredicto unificado sobre cualquier amenaza digital.</p>
+          </div>
+        </div>
+      </article>
+
+      <article id="cuentas" class="doc-article" style="margin-top:80px;">
+        <h2>Gestión de la Cuenta</h2>
+        <p>Aprende a administrar la seguridad e información básica de tu pertenencia a CyberShield.</p>
+
+        <h3>Creación de cuenta</h3>
+        <p>Inicia en CyberShield fácilmente:</p>
+        <ul>
+          <li>Dirígete a la página de <a href="login.html">Acceso / Registro</a> y selecciona la pestaña "Crear cuenta".
+          </li>
+          <li>Rellena tu nombre, correo electrónico y elige una contraseña segura (mínimo 8 caracteres).</li>
+          <li>Acepta los Términos de Servicio y la Política de Privacidad.</li>
+          <li>Comienza a disfrutar de tu plan Básico de forma gratuita sin necesidad de ingresar tarjeta de crédito.
+          </li>
+        </ul>
+
+        <h3>Cambiar tu contraseña</h3>
+        <p>Maneja tu contraseña y rótala periódicamente desde la plataforma. En tu Dashboard, haz clic en perfil y entra
+          a la pestaña pertinente de Seguridad. Ahí podrás introducir tu contraseña actual y la nueva. Recomendamos
+          siempre mezclar mayúsculas, minúsculas, números y símbolos para bloquear hackeos masivos.</p>
+
+        <h3>Activar Autenticación de Dos Factores (2FA)</h3>
+        <p>Protégete impidiendo inicios de sesión no autorizados (AAL1). Elevamos tu protección a AAL2 conectando tu
+          móvil:</p>
+        <ul>
+          <li>Ve a la sección <strong>Seguridad</strong> de tu perfil.</li>
+          <li>Descarga una aplicación como <em>Google Authenticator</em>, <em>Authy</em> o <em>Microsoft
+              Authenticator</em>.</li>
+          <li>Selecciona "Activar 2FA", escanea el código QR que aparecerá e introduce el PIN de 6 dígitos que la
+            aplicación te proporcione en tiempo real.</li>
+        </ul>
+
+        <h3>Eliminar tu cuenta</h3>
+        <div class="doc-alert doc-alert-warning">
+          <span class="doc-alert-icon">⚠️</span>
+          <div class="doc-alert-content">
+            <h4>Zona de Peligro irreversible</h4>
+            <p>Eliminar tu cuenta de los servidores destruirá completamente tu información personal, historial de
+              peticiones de análisis, tus configuraciones y tus suscripciones en vivo.</p>
+          </div>
+        </div>
+        <p>Para proceder, entra a tu Perfil, dirígete a las configuraciones de seguridad inferiores, pulsa en el
+          apartado de borrar historial y borrar cuenta final. Esta acción desconectará tu sesión remota permanentemente
+          de nuestros datacenters.</p>
+      </article>
+
+      <article id="planes" class="doc-article" style="margin-top:80px;">
+        <h2>Planes y Facturación</h2>
+        <p>CyberShield posee una estructura flexible orientada tanto a individuos como a organizaciones corporativas.
+          Operamos bajo 3 modelos de suscripción:</p>
+
+        <h3>Tipos de Suscripción</h3>
+        <ul>
+          <li><strong>Básico (Gratuito):</strong> Acceso fundamental a Análisis de Archivos, URLs, Brechas de Datos en
+            correo y Verificación de Contraseñas pwned. Te otorga un nivel fundacional potente completamente gratis.
+          </li>
+          <li><strong>Premium:</strong> Incorporamos el arsenal OSINT (Shodan, WHOIS) e Inspección de Cabeceras HTTP.
+            Solución construida de cara a ingenieros y entusiastas que necesitan información técnica y analítica extra a
+            corto y largo alcance.</li>
+          <li><strong>Institucional:</strong> Preparado a medida para entidades. Acceso exclusivo a monitoreo de
+            vulnerabilidades absolutas (CVEs) y al <strong>Módulo Personalizado</strong>, habilitando visores e iframes
+            integrables para que toda tu operativa privada co-exista junto a nuestras herramientas.</li>
+        </ul>
+
+        <h3>Ciclos de pago</h3>
+        <p>Para los niveles Premium e Institucionales, CyberShield habilita la infraestructura de pagos por ciclo
+          <strong>Mensual</strong>, <strong>Trimestral</strong> o <strong>Anual</strong>.</p>
+      </article>
+
+      <article id="guia-herramientas" class="doc-article" style="margin-top:80px;">
+        <h2>Guía de Herramientas</h2>
+        <p>Descubre todo el abanico técnico de CyberShield, re-diseñado y simplificado al máximo.</p>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-card-icon">📁</div>
+            <h4>1. Análisis de Archivos</h4>
+            <p>Motor propulsado por VirusTotal. Arrastra documentos PDF, Excel o software .exe y permítenos verificarlo
+              en los 70 mejores laboratorios antimalware del mundo al unísono.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🔗</div>
+            <h4>2. Análisis de URLs</h4>
+            <p>¿Es un Link de Phishing? Detecta si ese enlace de banco es real o es un duplicado peligroso usando
+              algoritmos de Google SafeBrowsing.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">👁️</div>
+            <h4>3. Threat Intelligence</h4>
+            <p>Averigua desde qué lugar del hemisferio provienen ciertas infraestructuras y extrae el país, longitud e
+              historial pasivo en segundos.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🔑</div>
+            <h4>4. Check de Contraseñas</h4>
+            <p>Valida de urgencia si esa clave maestra tuya circuló alguna vez por la dark-web usando K-Anonymity (jamás
+              enviaremos tu texto a internet, por lo que nadie lo leerá).</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">📨</div>
+            <h4>5. Check de Cuenta de Correo</h4>
+            <p>Verifica si los hackers robaron información del correo corporativo. Nos conectamos con "Have I Been
+              Pwned".</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🌐</div>
+            <h4>6. Monitor WHOIS</h4>
+            <p>Mapea cuándo se compró un dominio web. Las tiendas falsas en internet esconden su rostro, el WhoIs revela
+              todo públicamente.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">📡</div>
+            <h4>7. Scanner Shodan</h4>
+            <p>El Google de las vulnerabilidades. Revisa si un servidor IP tiene bases de datos abiertas, o cámaras mal
+              protegidas exponiéndose globalmente.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🛡️</div>
+            <h4>8. Motor Generador</h4>
+            <p>Botón de pánico anti-fuerza-bruta. Provee instantáneamente cadenas únicas invulnerables listas para
+              asegurar tu Wifi o tus sistemas.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🔒</div>
+            <h4>9. Evaluador SSL/TLS</h4>
+            <p>Detecta el certificado de cifrado del candado web para tu servidor asegurando validez real del cifrado
+              para transacciones de banco modernas.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🧾</div>
+            <h4>10. Header Analyzer</h4>
+            <p>La "tarjeta de presentación invisible" de los servidores web. Mira tras telones si son un Apache
+              desactualizado, un motor IIS o en la nube.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">📌</div>
+            <h4>11. CVE Explorer</h4>
+            <p>Busca entre millones de parches de software usando la biblioteca NIST oficial para prevenir hackeos por
+              0-days a routers Windows, Mac y Android.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🧪</div>
+            <h4>12. Criptografía Libre</h4>
+            <p>Re-calcula un "Hash" criptográfico a los valores de texto introducidos para forzar identificadores
+              vitalicios perfectos en SHA1, SHA256.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🧱</div>
+            <h4>13. Bypasser DNS</h4>
+            <p>Consulta a servidores élite reales qué registros maneja un dominio sin caer ante suplantación (spoofing)
+              en tu ruteador local.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">🚀</div>
+            <h4>14. Analizador de Caídas</h4>
+            <p>Confirma al 100% que tu sitio web no cargue si se debió a un colapso en el servidor remoto o simplemente
+              le falló la Red a un teléfono tuyo.</p>
+          </div>
+          <div class="tool-card">
+            <div class="tool-card-icon">⚙️</div>
+            <h4>15. Módulo Institucional Ext.</h4>
+            <p>Incorpora paneles completos en Grafana o Graficos Google Looker que posea tu empresa en el dashboard a
+              través de inserciones cifradas.</p>
+          </div>
+        </div>
+      </article>
+
+      <article id="faq" class="doc-article" style="margin-top:80px;">
+        <h2>Preguntas Frecuentes (FAQ)</h2>
+        <p>Aclaramos todas tus dudas operativas que puedan haber quedado sueltas sobre CyberShield.</p>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-question">
+              1. ¿Pueden ver los archivos y claves que subo?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br><strong>De ningún modo.</strong> Las contraseñas calculan un Hash criptográfico de forma anónima
+                enviando sus fragmentos y nosotros no miramos. Al chequear los arhivos, lo envíamos de forma pública,
+                pero no es intervenido o descargado por nosotros por un principio estricto de privacidad.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              2. Bloqueé sin querer la Aplicación de Mi Doble Factor (2FA)
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Esto resulta molesto pero indica que tu protección suprema funciona. En estos casos contundentes
+                deberás recurrir formalmente enviando los detalles usando nuestro Contacto Técnico para revocar los
+                tokens, tras probar ser quien dictas ser.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              3. Si cancelo la Suscripción Premium, ¿Pierdo mi panel al instante?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>No, tu membresía corre exactamente hasta terminar el plazo del tiempo y servicio acordado. De ahi
+                saltarás de inmediato, de forma amena y automatizada al esquema gratuito Básico, para no forzar
+                recargos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              4. ¿VirusTotal puede ser errático o tener "falsos positivos"?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Excelente deducción, así pasa a ratos con laboratorios de software, si hay solo 1 verifiación al
+                lado de otras 70 limpias asume ser un margen tolerable. Nosotros aplicamos lo que en base dicta la regla
+                en programación: Un sistema del Semáforo; verde es a salvo y múltiples rojos indica letal.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              5. ¿Aplica el cumplimiento de privacidad de la República Dominicana?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Por supuesto. Basamos el esqueleto principal a seguir por mandatos éticos estandarizados nacionales
+                incluyendo a grandes rangos la Ley 53-07 del sistema.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              6. Soy emprendedor, ¿Cuáles son los métodos de pago?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Nos basamos internamente bajo esquemas transparentes permitiendo transacciones bancarias,
+                integraciones web e intercambios estandarizados al momento del chequeo en nuestra ventana modal.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              7. ¿Qué es exactamente el Módulo PYME en la Barra Lateral Premium?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Mucha gente ama mezclar herramientas. Módulo PYME da lugar a configurar una ventana que embebe otra
+                web. Podrías empotrar el visor y sistema contable corporativo o rastreador de fallas interno si gustas.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              8. Cambié y actualicé mi clave, pero el acceso rebota, ¿Por qué?
+              <span class="faq-icon">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p><br>Revisa que al colocar la clave cumplas las condiciones: Sin bloqueos mayúsculos de OS. De existir
+                el problema con frecuencia recurre temporalmente al restablecedor y espera un par de segundos. El
+                sistema backend (Supabase) suele re-organizarse estricto y bloquear por protección tras unos minutos la
+                llave original.</p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+    </main>
   </div>
-</nav>
 
-<!-- ═══ LAYOUT ═══════════════════════════════════════════════════ -->
-<div class="doc-container">
-  
-  <!-- SIDEBAR -->
-  <aside class="doc-sidebar">
-    <div class="sidebar-section">
-      <h3 class="sidebar-title">Primeros Pasos</h3>
-      <ul class="doc-nav">
-        <li class="doc-nav-item"><a href="#introduccion" class="doc-nav-link active">Introducción</a></li>
-        <li class="doc-nav-item"><a href="#cuentas" class="doc-nav-link">Gestión de Cuenta</a></li>
-        <li class="doc-nav-item"><a href="#planes" class="doc-nav-link">Planes y Facturación</a></li>
-      </ul>
+  <!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
+  <footer
+    style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; margin-top:80px; text-align:center;">
+    <p>© 2026 CyberShield · Plataforma Unificada de Seguridad</p>
+    <div style="margin-top:20px;">
+      <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
+      <a href="politica_privacidad.html"
+        style="color:var(--green-400); text-decoration:none; margin:0 15px;">Privacidad</a>
+      <a href="login.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Acceder</a>
     </div>
-    
-    <div class="sidebar-section" style="margin-top:40px;">
-      <h3 class="sidebar-title">Plataforma</h3>
-      <ul class="doc-nav">
-        <li class="doc-nav-item"><a href="#guia-herramientas" class="doc-nav-link">Guía de Herramientas</a></li>
-      </ul>
-    </div>
+  </footer>
 
-    <div class="sidebar-section" style="margin-top:40px;">
-      <h3 class="sidebar-title">Soporte</h3>
-      <ul class="doc-nav">
-        <li class="doc-nav-item"><a href="#faq" class="doc-nav-link">Preguntas Frecuentes</a></li>
-        <li class="doc-nav-item"><a href="contacto.html" class="doc-nav-link">Contacto Técnico</a></li>
-      </ul>
-    </div>
-  </aside>
-
-  <!-- CONTENT -->
-  <main class="doc-content">
-    
-    <article id="introduccion" class="doc-article">
-      <h1>Introducción a CiberShield</h1>
-      <p>Bienvenido a la documentación oficial de <strong>CiberShield</strong>. Nuestra plataforma centraliza las herramientas de ciberseguridad más potentes en un único panel intuitivo, diseñado específicamente para usuarios y Pymes en la República Dominicana.</p>
-      
-      <div class="doc-alert doc-alert-info">
-        <span class="doc-alert-icon">💡</span>
-        <div class="doc-alert-content">
-          <h4>¿Qué es CiberShield?</h4>
-          <p>Es un orquestador de seguridad que conecta con múltiples APIs globales (VirusTotal, HaveIBeenPwned, Shodan, Google Safe Browsing) para ofrecerte un veredicto unificado sobre cualquier amenaza digital.</p>
-        </div>
-      </div>
-    </article>
-
-    <article id="cuentas" class="doc-article" style="margin-top:80px;">
-      <h2>Gestión de la Cuenta</h2>
-      <p>Aprende a administrar la seguridad e información básica de tu pertenencia a CiberShield.</p>
-
-      <h3>Creación de cuenta</h3>
-      <p>Inicia en CiberShield fácilmente:</p>
-      <ul>
-        <li>Dirígete a la página de <a href="login.html">Acceso / Registro</a> y selecciona la pestaña "Crear cuenta".</li>
-        <li>Rellena tu nombre, correo electrónico y elige una contraseña segura (mínimo 8 caracteres).</li>
-        <li>Acepta los Términos de Servicio y la Política de Privacidad.</li>
-        <li>Comienza a disfrutar de tu plan Básico de forma gratuita sin necesidad de ingresar tarjeta de crédito.</li>
-      </ul>
-
-      <h3>Cambiar tu contraseña</h3>
-      <p>Maneja tu contraseña y rótala periódicamente desde la plataforma. En tu Dashboard, haz clic en perfil y entra a la pestaña pertinente de Seguridad. Ahí podrás introducir tu contraseña actual y la nueva. Recomendamos siempre mezclar mayúsculas, minúsculas, números y símbolos para bloquear hackeos masivos.</p>
-
-      <h3>Activar Autenticación de Dos Factores (2FA)</h3>
-      <p>Protégete impidiendo inicios de sesión no autorizados (AAL1). Elevamos tu protección a AAL2 conectando tu móvil:</p>
-      <ul>
-        <li>Ve a la sección <strong>Seguridad</strong> de tu perfil.</li>
-        <li>Descarga una aplicación como <em>Google Authenticator</em>, <em>Authy</em> o <em>Microsoft Authenticator</em>.</li>
-        <li>Selecciona "Activar 2FA", escanea el código QR que aparecerá e introduce el PIN de 6 dígitos que la aplicación te proporcione en tiempo real.</li>
-      </ul>
-
-      <h3>Eliminar tu cuenta</h3>
-      <div class="doc-alert doc-alert-warning">
-        <span class="doc-alert-icon">⚠️</span>
-        <div class="doc-alert-content">
-          <h4>Zona de Peligro irreversible</h4>
-          <p>Eliminar tu cuenta de los servidores destruirá completamente tu información personal, historial de peticiones de análisis, tus configuraciones y tus suscripciones en vivo.</p>
-        </div>
-      </div>
-      <p>Para proceder, entra a tu Perfil, dirígete a las configuraciones de seguridad inferiores, pulsa en el apartado de borrar historial y borrar cuenta final. Esta acción desconectará tu sesión remota permanentemente de nuestros datacenters.</p>
-    </article>
-
-    <article id="planes" class="doc-article" style="margin-top:80px;">
-      <h2>Planes y Facturación</h2>
-      <p>CiberShield posee una estructura flexible orientada tanto a individuos como a organizaciones corporativas. Operamos bajo 3 modelos de suscripción:</p>
-
-      <h3>Tipos de Suscripción</h3>
-      <ul>
-        <li><strong>Básico (Gratuito):</strong> Acceso fundamental a Análisis de Archivos, URLs, Brechas de Datos en correo y Verificación de Contraseñas pwned. Te otorga un nivel fundacional potente completamente gratis.</li>
-        <li><strong>Premium:</strong> Incorporamos el arsenal OSINT (Shodan, WHOIS) e Inspección de Cabeceras HTTP. Solución construida de cara a ingenieros y entusiastas que necesitan información técnica y analítica extra a corto y largo alcance.</li>
-        <li><strong>Institucional:</strong> Preparado a medida para entidades. Acceso exclusivo a monitoreo de vulnerabilidades absolutas (CVEs) y al <strong>Módulo Personalizado</strong>, habilitando visores e iframes integrables para que toda tu operativa privada co-exista junto a nuestras herramientas.</li>
-      </ul>
-
-      <h3>Ciclos de pago</h3>
-      <p>Para los niveles Premium e Institucionales, CiberShield habilita la infraestructura de pagos por ciclo <strong>Mensual</strong>, <strong>Trimestral</strong> o <strong>Anual</strong>.</p>
-    </article>
-
-    <article id="guia-herramientas" class="doc-article" style="margin-top:80px;">
-      <h2>Guía de Herramientas</h2>
-      <p>Descubre todo el abanico técnico de CiberShield, re-diseñado y simplificado al máximo.</p>
-      
-      <div class="tools-grid">
-        <div class="tool-card">
-          <div class="tool-card-icon">📁</div>
-          <h4>1. Análisis de Archivos</h4>
-          <p>Motor propulsado por VirusTotal. Arrastra documentos PDF, Excel o software .exe y permítenos verificarlo en los 70 mejores laboratorios antimalware del mundo al unísono.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🔗</div>
-          <h4>2. Análisis de URLs</h4>
-          <p>¿Es un Link de Phishing? Detecta si ese enlace de banco es real o es un duplicado peligroso usando algoritmos de Google SafeBrowsing.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">👁️</div>
-          <h4>3. Threat Intelligence</h4>
-          <p>Averigua desde qué lugar del hemisferio provienen ciertas infraestructuras y extrae el país, longitud e historial pasivo en segundos.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🔑</div>
-          <h4>4. Check de Contraseñas</h4>
-          <p>Valida de urgencia si esa clave maestra tuya circuló alguna vez por la dark-web usando K-Anonymity (jamás enviaremos tu texto a internet, por lo que nadie lo leerá).</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">📨</div>
-          <h4>5. Check de Cuenta de Correo</h4>
-          <p>Verifica si los hackers robaron información del correo corporativo. Nos conectamos con "Have I Been Pwned".</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🌐</div>
-          <h4>6. Monitor WHOIS</h4>
-          <p>Mapea cuándo se compró un dominio web. Las tiendas falsas en internet esconden su rostro, el WhoIs revela todo públicamente.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">📡</div>
-          <h4>7. Scanner Shodan</h4>
-          <p>El Google de las vulnerabilidades. Revisa si un servidor IP tiene bases de datos abiertas, o cámaras mal protegidas exponiéndose globalmente.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🛡️</div>
-          <h4>8. Motor Generador</h4>
-          <p>Botón de pánico anti-fuerza-bruta. Provee instantáneamente cadenas únicas invulnerables listas para asegurar tu Wifi o tus sistemas.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🔒</div>
-          <h4>9. Evaluador SSL/TLS</h4>
-          <p>Detecta el certificado de cifrado del candado web para tu servidor asegurando validez real del cifrado para transacciones de banco modernas.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🧾</div>
-          <h4>10. Header Analyzer</h4>
-          <p>La "tarjeta de presentación invisible" de los servidores web. Mira tras telones si son un Apache desactualizado, un motor IIS o en la nube.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">📌</div>
-          <h4>11. CVE Explorer</h4>
-          <p>Busca entre millones de parches de software usando la biblioteca NIST oficial para prevenir hackeos por 0-days a routers Windows, Mac y Android.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🧪</div>
-          <h4>12. Criptografía Libre</h4>
-          <p>Re-calcula un "Hash" criptográfico a los valores de texto introducidos para forzar identificadores vitalicios perfectos en SHA1, SHA256.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🧱</div>
-          <h4>13. Bypasser DNS</h4>
-          <p>Consulta a servidores élite reales qué registros maneja un dominio sin caer ante suplantación (spoofing) en tu ruteador local.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">🚀</div>
-          <h4>14. Analizador de Caídas</h4>
-          <p>Confirma al 100% que tu sitio web no cargue si se debió a un colapso en el servidor remoto o simplemente le falló la Red a un teléfono tuyo.</p>
-        </div>
-        <div class="tool-card">
-          <div class="tool-card-icon">⚙️</div>
-          <h4>15. Módulo Institucional Ext.</h4>
-          <p>Incorpora paneles completos en Grafana o Graficos Google Looker que posea tu empresa en el dashboard a través de inserciones cifradas.</p>
-        </div>
-      </div>
-    </article>
-
-    <article id="faq" class="doc-article" style="margin-top:80px;">
-      <h2>Preguntas Frecuentes (FAQ)</h2>
-      <p>Aclaramos todas tus dudas operativas que puedan haber quedado sueltas sobre CiberShield.</p>
-
-      <div class="faq-list">
-        
-        <div class="faq-item">
-          <button class="faq-question">
-            1. ¿Pueden ver los archivos y claves que subo?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br><strong>De ningún modo.</strong> Las contraseñas calculan un Hash criptográfico de forma anónima enviando sus fragmentos y nosotros no miramos. Al chequear los arhivos, lo envíamos de forma pública, pero no es intervenido o descargado por nosotros por un principio estricto de privacidad.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            2. Bloqueé sin querer la Aplicación de Mi Doble Factor (2FA)
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Esto resulta molesto pero indica que tu protección suprema funciona. En estos casos contundentes deberás recurrir formalmente enviando los detalles usando nuestro Contacto Técnico para revocar los tokens, tras probar ser quien dictas ser.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            3. Si cancelo la Suscripción Premium, ¿Pierdo mi panel al instante?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>No, tu membresía corre exactamente hasta terminar el plazo del tiempo y servicio acordado. De ahi saltarás de inmediato, de forma amena y automatizada al esquema gratuito Básico, para no forzar recargos.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            4. ¿VirusTotal puede ser errático o tener "falsos positivos"?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Excelente deducción, así pasa a ratos con laboratorios de software, si hay solo 1 verifiación al lado de otras 70 limpias asume ser un margen tolerable. Nosotros aplicamos lo que en base dicta la regla en programación: Un sistema del Semáforo; verde es a salvo y múltiples rojos indica letal.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            5. ¿Aplica el cumplimiento de privacidad de la República Dominicana?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Por supuesto. Basamos el esqueleto principal a seguir por mandatos éticos estandarizados nacionales incluyendo a grandes rangos la Ley 53-07 del sistema.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            6. Soy emprendedor, ¿Cuáles son los métodos de pago?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Nos basamos internamente bajo esquemas transparentes permitiendo transacciones bancarias, integraciones web e intercambios estandarizados al momento del chequeo en nuestra ventana modal.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            7. ¿Qué es exactamente el Módulo PYME en la Barra Lateral Premium?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Mucha gente ama mezclar herramientas. Módulo PYME da lugar a configurar una ventana que embebe otra web. Podrías empotrar el visor y sistema contable corporativo o rastreador de fallas interno si gustas.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            8. Cambié y actualicé mi clave, pero el acceso rebota, ¿Por qué?
-            <span class="faq-icon">▼</span>
-          </button>
-          <div class="faq-answer">
-            <p><br>Revisa que al colocar la clave cumplas las condiciones: Sin bloqueos mayúsculos de OS. De existir el problema con frecuencia recurre temporalmente al restablecedor y espera un par de segundos. El sistema backend (Supabase) suele re-organizarse estricto y bloquear por protección tras unos minutos la llave original.</p>
-          </div>
-        </div>
-
-      </div>
-    </article>
-
-  </main>
-</div>
-
-<!-- ═══ FOOTER ═══════════════════════════════════════════════════════ -->
-<footer style="background:var(--slate-900); color:rgba(255,255,255,0.4); padding:60px 5% 30px; margin-top:80px; text-align:center;">
-  <p>© 2026 CiberShield · Plataforma Unificada de Seguridad</p>
-  <div style="margin-top:20px;">
-    <a href="index.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Inicio</a>
-    <a href="politica_privacidad.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Privacidad</a>
-    <a href="login.html" style="color:var(--green-400); text-decoration:none; margin:0 15px;">Acceder</a>
-  </div>
-</footer>
-
-<script>
-  // Active links
-  const links = document.querySelectorAll('.doc-nav-link');
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-
-  // Accordion Logic
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      // Accordion mode
-      faqItems.forEach(i => {
-        if(i !== item) i.classList.remove('open');
+  <script>
+    // Active links
+    const links = document.querySelectorAll('.doc-nav-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       });
-      // Toggle current
-      item.classList.toggle('open');
     });
-  });
-</script>
+
+    // Accordion Logic
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        // Accordion mode
+        faqItems.forEach(i => {
+          if (i !== item) i.classList.remove('open');
+        });
+        // Toggle current
+        item.classList.toggle('open');
+      });
+    });
+  </script>
 
 </body>
+
 </html>

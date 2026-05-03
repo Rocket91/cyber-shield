@@ -1,238 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CiberShield — Acceso</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberShield — Acceso</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
 
-<div class="page">
+  <div class="page">
 
-  <!-- LEFT PANEL -->
-  <div class="left-panel">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
 
-    <div class="left-top">
-      <a href="index.html" class="logo-link">
-        <div class="logo-icon">🛡</div>
-        Ciber<span>Shield</span>
-      </a>
-    </div>
+      <div class="left-top">
+        <a href="index.html" class="logo-link">
+          <div class="logo-icon">🛡</div>
+          CyberShield
+        </a>
+      </div>
 
-    <div class="left-center">
-      <h1 class="brand-headline">
-        Protege tu empresa<br>
-        con <span class="green">inteligencia</span><br>
-        unificada
-      </h1>
-      <p class="brand-sub">
-        15 herramientas de ciberseguridad en una sola plataforma.
-        Detecta amenazas, analiza vulnerabilidades y protege tu infraestructura digital.
-      </p>
-      <div class="brand-stats">
-        <div class="stat-row">
-          <div class="stat-icon-wrap">🦠</div>
-          <div class="stat-text">
-            <strong>70+ motores de análisis</strong>
-            <span>Detección de malware con VirusTotal</span>
+      <div class="left-center">
+        <h1 class="brand-headline">
+          Protege tu empresa<br>
+          con <span class="green">inteligencia</span><br>
+          unificada
+        </h1>
+        <p class="brand-sub">
+          15 herramientas de ciberseguridad en una sola plataforma.
+          Detecta amenazas, analiza vulnerabilidades y protege tu infraestructura digital.
+        </p>
+        <div class="brand-stats">
+          <div class="stat-row">
+            <div class="stat-icon-wrap">🦠</div>
+            <div class="stat-text">
+              <strong>70+ motores de análisis</strong>
+              <span>Detección de malware con VirusTotal</span>
+            </div>
           </div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-icon-wrap">🎣</div>
-          <div class="stat-text">
-            <strong>Base de datos phishing global</strong>
-            <span>PhishTank + Google Safe Browsing</span>
+          <div class="stat-row">
+            <div class="stat-icon-wrap">🎣</div>
+            <div class="stat-text">
+              <strong>Base de datos phishing global</strong>
+              <span>PhishTank + Google Safe Browsing</span>
+            </div>
           </div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-icon-wrap">🔑</div>
-          <div class="stat-text">
-            <strong>Brecha de datos en tiempo real</strong>
-            <span>Have I Been Pwned integrado</span>
+          <div class="stat-row">
+            <div class="stat-icon-wrap">🔑</div>
+            <div class="stat-text">
+              <strong>Brecha de datos en tiempo real</strong>
+              <span>Have I Been Pwned integrado</span>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="left-bottom">
+        © 2026 CyberShield · Conforme con Ley 53-07 · República Dominicana
+      </div>
     </div>
 
-    <div class="left-bottom">
-      © 2026 CiberShield · Conforme con Ley 53-07 · República Dominicana
-    </div>
-  </div>
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <div class="auth-box">
 
-  <!-- RIGHT PANEL -->
-  <div class="right-panel">
-    <div class="auth-box">
+        <div class="tab-bar">
+          <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Iniciar sesión</button>
+          <button class="tab-btn" id="tab-register" onclick="switchTab('register')">Crear cuenta</button>
+        </div>
 
-      <div class="tab-bar">
-        <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Iniciar sesión</button>
-        <button class="tab-btn" id="tab-register" onclick="switchTab('register')">Crear cuenta</button>
+        <!-- LOGIN -->
+        <div class="form-panel" id="panel-login">
+          <h2 class="form-title">Bienvenido de vuelta</h2>
+          <p class="form-sub">Ingresa tus credenciales para continuar.</p>
+
+          <div class="alert-box" id="login-alert"></div>
+
+          <div class="input-group">
+            <label class="input-label">Correo electrónico</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉</span>
+              <input type="email" class="form-input" id="login-email" placeholder="tu@correo.com" />
+            </div>
+            <div class="input-error" id="err-login-email">Introduce un correo válido.</div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Contraseña</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" class="form-input" id="login-pass" placeholder="••••••••" />
+              <button type="button" class="pass-toggle" onclick="togglePass('login-pass',this)">👁</button>
+            </div>
+            <div class="input-error" id="err-login-pass">La contraseña no puede estar vacía.</div>
+          </div>
+
+          <a href="#" class="forgot-link" onclick="showForgot(event)">¿Olvidaste tu contraseña?</a>
+
+          <div class="check-row">
+            <input type="checkbox" class="check-input" id="remember-me" />
+            <label class="check-label" for="remember-me">Recordar mi sesión en este dispositivo</label>
+          </div>
+
+          <button class="btn-submit" id="btn-login" onclick="submitLogin()">
+            <span class="btn-text">Iniciar sesión →</span>
+            <div class="spinner"></div>
+          </button>
+
+
+        </div>
+
+        <!-- REGISTER -->
+        <div class="form-panel hidden" id="panel-register">
+          <h2 class="form-title">Crea tu cuenta</h2>
+          <p class="form-sub">Empieza gratis. Sin tarjeta de crédito.</p>
+
+          <div class="alert-box" id="register-alert"></div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label class="input-label">Nombre</label>
+              <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input type="text" class="form-input" id="reg-name" placeholder="Juan" />
+              </div>
+              <div class="input-error" id="err-reg-name">Campo requerido.</div>
+            </div>
+            <div class="input-group">
+              <label class="input-label">Apellido</label>
+              <div class="input-wrap">
+                <span class="input-icon">👤</span>
+                <input type="text" class="form-input" id="reg-lastname" placeholder="Pérez" />
+              </div>
+              <div class="input-error" id="err-reg-lastname">Campo requerido.</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Correo electrónico</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉</span>
+              <input type="email" class="form-input" id="reg-email" placeholder="tu@correo.com" />
+            </div>
+            <div class="input-error" id="err-reg-email">Introduce un correo válido.</div>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Contraseña</label>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input type="password" class="form-input" id="reg-pass" placeholder="Mínimo 8 caracteres"
+                oninput="checkStrength(this.value)" />
+              <button type="button" class="pass-toggle" onclick="togglePass('reg-pass',this)">👁</button>
+            </div>
+            <div class="strength-bar-wrap" id="strength-wrap">
+              <div class="strength-track">
+                <div class="strength-fill" id="strength-fill"></div>
+              </div>
+              <div class="strength-label" id="strength-label"></div>
+            </div>
+            <div class="input-error" id="err-reg-pass">Mínimo 8 caracteres.</div>
+          </div>
+
+          <div class="check-row">
+            <input type="checkbox" class="check-input" id="accept-terms" />
+            <label class="check-label" for="accept-terms">
+              Acepto los <a href="terminos_uso.html" target="_blank">Términos de servicio</a> y la
+              <a href="politica_privacidad.html" target="_blank">Política de privacidad</a> de CyberShield.
+            </label>
+          </div>
+
+          <button class="btn-submit" id="btn-register" onclick="submitRegister()" disabled>
+            <span class="btn-text">Crear cuenta gratis →</span>
+            <div class="spinner"></div>
+          </button>
+
+
+        </div>
+
       </div>
 
-      <!-- LOGIN -->
-      <div class="form-panel" id="panel-login">
-        <h2 class="form-title">Bienvenido de vuelta</h2>
-        <p class="form-sub">Ingresa tus credenciales para continuar.</p>
+      <!-- MFA VERIFICATION PANEL -->
+      <div class="form-panel hidden" id="panel-mfa">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h2 class="form-title" style="margin-bottom: 8px;">Autenticación en 2 Pasos</h2>
+          <p class="form-sub" style="margin-bottom: 0;">Ingresa el código de 6 dígitos generado por tu aplicación
+            autenticadora (Google
+            Authenticator, Authy, etc.).</p>
+        </div>
 
-        <div class="alert-box" id="login-alert"></div>
+        <div class="alert-box" id="mfa-alert"></div>
 
         <div class="input-group">
-          <label class="input-label">Correo electrónico</label>
+          <label class="input-label">Código TOTP</label>
           <div class="input-wrap">
-            <span class="input-icon">✉</span>
-            <input type="email" class="form-input" id="login-email" placeholder="tu@correo.com"/>
+            <span class="input-icon">🔑</span>
+            <input type="text" class="form-input" id="mfa-code" placeholder="000000" maxlength="6"
+              style="letter-spacing: 8px; font-size: 1.25rem; font-weight: bold; text-align: center; padding-right: 40px;" />
           </div>
-          <div class="input-error" id="err-login-email">Introduce un correo válido.</div>
         </div>
 
-        <div class="input-group">
-          <label class="input-label">Contraseña</label>
-          <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input type="password" class="form-input" id="login-pass" placeholder="••••••••"/>
-            <button type="button" class="pass-toggle" onclick="togglePass('login-pass',this)">👁</button>
-          </div>
-          <div class="input-error" id="err-login-pass">La contraseña no puede estar vacía.</div>
-        </div>
-
-        <a href="#" class="forgot-link" onclick="showForgot(event)">¿Olvidaste tu contraseña?</a>
-
-        <div class="check-row">
-          <input type="checkbox" class="check-input" id="remember-me"/>
-          <label class="check-label" for="remember-me">Recordar mi sesión en este dispositivo</label>
-        </div>
-
-        <button class="btn-submit" id="btn-login" onclick="submitLogin()">
-          <span class="btn-text">Iniciar sesión →</span>
+        <button class="btn-submit" id="btn-mfa" onclick="submitMFA()">
+          <span class="btn-text">Verificar y Entrar →</span>
           <div class="spinner"></div>
         </button>
 
-
-      </div>
-
-      <!-- REGISTER -->
-      <div class="form-panel hidden" id="panel-register">
-        <h2 class="form-title">Crea tu cuenta</h2>
-        <p class="form-sub">Empieza gratis. Sin tarjeta de crédito.</p>
-
-        <div class="alert-box" id="register-alert"></div>
-
-        <div class="input-row">
-          <div class="input-group">
-            <label class="input-label">Nombre</label>
-            <div class="input-wrap">
-              <span class="input-icon">👤</span>
-              <input type="text" class="form-input" id="reg-name" placeholder="Juan"/>
-            </div>
-            <div class="input-error" id="err-reg-name">Campo requerido.</div>
-          </div>
-          <div class="input-group">
-            <label class="input-label">Apellido</label>
-            <div class="input-wrap">
-              <span class="input-icon">👤</span>
-              <input type="text" class="form-input" id="reg-lastname" placeholder="Pérez"/>
-            </div>
-            <div class="input-error" id="err-reg-lastname">Campo requerido.</div>
-          </div>
+        <div style="margin-top:20px; text-align:center;">
+          <a href="#" class="forgot-link" onclick="location.reload()">Cancelar y volver loguearse</a>
         </div>
-
-        <div class="input-group">
-          <label class="input-label">Correo electrónico</label>
-          <div class="input-wrap">
-            <span class="input-icon">✉</span>
-            <input type="email" class="form-input" id="reg-email" placeholder="tu@correo.com"/>
-          </div>
-          <div class="input-error" id="err-reg-email">Introduce un correo válido.</div>
-        </div>
-
-        <div class="input-group">
-          <label class="input-label">Contraseña</label>
-          <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input type="password" class="form-input" id="reg-pass"
-              placeholder="Mínimo 8 caracteres" oninput="checkStrength(this.value)"/>
-            <button type="button" class="pass-toggle" onclick="togglePass('reg-pass',this)">👁</button>
-          </div>
-          <div class="strength-bar-wrap" id="strength-wrap">
-            <div class="strength-track"><div class="strength-fill" id="strength-fill"></div></div>
-            <div class="strength-label" id="strength-label"></div>
-          </div>
-          <div class="input-error" id="err-reg-pass">Mínimo 8 caracteres.</div>
-        </div>
-
-        <div class="check-row">
-          <input type="checkbox" class="check-input" id="accept-terms"/>
-          <label class="check-label" for="accept-terms">
-            Acepto los <a href="terminos_uso.html" target="_blank">Términos de servicio</a> y la
-            <a href="politica_privacidad.html" target="_blank">Política de privacidad</a> de CiberShield.
-          </label>
-        </div>
-
-        <button class="btn-submit" id="btn-register" onclick="submitRegister()" disabled>
-          <span class="btn-text">Crear cuenta gratis →</span>
-          <div class="spinner"></div>
-        </button>
-
-
       </div>
 
     </div>
-
-    <!-- MFA VERIFICATION PANEL -->
-    <div class="form-panel hidden" id="panel-mfa">
-      <h2 class="form-title">Autenticación en 2 Pasos</h2>
-      <p class="form-sub">Ingresa el código de 6 dígitos generado por tu aplicación autenticadora (Google Authenticator, Authy, etc.).</p>
-
-      <div class="alert-box" id="mfa-alert"></div>
-
-      <div class="input-group">
-        <label class="input-label">Código TOTP</label>
-        <div class="input-wrap">
-          <span class="input-icon">🔑</span>
-          <input type="text" class="form-input" id="mfa-code" placeholder="000000" maxlength="6" style="letter-spacing: 8px; font-size: 1.25rem; font-weight: bold; text-align: center;"/>
-        </div>
-      </div>
-
-      <button class="btn-submit" id="btn-mfa" onclick="submitMFA()">
-        <span class="btn-text">Verificar y Entrar →</span>
-        <div class="spinner"></div>
-      </button>
-
-      <div style="margin-top:20px; text-align:center;">
-        <a href="#" class="forgot-link" onclick="location.reload()">Cancelar y volver loguearse</a>
-      </div>
-    </div>
-
   </div>
-</div>
 
-<!-- FORGOT PASSWORD MODAL -->
-<div id="forgot-overlay" style="
+  <!-- FORGOT PASSWORD MODAL -->
+  <div id="forgot-overlay" style="
   display:none;position:fixed;inset:0;
   background:rgba(15,23,42,0.6);z-index:200;
   align-items:center;justify-content:center;
   backdrop-filter:blur(6px);
 " onclick="if(event.target===this)closeForgot()">
-  <div style="background:white;border-radius:20px;padding:36px;max-width:400px;width:90%;
+    <div style="background:white;border-radius:20px;padding:36px;max-width:400px;width:90%;
     box-shadow:0 24px 64px rgba(0,0,0,0.2);animation:slideUp .3s ease;">
-    <div style="font-size:2rem;text-align:center;margin-bottom:12px">🔑</div>
-    <div style="font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:var(--slate-900);text-align:center;margin-bottom:8px">Recuperar contraseña</div>
-    <div style="font-size:0.83rem;color:var(--slate-400);text-align:center;margin-bottom:22px;line-height:1.5">Ingresa tu correo y te enviaremos un enlace para restablecerla.</div>
-    <div class="input-wrap" style="margin-bottom:18px">
-      <span class="input-icon">✉</span>
-      <input type="email" class="form-input" id="forgot-email" placeholder="tu@correo.com"/>
-    </div>
-    <div style="display:flex;gap:10px">
-      <button onclick="closeForgot()" style="flex:1;padding:11px;border-radius:10px;background:var(--slate-100);color:var(--slate-600);border:none;font-family:var(--font-body);font-weight:600;font-size:0.88rem;cursor:pointer">Cancelar</button>
-      <button onclick="sendReset()" style="flex:1;padding:11px;border-radius:10px;background:linear-gradient(135deg,var(--green-500),var(--green-700));color:white;border:none;font-family:var(--font-body);font-weight:600;font-size:0.88rem;cursor:pointer">Enviar enlace</button>
+      <div style="font-size:2rem;text-align:center;margin-bottom:12px">🔑</div>
+      <div
+        style="font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:var(--slate-900);text-align:center;margin-bottom:8px">
+        Recuperar contraseña</div>
+      <div style="font-size:0.83rem;color:var(--slate-400);text-align:center;margin-bottom:22px;line-height:1.5">Ingresa
+        tu correo y te enviaremos un enlace para restablecerla.</div>
+      <div class="input-wrap" style="margin-bottom:18px">
+        <span class="input-icon">✉</span>
+        <input type="email" class="form-input" id="forgot-email" placeholder="tu@correo.com" />
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onclick="closeForgot()"
+          style="flex:1;padding:11px;border-radius:10px;background:var(--slate-100);color:var(--slate-600);border:none;font-family:var(--font-body);font-weight:600;font-size:0.88rem;cursor:pointer">Cancelar</button>
+        <button onclick="sendReset()"
+          style="flex:1;padding:11px;border-radius:10px;background:linear-gradient(135deg,var(--green-500),var(--green-700));color:white;border:none;font-family:var(--font-body);font-weight:600;font-size:0.88rem;cursor:pointer">Enviar
+          enlace</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="login.js"></script>
 </body>
+
 </html>
