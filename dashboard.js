@@ -1188,17 +1188,112 @@ function volverReportes() {
 function imprimirReporte() { window.print(); }
 
 function descargarPdfReporte() {
-  const name = document.getElementById('detail-report-name').textContent;
-  if (typeof window.jspdf !== 'undefined') {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    doc.text(`Reporte: ${name}`, 10, 10);
-    _reporteActualData.forEach((r, i) => {
-      doc.setFontSize(9);
-      doc.text(`${r.tipo} | ${r.resultado} | ${r.detalle || ''} | ${new Date(r.created_at).toLocaleDateString('es-ES')}`, 10, 20 + i * 6);
-    });
-    doc.save(`CyberShield_${name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`);
+  if (typeof window.jspdf === 'undefined') { window.print(); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const W = doc.internal.pageSize.getWidth();
+  const H = doc.internal.pageSize.getHeight();
+  const name = document.getElementById('detail-report-name')?.textContent || 'Reporte';
+  const data = Array.isArray(_reporteActualData) ? _reporteActualData : [];
+  const today = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' });
+  const fileDate = new Date().toISOString().split('T')[0];
+  const tipo = data[0]?.tipo || '—';
+  const fechaMin = data.length ? new Date(Math.min(...data.map(r => new Date(r.created_at)))).toLocaleDateString('es-ES') : '—';
+  const fechaMax = data.length ? new Date(Math.max(...data.map(r => new Date(r.created_at)))).toLocaleDateString('es-ES') : '—';
+
+  const limpios = data.filter(r => r.resultado === 'limpio').length;
+  const sosp = data.filter(r => r.resultado === 'sospechoso').length;
+  const pelig = data.filter(r => r.resultado === 'peligroso').length;
+
+  doc.setFillColor(29, 158, 117);
+  doc.rect(0, 0, W, 72, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.text('CyberShield', 32, 30);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.text('Reporte de Seguridad', 32, 48);
+  doc.text(today, W - 32, 48, { align: 'right' });
+
+  doc.setFillColor(248, 250, 252);
+  doc.rect(0, 72, W, 72, 'F');
+  doc.setTextColor(26, 26, 46);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.text(name, 32, 100);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(100, 116, 139);
+  doc.text(`Tipo: ${tipo}`, 32, 118);
+  doc.text(`Período: ${fechaMin} – ${fechaMax}`, 200, 118);
+  doc.setDrawColor(203, 213, 225);
+  doc.line(32, 136, W - 32, 136);
+
+  const bW = (W - 96) / 3;
+  const bY = 152;
+  const bH = 60;
+  const boxes = [
+    { count: limpios, label: 'Limpios', bg: [240, 253, 244], num: [21, 128, 61] },
+    { count: sosp, label: 'Sospechosos', bg: [255, 247, 237], num: [234, 88, 12] },
+    { count: pelig, label: 'Peligrosos', bg: [254, 242, 242], num: [220, 38, 38] }
+  ];
+  boxes.forEach((b, i) => {
+    const x = 32 + i * (bW + 16);
+    doc.setFillColor(...b.bg);
+    doc.roundedRect(x, bY, bW, bH, 6, 6, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(22);
+    doc.setTextColor(...b.num);
+    doc.text(String(b.count), x + bW / 2, bY + 32, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(100, 116, 139);
+    doc.text(b.label, x + bW / 2, bY + 48, { align: 'center' });
+  });
+
+  const tY = bY + bH + 24;
+  const cols = [200, 90, 90, 100];
+  const headers = ['Elemento', 'Tipo', 'Resultado', 'Fecha'];
+  doc.setFillColor(29, 158, 117);
+  doc.rect(32, tY, W - 64, 20, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(255, 255, 255);
+  let cx = 40;
+  headers.forEach((h, i) => { doc.text(h, cx, tY + 13); cx += cols[i]; });
+
+  if (data.length === 0) {
+    doc.setTextColor(100, 116, 139);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text('Sin análisis en este período', W / 2, tY + 36, { align: 'center' });
   } else {
-    window.print();
+    data.forEach((r, i) => {
+      const rowY = tY + 20 + i * 18;
+      if (i % 2 === 0) { doc.setFillColor(255, 255, 255); } else { doc.setFillColor(248, 250, 252); }
+      doc.rect(32, rowY, W - 64, 18, 'F');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      const det = (r.detalle || r.url || r.email || r.ip || r.dominio || '—').slice(0, 36);
+      const fecha = new Date(r.created_at).toLocaleDateString('es-ES');
+      const res = r.resultado || '—';
+      const resColor = res === 'limpio' ? [29, 158, 117] : res === 'sospechoso' ? [245, 158, 11] : res === 'peligroso' ? [239, 68, 68] : [100, 116, 139];
+      doc.setTextColor(26, 26, 46); doc.text(det, 40, rowY + 12);
+      doc.setTextColor(100, 116, 139); doc.text(r.tipo || '—', 40 + cols[0], rowY + 12);
+      doc.setTextColor(...resColor); doc.setFont('helvetica', 'bold'); doc.text(res, 40 + cols[0] + cols[1], rowY + 12);
+      doc.setTextColor(100, 116, 139); doc.setFont('helvetica', 'normal'); doc.text(fecha, 40 + cols[0] + cols[1] + cols[2], rowY + 12);
+    });
   }
+
+  doc.setDrawColor(29, 158, 117);
+  doc.setLineWidth(1);
+  doc.line(32, H - 36, W - 32, H - 36);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text('Generado por CyberShield — Plan Institucional', 32, H - 20);
+  doc.text('Página 1', W / 2, H - 20, { align: 'center' });
+
+  doc.save(`CyberShield_${name.replace(/\s+/g, '_')}_${fileDate}.pdf`);
 }
