@@ -1,6 +1,6 @@
 # 🛡️ CyberShield
 
-**Plataforma SaaS unificada de ciberseguridad para la gestión de vulnerabilidades en pymes dominicanas.**
+**Plataforma SaaS unificada de ciberseguridad para usuarios y pymes dominicanas.**
 
 Proyecto de tesis para optar por el título de Ingeniero en Sistemas de Computación — Universidad Católica del Cibao (UCATECI), mayo 2026.
 
@@ -8,7 +8,7 @@ Proyecto de tesis para optar por el título de Ingeniero en Sistemas de Computac
 
 ## ¿Qué problema resuelve?
 
-Una pyme que quiere revisar una IP, un archivo y una contraseña hoy necesita tres plataformas distintas, y las soluciones corporativas cuestan demasiado para este sector. CyberShield reúne esas herramientas en una sola consola, en español, con respuestas pensadas para quien no es especialista en seguridad: un veredicto claro (limpio / advertencia / peligro) y recomendaciones concretas.
+Una persona o una pyme que quiere revisar una IP, un archivo y una contraseña hoy necesita tres plataformas distintas, y las soluciones corporativas cuestan demasiado para este mercado. CyberShield reúne esas herramientas en una sola consola, en español, con respuestas pensadas para quien no es especialista en seguridad: un veredicto claro (limpio / advertencia / peligro) y recomendaciones concretas.
 
 ## Herramientas del dashboard
 
